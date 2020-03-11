@@ -1,0 +1,55 @@
+-# %h2 Log in
+-# = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+-#   .field
+-#     = f.label :email
+-#     %br/
+-#     = f.email_field :email, autofocus: true, autocomplete: "email"
+-#   .field
+-#     = f.label :password
+-#     %br/
+-#     = f.password_field :password, autocomplete: "current-password"
+-#   - if devise_mapping.rememberable?
+-#     .field
+-#       = f.check_box :remember_me
+-#       = f.label :remember_me
+-#   .actions
+-#     = f.submit "Log in"
+-# = render "devise/shared/links"
+
+.container 
+  .top-container
+    %h1.icon 
+      = link_to image_tag("/material/logo/logo.png", with: "100", class: 'header__logo'), root_path 
+  .login-container
+    .login-area
+      .login-area__newuser
+        %p.text
+          アカウントをお持ちでない方はこちら
+          = link_to "新規会員登録", new_user_registration_path, method: :get, class: "registrations__btn"  
+      .login-box
+        = form_with model: @user, class: 'login_user', local: true do |f|
+          .login-box__content
+            .login-box__content__email
+              = f.email_field :email, class: 'input-default', placeholder: '  メールアドレス'
+            .login-box__content__password
+              = f.password_field :encrypted_password, class: 'input-default', placeholder: '  パスワード'
+            .login-box__content__btn
+              = f.submit "ログイン", class: "login__btn" do
+                = link_to , url = "#"             
+          .forgetpassword-user
+            = link_to "パスワードをお忘れの方", url = "#", class: 'register-user' 
+
+  .footer-sessions
+    %ul
+      %li 
+        = link_to 'プライバシーポリシー' 
+      %li
+        = link_to 'FURIMA' 
+      %br/ 
+      %li
+        = link_to '特定商取引に関する表記' 
+    .footer__logo
+      = link_to image_tag("/material/logo/logo-white.png", with: "100", class: "logo-white"), root_path 
+      %p
+        © FURIMA
+
