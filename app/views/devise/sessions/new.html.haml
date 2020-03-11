@@ -27,7 +27,7 @@
           アカウントをお持ちでない方はこちら
           = link_to "新規会員登録", new_user_registration_path, method: :get, class: "registrations__btn"  
       .login-box
-        = form_with model: @user, class: 'login_user', local: true do |f|
+        = form_with class: 'login_user', local: true do |f|
           .login-box__content
             .login-box__content__email
               = f.email_field :email, class: 'input-default', placeholder: '  メールアドレス'
