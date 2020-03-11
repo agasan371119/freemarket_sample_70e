@@ -12,7 +12,6 @@ default: &default
   username: root
   password:
   socket: /tmp/mysql.sock
-  
 development:
   <<: *default
   database: freemarket_sample_70e_development
