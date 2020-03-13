@@ -1,0 +1,132 @@
+.item__post
+  .item__post__header
+    =link_to image_tag("logo.png", width: "185", class: "item__post__header__logo"),"/"
+  .item__post__container
+    =form_with(model: @item) do |f|
+      .item__post__container__first
+        %h2.item__post__container__first__h
+          出品画像
+          %span>必須
+        %p.item__post__container__first__p
+          最大10枚までアップロードできます   
+        .item__post__container__first__image
+          %p.item__post__container__first__image__p
+            ドラッグアンドドロップ
+          %p.item__post__container__first__image__p
+            またはクリックしてファイルをアップロード
+        .hidden-content
+          =f.fields_for :images do |i|
+            =i.file_field :image, class:"hidden-field"
+            %input{class:"hidden-field",type:"file",name:"item[images_attributes][1][image]",id: "item_images_attributes_1_image"}
+            %input{class:"hidden-field",type:"file",name:"item[images_attributes][2][image]",id: "item_images_attributes_2_image"}
+            %input{class:"hidden-field",type:"file",name:"item[images_attributes][3][image]",id: "item_images_attributes_3_image"}
+            %input{class:"hidden-field",type:"file",name:"item[images_attributes][4][image]",id: "item_images_attributes_4_image"}
+            %input{class:"hidden-field",type:"file",name:"item[images_attributes][5][image]",id: "item_images_attributes_5_image"}
+            %input{class:"hidden-field",type:"file",name:"item[images_attributes][6][image]",id: "item_images_attributes_6_image"}
+            %input{class:"hidden-field",type:"file",name:"item[images_attributes][7][image]",id: "item_images_attributes_7_image"}
+            %input{class:"hidden-field",type:"file",name:"item[images_attributes][8][image]",id: "item_images_attributes_8_image"}
+            %input{class:"hidden-field",type:"file",name:"item[images_attributes][9][image]",id: "item_images_attributes_9_image"}
+          
+      .item__post__container__second
+        %h2.item__post__container__second__h
+          商品名
+          %span>必須
+        .item__post__container__second__nameform
+          = form_with(model:@item) do |f|
+            .input__name
+              =f.text_field :name, placeholder: "40文字まで", class: "input__name",size: "40x25"
+        %h2.item__post__container__second__h
+          商品の説明
+          %span>必須
+        .item__post__container__second__textform
+          = form_with(model:@item) do |f|
+            .input__text
+              =f.text_area :description, placeholder:text_placeholder , class: "input__textarea"
+      .item__post__container__third
+        %h1.item__post__container__third__h1
+          商品の詳細
+        %h2.item__post__container__third__h
+          カテゴリー
+          %span>必須        
+        .item__post__container__third__categoryform
+          = form_with(model:@item) do |f|
+            .input__category1
+              =f.select :category_id, [ ["レディース",1], ["メンズ", 2], ["ベビー・キッズ", 3 ] ,["インテリア・住まい・小物", 4], ["本・音楽・ゲーム", 5], ["おもちゃ・ホビー・グッズ", 6] ], prompt: "選択してください",class:"input__category"
+        %h2.item__post__container__third__h2
+          ブランド
+          %span>任意
+        .item__post__container__third__brandform
+          = form_with(model:@item) do |f|
+            .input__brand
+              =f.text_field :name, placeholder: "例）シャネル", class: "input__brand",size: "40x25"
+        %h2.item__post__container__third__h
+          商品の状態
+          %span>必須      
+        .item__post__container__third__statusform
+          = form_with(model:@item) do |f|
+            .input__status
+              =f.select :status, [ ["新品、未使用",1], ["未使用に近い", 2], ["目立った傷や汚れ無し", 3 ] ,["やや傷や汚れ有り", 4], ["傷や汚れ有り", 5], ["全体的に状態が悪い", 6] ], prompt: "選択してください",class:"input__status"
+      .item__post__container__delivery
+        %h1.item__post__container__delivery__h1
+          配送について
+        %h2.item__post__container__delivery__h
+          配送料の負担
+          %span>必須
+        .item__post__container__delivery__postageform
+          = form_with(model:@item) do |f|
+            .input__postage
+              =f.select :postage, [ ["送料込み(出品者負担)",1], ["着払い(購入者負担)", 2]], prompt: "選択してください",class:"input__postage"   
+        %h2.item__post__container__delivery__h
+          発送元の地域
+          %span>必須
+        .item__post__container__delivery__prefectureform
+          = form_with(model:@item) do |f|
+            .input__prefecture
+              =f.select :prefecture, [ ["北海道",1], ["青森県", 2], ["岩手県", 3 ] ,["宮城県", 4], ["秋田県", 5], ["山形県", 6] ], prompt: "選択してください",class:"input__prefecture"
+        %h2.item__post__container__delivery__h
+          発送までの日数
+          %span>必須
+        .item__post__container__delivery__dayform
+          = form_with(model:@item) do |f|
+            .input__day
+              =f.select :day, [ ["1~2日で発送",1], ["2~3日で発送", 2], ["4~7日で発送", 3 ]], prompt: "選択してください",class:"input__day"      
+      .item__post__container__price
+        %h1.item__post__container__price__h1
+          価格(¥300~9,999,999)
+        .item__post__container__price__box
+          %h2.item__post__container__price__box__h
+            販売価格
+            %span>必須
+          .item__post__container__price__box__right
+            %h2.item__post__container__price__box__right__h
+              ¥            
+            .item__post__container__price__box__right__form
+              = form_with(model:@item) do |f|
+                .input__price
+                  =f.number_field :price,placeholder: "0", class:"input__price", min: 0, max:9999999
+        %h2.item__post__container__price__h2
+          販売手数料  (10%)
+        %h3.item__post__container__price__h3
+          販売利益
+        .item__post__container__price__btn
+          .item__post__container__price__btn--red
+            =link_to "出品する","#",class:".item__post__container__price__btn--red"
+          .item__post__container__price__btn--gray
+            =link_to "もどる","#",class:".item__post__container__price__btn--gray"
+        %p.item__post__container__price__p
+          禁止されている行為および出品物を必ず確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。また、また、出品をもちまして加盟店規約に同意したことになります。
+
+  %footer.single-footer
+    %nav
+      %ul.cleafix
+        %li
+          = link_to "プライバシーポリシー", "#", class: "privacy"
+        %li
+          = link_to "メルカリ利用規約", "#", class: "userrule"
+        %li
+          = link_to "特定商取引に関する表記", "#", class: "taade"
+    %a.single-footer-logo{:href => "https://www.mercari.com/jp/"}
+      .footer-img
+        = image_tag 'logo.png', alt: 'aaaa', height: '49', width: '185', class: 'logo'
+    %p
+      %small© Furima, Inc.
