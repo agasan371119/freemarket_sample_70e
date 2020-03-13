@@ -32,16 +32,14 @@
           商品名
           %span>必須
         .item__post__container__second__nameform
-          = form_with(model:@item) do |f|
-            .input__name
-              =f.text_field :name, placeholder: "40文字まで", class: "input__name",size: "40x25"
+          .input__name
+            =f.text_field :name, placeholder: "40文字まで", class: "input__name",size: "40x25"
         %h2.item__post__container__second__h
           商品の説明
           %span>必須
         .item__post__container__second__textform
-          = form_with(model:@item) do |f|
-            .input__text
-              =f.text_area :description, placeholder:text_placeholder , class: "input__textarea"
+          .input__text
+            =f.text_area :description, placeholder:text_placeholder , class: "input__textarea"
       .item__post__container__third
         %h1.item__post__container__third__h1
           商品の詳細
@@ -49,23 +47,20 @@
           カテゴリー
           %span>必須        
         .item__post__container__third__categoryform
-          = form_with(model:@item) do |f|
-            .input__category1
-              =f.select :category_id, [ ["レディース",1], ["メンズ", 2], ["ベビー・キッズ", 3 ] ,["インテリア・住まい・小物", 4], ["本・音楽・ゲーム", 5], ["おもちゃ・ホビー・グッズ", 6] ], prompt: "選択してください",class:"input__category"
+          .input__category1
+            =f.select :category_id, [ ["レディース",1], ["メンズ", 2], ["ベビー・キッズ", 3 ] ,["インテリア・住まい・小物", 4], ["本・音楽・ゲーム", 5], ["おもちゃ・ホビー・グッズ", 6] ], prompt: "選択してください",class:"input__category"
         %h2.item__post__container__third__h2
           ブランド
           %span>任意
         .item__post__container__third__brandform
-          = form_with(model:@item) do |f|
-            .input__brand
-              =f.text_field :name, placeholder: "例）シャネル", class: "input__brand",size: "40x25"
+          .input__brand
+            =f.text_field :name, placeholder: "例）シャネル", class: "input__brand",size: "40x25"
         %h2.item__post__container__third__h
           商品の状態
           %span>必須      
         .item__post__container__third__statusform
-          = form_with(model:@item) do |f|
-            .input__status
-              =f.select :status, [ ["新品、未使用",1], ["未使用に近い", 2], ["目立った傷や汚れ無し", 3 ] ,["やや傷や汚れ有り", 4], ["傷や汚れ有り", 5], ["全体的に状態が悪い", 6] ], prompt: "選択してください",class:"input__status"
+          .input__status
+            =f.select :status, [ ["新品、未使用",1], ["未使用に近い", 2], ["目立った傷や汚れ無し", 3 ] ,["やや傷や汚れ有り", 4], ["傷や汚れ有り", 5], ["全体的に状態が悪い", 6] ], prompt: "選択してください",class:"input__status"
       .item__post__container__delivery
         %h1.item__post__container__delivery__h1
           配送について
@@ -73,23 +68,20 @@
           配送料の負担
           %span>必須
         .item__post__container__delivery__postageform
-          = form_with(model:@item) do |f|
-            .input__postage
-              =f.select :postage, [ ["送料込み(出品者負担)",1], ["着払い(購入者負担)", 2]], prompt: "選択してください",class:"input__postage"   
+          .input__postage
+            =f.select :postage, [ ["送料込み(出品者負担)",1], ["着払い(購入者負担)", 2]], prompt: "選択してください",class:"input__postage"   
         %h2.item__post__container__delivery__h
           発送元の地域
           %span>必須
         .item__post__container__delivery__prefectureform
-          = form_with(model:@item) do |f|
-            .input__prefecture
-              =f.select :prefecture, [ ["北海道",1], ["青森県", 2], ["岩手県", 3 ] ,["宮城県", 4], ["秋田県", 5], ["山形県", 6] ], prompt: "選択してください",class:"input__prefecture"
+          .input__prefecture
+            =f.select :prefecture, [ ["北海道",1], ["青森県", 2], ["岩手県", 3 ] ,["宮城県", 4], ["秋田県", 5], ["山形県", 6] ], prompt: "選択してください",class:"input__prefecture"
         %h2.item__post__container__delivery__h
           発送までの日数
           %span>必須
         .item__post__container__delivery__dayform
-          = form_with(model:@item) do |f|
-            .input__day
-              =f.select :day, [ ["1~2日で発送",1], ["2~3日で発送", 2], ["4~7日で発送", 3 ]], prompt: "選択してください",class:"input__day"      
+          .input__day
+            =f.select :day, [ ["1~2日で発送",1], ["2~3日で発送", 2], ["4~7日で発送", 3 ]], prompt: "選択してください",class:"input__day"      
       .item__post__container__price
         %h1.item__post__container__price__h1
           価格(¥300~9,999,999)
@@ -101,9 +93,8 @@
             %h2.item__post__container__price__box__right__h
               ¥            
             .item__post__container__price__box__right__form
-              = form_with(model:@item) do |f|
-                .input__price
-                  =f.number_field :price,placeholder: "0", class:"input__price", min: 0, max:9999999
+              .input__price
+                =f.number_field :price,placeholder: "0", class:"input__price", min: 0, max:9999999
         %h2.item__post__container__price__h2
           販売手数料  (10%)
         %h3.item__post__container__price__h3
