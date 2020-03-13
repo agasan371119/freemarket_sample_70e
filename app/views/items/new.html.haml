@@ -1,6 +1,6 @@
 .item__post
   .item__post__header
-    =link_to image_tag("logo.png", width: "185", class: "item__post__header__logo"),"/"
+    =link_to image_tag("logo.png", width: "185", class: "item__post__header__logo"),  items_path
   .item__post__container
     =form_with(model: @item) do |f|
       .item__post__container__first
@@ -125,8 +125,8 @@
           = link_to "メルカリ利用規約", "#", class: "userrule"
         %li
           = link_to "特定商取引に関する表記", "#", class: "taade"
-    %a.single-footer-logo{:href => "https://www.mercari.com/jp/"}
+    .single-footer-logo
       .footer-img
-        = image_tag 'logo.png', alt: 'aaaa', height: '49', width: '185', class: 'logo'
+        =link_to image_tag('logo.png', alt: 'aaaa', height: '49', width: '185', class: 'logo'),items_path
     %p
       %small© Furima, Inc.
