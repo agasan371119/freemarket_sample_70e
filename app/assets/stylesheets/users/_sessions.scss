@@ -1,0 +1,132 @@
+  .login-container {
+    display: block;
+    
+    .login-area {
+      max-width: 500px;
+      margin: 0 auto;
+      background: #fff;
+      
+      &__newuser{
+        padding: 24px 32px;
+        text-align: center;
+        p.text{
+          font-size: 14px;
+        }
+        .registrations__btn {
+          text-decoration: none;
+          cursor: pointer;
+          display: block;
+          margin: 8px 0 0;
+          border: 1px solid #0099e8;
+          background: #0099e8;
+          color: #fff;
+          width: 400px;
+          line-height: 40px;
+        }
+      }
+      .login-box {
+        border-top: 1px solid #eee;
+        .login_user {
+          padding: 24px 32px;
+          border: 0;
+          .login-box__content {
+            input[type="email"] {
+              width: 400px;
+              height: 50px;
+              margin: 10px 0
+            }
+            input[type="password"] {
+              width: 400px;
+              height: 50px;
+              margin: 10px 0;
+            }
+            &__email {
+              margin: 0;
+              margin-bottom: 30px;
+            }
+            &__password {
+              margin: 24px 0 0;
+              margin-bottom: 30px;
+            }
+            &__btn {
+              margin: 24px 0 0;
+              .login__btn {
+                width: 400px;
+                height: 50px;
+                margin: 10px 0;
+                background: #EA352D;
+                border: 1px solid #EA352D;
+                color: #fff;
+                cursor: pointer;
+              }
+            }
+          }
+          .forgetpassword-user {
+            display: block;
+            margin: 40px 0 0;
+            a {
+              color: #0099e8;
+              text-decoration: none;
+            }
+          }
+        }
+      }
+    }
+  }
+  .footer-sessions {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    z-index: 1;
+    width: 100%;
+    padding: 40px 420px;
+    text-align: center;
+    padding-top: 180px;
+    margin: 0 auto;
+    ul {
+      padding: 20px 100px 20px;
+      list-style-type: none;
+      display: flex;
+      li {
+        display: inline-block;
+        margin: 0 0 0 16px;
+        font-size: 12px;
+        text-align: center;
+        &:hover {
+          text-decoration: underline;
+          opacity: 1 ;
+        }
+        a {
+          color: #333333;
+          text-decoration: none;
+          cursor: pointer;
+        }
+      }
+    }
+    
+    &__logo {
+      max-width: 160px;
+      width: 100%;
+      margin: 0 auto;
+      &:hover {
+        text-decoration: underline;
+        opacity: 1 ;
+      }
+      a {
+        text-decoration: none;
+        text-align: center;
+        color: rgb(51, 51, 51);
+        cursor: pointer;
+        .logo-white {
+          width: 100%;
+          vertical-align: bottom;
+          p {
+            text-align: center;
+            font-size: 14px;
+            padding-top: 10px;
+          }
+        }
+      }  
+    }
+  }
