@@ -1,0 +1,166 @@
+// Place all the styles related to the items controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+* {
+  box-sizing: border-box;
+}
+
+.buy {
+  background: #f5f5f5;
+  
+  .buy__content {
+    width: 700px;
+    margin: 0 auto;
+    background-color: white;
+    
+  
+    &__text {
+      text-align: center;
+      font-size: 22px;
+      padding: 32px;  
+      border-bottom: 1px solid #f5f5f5;
+      h2 {
+        font-weight: 600;
+      }
+    }
+
+    &__info {
+      padding: 32px 16px;
+      max-width: 343px;
+      margin: 0 auto;
+      
+
+
+      &__box {
+        display: flex;
+    
+        &__name {
+          margin-left: 16px;
+
+          .item_name {
+            font-size: 14px;
+            line-height: 1.5;
+            padding-bottom: 8px;
+          }
+          .item_price {
+            font-size: 15px;
+            font-weight: 600;
+          }
+        }
+      }   
+    }
+  }
+  .buy__content__form {
+    padding: 32px 16px 48px 16px;
+    border-top: 1px solid #f5f5f5;
+    
+    &__info {
+      max-width: 343px;
+      margin: 0 auto;
+
+      &__price {
+        display: flex;
+        justify-content: space-between;
+
+        &__p p{
+          font-size: 18px;
+          font-weight: 600;
+          padding-top: 10px;
+        }
+        &__span span{
+          font-size: 24px;
+          font-weight: 600;
+          text-align: right;
+        }
+      }
+
+      &__point {
+        color: #888;
+        border-bottom: 1px solid #f5f5f5;
+        &__check {
+          margin: 24px 0 32px;
+          
+
+          .check-box {
+            
+            
+          }
+          label {
+            font-size: 14px;
+            font-weight: 400;
+          }
+        }
+      }
+      &__way {
+        padding: 32px 0;
+        border-bottom: 1px solid #f5f5f5;
+
+        &__box {
+
+          h3 {
+            font-size: 14px;
+            font-weight: 600;
+          }
+          .link-credit {
+            color: #0099e8;
+            text-decoration: none;
+            font-weight: 400;
+          }
+          .link-credit:hover {
+            border-bottom: 1px solid #0099e8;
+          }
+
+        }
+      }
+      &__address {
+        padding: 32px 0;
+        border-bottom: 1px solid #f5f5f5;
+
+        &__info {
+
+          &__top {
+            display: flex;
+            justify-content: space-between;
+
+            h3 {
+              font-size: 14px;
+              font-weight: 700;
+            }
+
+            .link-address{
+              color: #0099e8;
+              text-decoration: none;
+              font-weight: 400;
+            }
+            .link-address:hover{
+              border-bottom: 1px solid #0099e8;
+            }
+
+          }
+          &__bottom {
+            margin: 8px 0 0;
+            font-size: 14px;
+          }
+        }
+      }
+
+      &__bottom {
+        padding: 32px 0;
+
+        &__button {
+          border: 1px solid #888;
+          background: #888;
+          color: #fff;
+          display: block;
+          width: 100%;
+          line-height: 48px;
+          font-size: 14px;
+          cursor: pointer;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+
