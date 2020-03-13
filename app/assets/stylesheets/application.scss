@@ -1,9 +1,7 @@
-
 @import "reset";
 @import "items";
+@import "items/index" ;
+@import "items/new" ;
 @import "items/buy";
 @import "users/registrations";
 @import "users/sessions";
-
-
-
