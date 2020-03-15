@@ -1,13 +1,13 @@
 $(function () {
 
-  function appendOption(category){
+  function buildoption(category){
     var html = `<option value="${category.name}" data-category="${category.id}">${category.name}</option>`;
                
                 
     return html;
   }
 
-  function appendChidrenBox(insertHTML){
+  function buildchidrenbox(insertHTML){
     var childSelectHtml = '';
     childSelectHtml = `<div class="item__post__container__third__categoryform" id="children_wrapper">
                         <div class="input__category1">
@@ -18,7 +18,7 @@ $(function () {
                        </div>`;
     $('.item__post__container__third__category').append(childSelectHtml);
   }
-  function appendGrandchidrenBox(insertHTML){
+  function buildgrandchidrenbox(insertHTML){
     var grandchildSelectHtml = '';
     grandchildSelectHtml = `<div class="item__post__container__third__categoryform" id="grandchildren_wrapper">
                              <div class="input__category1">
@@ -49,9 +49,9 @@ $(function () {
         $('#grandchildren_wrapper').remove();
         var insertHTML = '';
         children.forEach(function(child){
-          insertHTML += appendOption(child);
+          insertHTML += buildoption(child);
         });
-        appendChidrenBox(insertHTML);
+        buildchidrenbox(insertHTML);
       })
       .fail(function(){
         alert('エラー');
@@ -75,9 +75,9 @@ $(function () {
           $('#grandchildren_wrapper').remove(); 
           var insertHTML = '';
           grandchildren.forEach(function(grandchild){
-            insertHTML += appendOption(grandchild);
+            insertHTML += buildoption(grandchild);
           });
-          appendGrandchidrenBox(insertHTML);
+          buildgrandchidrenbox(insertHTML);
         }
       })
       .fail(function(){
