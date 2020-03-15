@@ -112,11 +112,10 @@
         font-weight: bold;
         opacity: 0.5;
       }
-      &__h{
+      .item__post__container__third__category__h{
         font-weight:bold;
         font-size:14px;
         margin-top: 20px;
-        margin-bottom:10px;
       }
       span{
         color:white;
@@ -126,10 +125,11 @@
         font-size: 13px;
       }
       &__categoryform{
+        margin-top: 16px;
         .input__category1{
         width:100%;
         height:45px;
-        #item_category_id{
+        .input__category{
           width: 100%;
           height:45px;
         }
@@ -161,6 +161,12 @@
             font-size: 15px;
           }
         }
+      }
+      .item__post__container__third__h {
+        font-weight:bold;
+        font-size:14px;
+        margin-top: 20px;
+        margin-bottom:10px;
       }
       &__statusform{
         .input__status{
