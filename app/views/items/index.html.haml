@@ -2,14 +2,14 @@
   .header__box
     .header__box__top
       .header__box__top__logo
-        = link_to image_tag("logo.png", width: "100", class: "header__logo")
+        = link_to image_tag("/images/logo.png", width: "100", class: "header__logo")
       .header__box__top__input
         = form_with(url: "#", local: true, method: :get, class: "search-form") do |form|
           .header__box__top__input__search
             = form.text_field :name, placeholder: "キーワードから探す", class: "search-input"
             %button{type: "submit"}
               .header__box__top__input__search__btn
-                = image_tag("icon-search 1.png", width: "25", height: "25")
+                = image_tag("/images/icon-search 1.png", width: "25", height: "25")
     .header__box__bottom
       %ul.header__box__bottom__categorie
         %li= link_to "カテゴリー", "#", class: "header__box__bottom__categorie__list"
@@ -32,7 +32,7 @@
         %h2 FURIMAが選ばれる3つの理由
       .main__second__content__box
         .main__second__content__box__reason
-          = image_tag("pict-reason-01.jpg", width: "300", class: "main__second__content__box__logo")
+          = image_tag("/images/pict-reason-01.jpg", width: "300", class: "main__second__content__box__logo")
           .main__second__content__box__number
             %h1 1
           .main__second__content__box__reason__h2
@@ -42,7 +42,7 @@
           .main__second__content__box__reason__p
             %p スマホで入力するだけで簡単に出品できる！
         .main__second__content__box__reason
-          =image_tag("pict-reason-02.jpg", width: "300", class: "main__second__content__box__logo")
+          =image_tag("/images/pict-reason-02.jpg", width: "300", class: "main__second__content__box__logo")
           .main__second__content__box__number
             %h1 2
           .main__second__content__box__reason__h2
@@ -52,7 +52,7 @@
           .main__second__content__box__reason__p
             %p めんどくさい入力は必要なく、検索も購入もスムーズ！
         .main__second__content__box__reason__last
-          =image_tag("pict-reason-03.jpg", width: "300", class: "main__second__content__box__logo")
+          =image_tag("/images/pict-reason-03.jpg", width: "300", class: "main__second__content__box__logo")
           .main__second__content__box__number
             %h1 3
           .main__second__content__box__reason__last__h2
@@ -75,15 +75,15 @@
       %h2 FURIMAの特徴
     .main__third__box
       .main__third__box__info
-        =image_tag("icon-01.png", width: "220", class: "main__third__icon")
+        =image_tag("/images/icon-01.png", width: "220", class: "main__third__icon")
         %h3 簡単に売り買いできる
         %p スマホひとつで、いつでもどこでも簡単に出品・購入が可能！
       .main__third__box__info
-        =image_tag("icon-03.png", width: "220", class: "main__third__icon")
+        =image_tag("/images/icon-03.png", width: "220", class: "main__third__icon")
         %h3 売上金は即日振込みに対応
         %p 午前9時までに振込を依頼いただければ、翌日に指定の口座に入金いたします!
       .main__third__box__info
-        =image_tag("icon-04.png", width: "220", class: "main__third__icon")
+        =image_tag("/images/icon-04.png", width: "220", class: "main__third__icon")
         %h3 様々な支払いに対応
         %p お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
 
@@ -93,7 +93,7 @@
   .item__box
     - @items.each do |item|
       .item__box__info
-        = link_to image_tag("/assets/icon-04.png", width: "100%", height: "230px"), "#"
+        = link_to image_tag("/images/icon-04.png", width: "100%", height: "230px"), "#"
         .item__box__info__name
           = item.name
 .main__bottom
@@ -122,9 +122,9 @@
       = link_to "FURIMAガイド", "#", class: "footer__box__info__link"
       = link_to "FURIMAロゴ利用ガイドライン", "#", class: "footer__box__info__link"
       = link_to "お知らせ", "#", class: "footer__box__info__link"
-  = link_to image_tag("/assets/logo-white.png", width: "160", class: "footer__logo"), "#"
+  = link_to image_tag("/images/logo-white.png", width: "160", class: "footer__logo"), "#"
   %p ©︎FURIMA
 
 .icon
   %p 出品する
-  = link_to image_tag("/assets/icon_camera.png", width: "52", height: "52"),new_item_path
+  = link_to image_tag("/images/icon_camera.png", width: "52", height: "52"),new_item_path
