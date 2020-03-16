@@ -1,0 +1,26 @@
+  .registrations-complete {
+    display: block;
+    .registrations-complete__box {
+      max-width: 500px;
+      margin: 0 auto;
+      background: #fff;
+      &__text {
+        padding: 24px 32px;
+        text-align: center;
+        h2.completetext {
+          font-size: 14px;
+        }
+        .go-toppage__btn {
+          text-decoration: none;
+          cursor: pointer;
+          display: block;
+          margin: 8px 0 0;
+          border: 1px solid red;
+          background: red;
+          color: #fff;
+          width: 400px;
+          line-height: 40px;
+        }
+      }
+    }
+  }
