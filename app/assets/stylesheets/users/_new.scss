@@ -1,0 +1,130 @@
+// Place all the styles related to the items controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+* {
+  box-sizing: border-box;
+}
+
+.credit {
+  width: 700px;
+  background: #fff;
+  .credit__text {
+    font-size: 24px;
+    padding: 8px 24px;
+    border-bottom: 1px solid #f5f5f5;
+    text-align: center;
+    font-weight: 600;
+  }
+  .credit__form {
+    padding: 40px 40px 64px;
+
+    .credit__info {
+      max-width: 343px;
+      margin: 0 auto;
+
+      .credit__info__group__number {
+        font-weight: 600;
+      }
+      .span {
+        background: #ea352d;
+        margin: 0 0 0 8px;
+        padding: 2px 4px;
+        border-radius: 2px;
+        color: #fff;
+        font-size: 12px;
+        vertical-align: top;
+      }
+      .credit__info__group__text_field {
+
+        .text_field__number {
+          width: 100%;
+          margin: 8px 0 0;
+          height: 48px;
+          padding: 10px 16px 8px;
+          border-radius: 4px;
+          border: 1px solid #ccc;
+          background: #fff;
+          line-height: 1.5;
+          font-size: 16px;
+        }  
+      }
+      .credit__info__group__ul {
+        display: flex;
+        margin: 8px 0 0;
+        .credit__info__group__li {
+          margin: 0 0 0 8px;
+        }
+      }
+      .credit__info__expire {
+        margin-top: 32px;
+        &__box {
+          display: flex;
+          &__manth {
+            margin: 8px 0 0;
+            width: 50%;
+          }
+          .select__manth {
+            width: calc(100% - 38px);
+            z-index: 2;
+            height: 48px;
+            padding: 0 16px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            background: 0;
+            font-size: 16px;
+            line-height: 1.5;
+            cursor: pointer; 
+          }
+        } 
+      }
+      .credit__info__security {
+        margin-top: 32px;
+        .text_field__security {
+          width: 100%;
+          margin: 8px 0 0;
+          height: 48px;
+          padding: 10px 16px 8px;
+          border-radius: 4px;
+          border: 1px solid #ccc;
+          background: #fff;
+          line-height: 1.5;
+          font-size: 16px;
+        }
+        &__notice {
+          margin: 8px 0 0;
+          &__a {
+            text-align: right;
+            color: #0099e8;
+            .question {
+              display: inline-block;
+              width: 14px;
+              height: 14px;
+              border-radius: 50%;
+              background: #0099e8;
+              color: #fff;
+              line-height: 14px;
+              font-size: 12px;
+              text-align: center;
+            }
+          }
+        }
+      }
+      .credit__button {
+        margin-top: 32px;
+        background: #ea352d;
+        border: 1px solid #ea352d;
+        color: #fff;
+        display: block;
+        width: 100%;
+        line-height: 48px;
+        font-size: 14px;
+        border: 1px solid transparent;
+        -webkit-transition: all ease-out .3s;
+        transition: all ease-out .3s;
+        cursor: pointer;
+        text-align: center;
+      } 
+    }
+  }
+}
