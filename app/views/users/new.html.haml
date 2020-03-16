@@ -1,0 +1,145 @@
+.header
+  .header__box
+    .header__box__top
+      .header__box__top__logo
+        = link_to image_tag("logo.png", width: "100", class: "header__logo")
+      .header__box__top__input
+        = form_with(url: "#", local: true, method: :get, class: "search-form") do |form|
+          .header__box__top__input__search
+            = form.text_field :name, placeholder: "キーワードから探す", class: "search-input"
+            %button{type: "submit"}
+              .header__box__top__input__search__btn
+                = image_tag("icon-search 1.png", width: "25", height: "25")
+    .header__box__bottom
+      %ul.header__box__bottom__categorie
+        %li= link_to "カテゴリー", "#", class: "header__box__bottom__categorie__list"
+        %li= link_to "ブランド", "#", class: "header__box__bottom__categorie__list"
+      %ul.header__box__bottom__user
+        - if user_signed_in?
+          %li= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "header__box__bottom__user__btn"
+          %li= link_to "マイページ", "#", class: "header__box__bottom__user__btn"
+        - else  
+          %li= link_to "ログイン", new_user_session_path, class: "header__box__bottom__user__btn"
+          %li= link_to "新規会員登録", new_user_registration_path, class: "header__box__bottom__user__btn"
+.user__main
+  .user__main__content
+    .user__main__content__left
+      .user__main__content__left__nav
+        %ul.nav__list
+          %li
+            = link_to "マイページ", "#", class: "active" 
+          %li
+            = link_to "お知らせ", "#", class: "nav__list__link"
+          %li
+            = link_to "やることリスト", "#", class: "nav__list__link"
+          %li
+            = link_to "いいね！一覧", "#", class: "nav__list__link"
+          %li
+            = link_to "出品する", "#", class: "nav__list__link"
+          %li
+            = link_to "出品した商品 - 出品中", "#", class: "nav__list__link"
+          %li
+            = link_to "出品した商品 - 取引中", "#", class: "nav__list__link"
+          %li
+            = link_to "出品した商品 - 売却済み", "#", class: "nav__list__link"
+          %li
+            = link_to "購入した商品 - 取引中", "#", class: "nav__list__link"
+          %li
+            = link_to "購入した商品 - 過去の取引", "#", class: "nav__list__link"
+          %li
+            = link_to "ニュース一覧", "#", class: "nav__list__link"
+          %li
+            = link_to "評価一覧", "#", class: "nav__list__link"
+          %li
+            = link_to "ガイド", "#", class: "nav__list__link"
+          %li
+            = link_to "お問い合わせ", "#", class: "nav__list__link"
+        %h3.nav__head メルペイ
+        %ul.nav__list
+          %li
+            = link_to "売り上げ・振込申請", "#", class: "nav__list__link"
+          %li
+            = link_to "ポイント", "#", class: "nav__list__link"
+        %h3.nav__head 設定
+        %ul.nav__list
+          %li
+            = link_to "プロフィール", "#", class: "nav__list__link"
+          %li
+            = link_to "発送元・お届け先住所変更", "#", class: "nav__list__link"
+          %li
+            = link_to "支払い方法", "#", class: "nav__list__link"
+          %li
+            = link_to "メール/パスワード", "#", class: "nav__list__link"
+          %li
+            = link_to "本人情報", "#", class: "nav__list__link"
+          %li
+            = link_to "電話番号の確認", "#", class: "nav__list__link"
+          %li
+            = link_to "ログアウト", "#", class: "nav__list__link"
+    .credit
+      .credit__content
+        %h2.credit__text クレジットカード情報入力
+        = form_with model: @user, class: "credit__form", local: true do |f|
+          .credit__info
+            .credit__info__group
+              = f.label :number, "カード番号", class: "credit__info__group__number"
+              %span.span
+                必須
+              .credit__info__group__text_field
+                = f.text_field :number, placeholder: "半角数字のみ", class: "text_field__number"
+              %ul.credit__info__group__ul
+                %li.credit__info__group__li
+                  = image_tag("/assets/credit-card2 (1).jpg", width: "40", height: "25")
+                %li.credit__info__group__li
+                  = image_tag("/assets/credit-card2 (2).jpg", width: "40", height: "25")
+                %li.credit__info__group__li
+                  = image_tag("/assets/credit-card2 (3).jpg", width: "40", height: "25")
+                %li.credit__info__group__li
+                  = image_tag("/assets/credit-card2.jpg", width: "40", height: "25")     
+            .credit__info__expire
+              = f.label :expire, "有効期限", class: "credit__info__group__number"
+              %span.span
+                必須
+              .credit__info__expire__box
+                .credit__info__expire__box__manth
+                  = f.select :manth, [["01", 0],["02", 1],["03", 2],["04",3],["05",4],["06",5],["07",6],["08",7],["09",8],["10",9],["11",10],["12",11]], {}, class: "select__manth"
+                  %span.span__year
+                    月
+                .credit__info__expire__box__manth
+                  = f.select :year, [["20", 0],["21", 1],["22", 2],["23",3],["24",4],["25",5],["26",6],["27",7],["28",8],["29",9],["30",10]], {}, class: "select__manth"
+                  %span.span__year     
+                    年
+            .credit__info__security
+              = f.label :code, "カード番号", class: "credit__info__group__number"
+              %span.span
+                必須
+              .credit__info__security__text_field
+                = f.text_field :code, placeholder: "カード背面4桁もしくは3桁の番号", class: "text_field__security"
+              .credit__info__security__notice
+                .credit__info__security__notice__a
+                  %span.question ?
+                  カード裏面の番号とは？ 
+              %button.credit__button{type: "button"}追加する
+.footer
+  .footer__box
+    .footer__box__info
+      %h2 FURIMAについて
+      = link_to "会社概要（運営会社）", "#", class: "footer__box__info__link"
+      = link_to "プライバシーポリシー", "#", class: "footer__box__info__link"
+      = link_to "FURIMA利用規約", "#", class: "footer__box__info__link"
+      = link_to "ポイントに関する特約", "#", class: "footer__box__info__link"
+    .footer__box__info
+      %h2 FURIMAを見る
+      = link_to "カテゴリー一覧", "#", class: "footer__box__info__link"
+      = link_to "ブランド一覧", "#", class: "footer__box__info__link"
+    .footer__box__info
+      %h2 ヘルプ＆ガイド
+      = link_to "FURIMAガイド", "#", class: "footer__box__info__link"
+      = link_to "FURIMAロゴ利用ガイドライン", "#", class: "footer__box__info__link"
+      = link_to "お知らせ", "#", class: "footer__box__info__link"
+  = link_to image_tag("/assets/logo-white.png", width: "160", class: "footer__logo"), "#"
+  %p ©︎FURIMA
+
+.icon
+  %p 出品する
+  = link_to image_tag("/assets/icon_camera.png", width: "52", height: "52"),new_item_path

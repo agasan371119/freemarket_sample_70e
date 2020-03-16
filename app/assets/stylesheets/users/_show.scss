@@ -1,0 +1,202 @@
+// Place all the styles related to the items controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.user__main {
+  background: #f5f5f5;
+  .user__main__content {
+    display: flex;
+    margin: 0 auto 0;
+    width: 1020px;
+    &__left {
+      width: 280px;
+      margin: 0 40px 0 0;
+      .nav__list {
+        li { 
+          border-top: 1px solid #eee;
+          .active {
+            position: relative;
+            display: block;
+            min-height: 48px;
+            padding: 16px;
+            background: #fff;
+            font-size: 14px;
+            color: #333;
+            text-decoration: none;
+            background: #eee;
+            font-weight: 600;
+          }
+          .nav__list__link {
+            position: relative;
+            display: block;
+            min-height: 48px;
+            padding: 16px;
+            background: #fff;
+            font-size: 14px;
+            color: #333;
+            text-decoration: none;
+          }
+        }
+      }
+      .nav__head {
+        margin: 40px 0 0;
+        font-size: 16px;
+        font-weight: 600;
+      }
+    }
+    &__right {
+      width: 700px;
+      &__top {
+        height: 200px;
+        position: relative;
+        padding: 20px;
+        background-image: url("/user-bg.jpg?66334579");
+        background-repeat: no-repeat;
+        background-size: cover;
+        text-align: center;
+        background-color: gray;
+        &__content {
+          position: absolute;
+          top: 50%;
+          left: 0;
+          right: 0;
+          -webkit-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+          color: #333;
+          &__name h2 {
+            margin: 8px 0 0;
+            font-size: 14px;
+            font-weight: 600;
+          }
+          &__review {
+            margin: 8px 0 0;
+            div {
+              display: inline-block;
+              font-size: 14px;
+              margin: 0 0 0 16px;
+
+              .bold {
+                margin: 0 0 0 8px;
+                font-size: 16px;
+                font-weight: 600;
+              }
+            }
+          }
+        }
+      }
+      &__middle {
+        .middle__ul {
+          background: #eee;
+          display: flex;
+          &__li {
+            width: 50%;
+            text-align: center;
+            .middle__link {
+              color: #333;
+              font-size: 16px;
+              line-height: 72px;
+              text-decoration: none;
+              font-weight: 600;
+            }
+          }
+          .active {
+            border-top: 2px solid #ea352d;
+            background: white;
+          }
+        }
+        .middle__bottom__ul {
+          display: block;
+          &__li {
+            background-color: white;
+            width: 100%;
+            border-bottom: 1px solid #eee;
+            &__box {
+              min-height: 80px;
+              padding: 16px;
+              color: #333;
+              display: flex;
+              border-bottom: 1px solid #eee;
+              &__text {
+                margin-left: 20px;
+                padding-top: 5px;
+              }      
+            }
+            &__button {
+              padding: 16px;
+              position: relative;
+              &__link {
+                display: block;
+                height: 56px;
+                margin: 0 auto;
+                background: #eee;
+                color: #333;
+                text-align: center;
+                text-decoration: none; 
+              }
+              .link_p {
+                position: absolute;
+                top: 35px;
+                left: 300px; 
+              }
+            }
+          }
+        }
+      }  
+      &__bottom {
+        margin: 40px 0 0;
+        background: #fff;
+        h2 {
+          padding: 0 16px;
+          background: #fafafa;
+          font-size: 16px;
+          line-height: 72px;
+          font-weight: 600;
+        }
+        &__container {
+          ul {
+            background: #eee;
+            display: flex;
+            .js__li {
+              
+              width: 50%;
+              text-align: center;
+
+              .bottom__li {
+                color: #333;
+                font-size: 16px;
+                line-height: 72px;
+                text-decoration: none;
+                font-weight: 600;
+              }
+            }
+            .active {
+              border-top: 2px solid #ea352d;
+              background: white;
+            } 
+          }
+          .ul__under {
+            display: block;
+            .li__bottom {
+              padding: 160px 0 60px;
+              background: url("/assets/logo-white.png");
+              background-repeat: no-repeat;
+              background-position: center 40px;
+              background-size: 78px 85px;
+              text-align: center;
+              font-size: 16px;
+              color: #ccc;
+              width: 100%;
+              background-color: white; 
+            }
+          }
+        }
+      }
+    }
+  }
+  .delete {
+    display: none;
+  }
+  .show {
+    display: block;
+  }
+}

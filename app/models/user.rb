@@ -4,21 +4,15 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  with_options if: :user_signed_in? do |user|
-    user.validates :nickname, presence: true
-    # user.validates :email, presence: true
-    # user.validates :encrypted_password, presence: true
-    user.validates :familyname, presence: true
-    user.validates :firstname, presence: true
-    user.validates :familyname_kana, presence: true
-    user.validates :firstname_kana, presence: true
-    user.validates :furigana, presence: true
-    user.validates :birth_year, presence: true
-    user.validates :birth_month, presence: true
-    user.validates :birth_day, presence: true
-    user.validates :introduction, presence: true
-    user.validates :image, presence: true
-  end
+  validates :nickname, :familyname, :firstname, :birth_year, :birth_month, :birth_day, presence: true
+  validates :email, presence: true, uniqueness: { case_sensitive: false }, 
+              format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i, message: "メールアドレスを入力してください" }
+  validates :password, presence: true, length: { minimum: 7 }, 
+              format: { with: /\A[a-z0-9]+\z/i, message: "パスワードを入力してください" }
+  validates :familyname_kana, :firstname_kana, presence: true, 
+              format: { with: /\A([ァ-ン]|ー)+\z/, message: "全角で入力してください" }
+
+  
 
   has_many :reviews
   has_many :images
