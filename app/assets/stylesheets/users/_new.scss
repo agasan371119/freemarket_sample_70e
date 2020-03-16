@@ -47,8 +47,7 @@
           background: #fff;
           line-height: 1.5;
           font-size: 16px;
-        }
-        
+        }  
       }
       .credit__info__group__ul {
         display: flex;
@@ -56,19 +55,14 @@
         .credit__info__group__li {
           margin: 0 0 0 8px;
         }
-        
       }
-
       .credit__info__expire {
         margin-top: 32px;
-
         &__box {
           display: flex;
-          
           &__manth {
             margin: 8px 0 0;
             width: 50%;
-          
           }
           .select__manth {
             width: calc(100% - 38px);
@@ -80,11 +74,9 @@
             background: 0;
             font-size: 16px;
             line-height: 1.5;
-            cursor: pointer;
-            
+            cursor: pointer; 
           }
         } 
-        
       }
       .credit__info__security {
         margin-top: 32px;
@@ -101,7 +93,6 @@
         }
         &__notice {
           margin: 8px 0 0;
-
           &__a {
             text-align: right;
             color: #0099e8;
@@ -133,8 +124,7 @@
         transition: all ease-out .3s;
         cursor: pointer;
         text-align: center;
-      }
-      
+      } 
     }
   }
 }
