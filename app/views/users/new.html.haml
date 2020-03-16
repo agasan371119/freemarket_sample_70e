@@ -2,14 +2,14 @@
   .header__box
     .header__box__top
       .header__box__top__logo
-        = link_to image_tag("logo.png", width: "100", class: "header__logo")
+        = link_to image_tag("/images/logo.png", width: "100", class: "header__logo")
       .header__box__top__input
         = form_with(url: "#", local: true, method: :get, class: "search-form") do |form|
           .header__box__top__input__search
             = form.text_field :name, placeholder: "キーワードから探す", class: "search-input"
             %button{type: "submit"}
               .header__box__top__input__search__btn
-                = image_tag("icon-search 1.png", width: "25", height: "25")
+                = image_tag("/images/icon-search 1.png", width: "25", height: "25")
     .header__box__bottom
       %ul.header__box__bottom__categorie
         %li= link_to "カテゴリー", "#", class: "header__box__bottom__categorie__list"
@@ -89,13 +89,13 @@
                 = f.text_field :number, placeholder: "半角数字のみ", class: "text_field__number"
               %ul.credit__info__group__ul
                 %li.credit__info__group__li
-                  = image_tag("/assets/credit-card2 (1).jpg", width: "40", height: "25")
+                  = image_tag("/images/credit-card2 (1).jpg", width: "40", height: "25")
                 %li.credit__info__group__li
-                  = image_tag("/assets/credit-card2 (2).jpg", width: "40", height: "25")
+                  = image_tag("/images/credit-card2 (2).jpg", width: "40", height: "25")
                 %li.credit__info__group__li
-                  = image_tag("/assets/credit-card2 (3).jpg", width: "40", height: "25")
+                  = image_tag("/images/credit-card2 (3).jpg", width: "40", height: "25")
                 %li.credit__info__group__li
-                  = image_tag("/assets/credit-card2.jpg", width: "40", height: "25")     
+                  = image_tag("/images/credit-card2.jpg", width: "40", height: "25")     
             .credit__info__expire
               = f.label :expire, "有効期限", class: "credit__info__group__number"
               %span.span
@@ -137,9 +137,9 @@
       = link_to "FURIMAガイド", "#", class: "footer__box__info__link"
       = link_to "FURIMAロゴ利用ガイドライン", "#", class: "footer__box__info__link"
       = link_to "お知らせ", "#", class: "footer__box__info__link"
-  = link_to image_tag("/assets/logo-white.png", width: "160", class: "footer__logo"), "#"
+  = link_to image_tag("/images/logo-white.png", width: "160", class: "footer__logo"), "#"
   %p ©︎FURIMA
 
 .icon
   %p 出品する
-  = link_to image_tag("/assets/icon_camera.png", width: "52", height: "52"),new_item_path
+  = link_to image_tag("/images/icon_camera.png", width: "52", height: "52"),new_item_path

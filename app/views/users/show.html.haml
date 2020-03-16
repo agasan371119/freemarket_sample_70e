@@ -2,14 +2,14 @@
   .header__box
     .header__box__top
       .header__box__top__logo
-        = link_to image_tag("logo.png", width: "100", class: "header__logo")
+        = link_to image_tag("/images/logo.png", width: "100", class: "header__logo")
       .header__box__top__input
         = form_with(url: "#", local: true, method: :get, class: "search-form") do |form|
           .header__box__top__input__search
             = form.text_field :name, placeholder: "キーワードから探す", class: "search-input"
             %button{type: "submit"}
               .header__box__top__input__search__btn
-                = image_tag("icon-search 1.png", width: "25", height: "25")
+                = image_tag("/images/icon-search 1.png", width: "25", height: "25")
     .header__box__bottom
       %ul.header__box__bottom__categorie
         %li= link_to "カテゴリー", "#", class: "header__box__bottom__categorie__list"
@@ -79,7 +79,7 @@
     .user__main__content__right
       .user__main__content__right__top
         .user__main__content__right__top__content
-          = link_to image_tag("/assets/member_photo_noimage_thumb.png", width: "60", height: "60", class: "user__icon"), "#" 
+          = link_to image_tag("/images/member_photo_noimage_thumb.png", width: "60", height: "60", class: "user__icon"), "#" 
           .user__main__content__right__top__content__name
             %h2 谷村有寿麻
           .user__main__content__right__top__content__review
@@ -99,17 +99,17 @@
           %li.middle__bottom__ul__li
             .middle__bottom__ul__li__box
               .middle__bottom__ul__li__box__logo
-                = image_tag("/assets/mercari.logo2.png", width: "48", height: "48", class: "notice_logo")
+                = image_tag("/images/mercari.logo2.png", width: "48", height: "48", class: "notice_logo")
               .middle__bottom__ul__li__box__text
                 明日900P還元クーポンの有効期限が切れます！タップし詳細を確認しましょう。
             .middle__bottom__ul__li__box
               .middle__bottom__ul__li__box__logo
-                = image_tag("/assets/mercari.logo2.png", width: "48", height: "48", class: "notice_logo")
+                = image_tag("/images/mercari.logo2.png", width: "48", height: "48", class: "notice_logo")
               .middle__bottom__ul__li__box__text
                 明日900P還元クーポンの有効期限が切れます！タップし詳細を確認しましょう。
             .middle__bottom__ul__li__box
               .middle__bottom__ul__li__box__logo
-                = image_tag("/assets/mercari.logo2.png", width: "48", height: "48", class: "notice_logo")
+                = image_tag("/images/mercari.logo2.png", width: "48", height: "48", class: "notice_logo")
               .middle__bottom__ul__li__box__text
                 明日900P還元クーポンの有効期限が切れます！タップし詳細を確認しましょう。
             .middle__bottom__ul__li__button
@@ -145,9 +145,9 @@
       = link_to "FURIMAガイド", "#", class: "footer__box__info__link"
       = link_to "FURIMAロゴ利用ガイドライン", "#", class: "footer__box__info__link"
       = link_to "お知らせ", "#", class: "footer__box__info__link"
-  = link_to image_tag("/assets/logo-white.png", width: "160", class: "footer__logo"), "#"
+  = link_to image_tag("/images/logo-white.png", width: "160", class: "footer__logo"), "#"
   %p ©︎FURIMA
 
 .icon
   %p 出品する
-  = link_to image_tag("/assets/icon_camera.png", width: "52", height: "52"),new_item_path
+  = link_to image_tag("/images/icon_camera.png", width: "52", height: "52"),new_item_path
