@@ -1,0 +1,195 @@
+  .address-container {
+    display: block;
+    &__content {
+      width: 800px;
+      background: #fff;
+      margin: 0 auto;
+      &__headbox {
+        text-align: center;
+        font-weight: bold;
+        font-size: 22px;
+        padding: 32px;
+      }
+      &__mainbox {
+        border-top: 1px solid #f5f5f5;
+        padding: 20px 240px 20px;
+        .new_address {
+          padding: 24px 0 20px;
+          .address-form {
+            margin: 0 ;
+            .input-address__name {
+              input[type="text"] {
+                width: 300px;
+                height: 50px;
+                margin: 10px 0;
+              }
+              .input-content {
+                font-weight: 600;
+              }
+              span.form-require {
+                color: white;
+                background-color:red;
+              }
+              .content-default {
+                width: 100%;
+                margin: 8px 0 0;
+              }
+            }
+            .input-address__kana {
+              input[type="text"] {
+                width: 300px;
+                height: 50px;
+                margin: 10px 0;
+              }
+              .input-content {
+                font-weight: 600;
+              }
+              span.form-require {
+                color: white;
+                background-color:red;
+              }
+              .content-default {
+                width: 100%;
+                margin: 8px 0 0;
+              }
+            }
+            .input-address__postal_code {
+              input[type="text"] {
+                width: 300px;
+                height: 50px;
+                margin: 10px 0;
+              }
+              .input-content {
+                font-weight: 600;
+              }
+              span.form-require {
+                color: white;
+                background-color:red;
+              }
+              .content-default {
+                width: 100%;
+                margin: 8px 0 0;
+              }
+            }
+            .input-address__prefecture {
+              .input-content {
+                font-weight: 600;
+              }
+              span.form-require {
+                color: white;
+                background-color:red;
+              }
+              .prefecture-select {
+                width: 300px;
+                height: 50px;
+                margin: 10px 0;
+                
+              }
+            }
+            .input-address__city {
+              input[type="text"] {
+                width: 300px;
+                height: 50px;
+                margin: 10px 0;
+              }
+              .input-content {
+                font-weight: 600;
+              }
+              span.form-require {
+                color: white;
+                background-color:red;
+              }
+              .content-default {
+                width: 100%;
+                margin: 8px 0 0;
+              }
+            }
+            .input-address__block {
+              input[type="text"] {
+                width: 300px;
+                height: 50px;
+                margin: 10px 0;
+              }
+              .input-content {
+                font-weight: 600;
+              }
+              span.form-require {
+                color: white;
+                background-color:red;
+              }
+              .content-default {
+                width: 100%;
+                margin: 8px 0 0;
+              }
+            }
+            .input-address__building_name {
+              input[type="text"] {
+                width: 300px;
+                height: 50px;
+                margin: 10px 0;
+              }
+              .input-content {
+                font-weight: 600;
+              }
+              span.form-option  {
+                color: white;
+                background: #ccc;
+              }
+              .content-default {
+                width: 100%;
+                margin: 8px 0 0;
+              }
+            }
+            .input-address__room_number {
+              input[type="text"] {
+                width: 300px;
+                height: 50px;
+                margin: 10px 0;
+              }
+              .input-content {
+                font-weight: 600;
+              }
+              span.form-option  {
+                color: white;
+                background: #ccc;
+              }
+              .content-default {
+                width: 100%;
+                margin: 8px 0 0;
+              }
+            }
+            .input-address__phone_number {
+              input[type="text"] {
+                width: 300px;
+                height: 50px;
+                margin: 10px 0;
+              }
+              .input-content {
+                font-weight: 600;
+              }
+              span.form-option  {
+                color: white;
+                background: #ccc;
+              }
+              .content-default {
+                width: 100%;
+                margin: 8px 0 0;
+              }
+            }
+      
+          }
+          .registration-btn {
+            padding: 24px 0 20px;
+            .btn-red {
+              width: 300px;
+              height: 50px;
+              margin: 10px 0;
+              background: #ea352d;
+              border: 1px solid #ea352d;
+              color: #fff;
+            }  
+          }
+        }
+      }
+    }
+  }
