@@ -1,3 +1,4 @@
+// ※（3/15時点で）ジャバスクリプトを用いてバリデーションを行わないのでコメントアウト
 // {<script>
 //  const pwd = document.getElementById('password');
 //  const pwdCheck = document.getElementById('password-check');
