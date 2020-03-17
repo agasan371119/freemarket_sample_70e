@@ -1,0 +1,24 @@
+.container 
+  .top-container
+    .top-container__box
+      .top-container__box__logo
+        = link_to image_tag("/material/logo/logo.png", with: "100", class: 'top__logo'), root_path 
+  .registrations-complete
+    .registrations-complete__box
+      .registrations-complete__box__text
+        %h2.completetext  
+          登録が完了しました
+          = link_to "トップへ戻る", root_path ,class: "go-toppage__btn" 
+  .bottom
+    %ul
+      %li 
+        = link_to 'プライバシーポリシー' , url = "#" 
+      %li
+        = link_to 'FURIMA' , url = "#" 
+      %br/ 
+      %li
+        = link_to '特定商取引に関する表記' , url = "#" 
+    .bottom__logo
+      = link_to image_tag("/material/logo/logo-white.png", with: "100", class: "logo-white"), root_path 
+      %p
+        © FURIMA

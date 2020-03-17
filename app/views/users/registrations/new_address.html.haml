@@ -1,0 +1,92 @@
+.container 
+  .top-container
+    .top-container__box
+      .top-container__box__logo
+        = link_to image_tag("/material/logo/logo.png", with: "100", class: 'top__logo'), root_path 
+  .address-container
+    .address-container__content
+      .address-container__content__headbox
+        住所情報登録 
+      .address-container__content__mainbox
+        = form_for @address do |f| 
+          = render "devise/shared/error_messages", resource: @address 
+          .address-form 
+            .input-address__name
+              = f.label :nickname, "お名前", class: 'input-content'
+              %span.form-require 
+                必須
+              %br/ 
+              = f.text_field :family_name, class: 'content-default', placeholder: '  例）山田'
+              %br/ 
+              = f.text_field :first_name, class: 'content-default', placeholder: '  例）太郎'
+            .input-address__kana
+              = f.label :nickname, "お名前カナ", class: 'input-content'
+              %span.form-require 
+                必須
+              %br/ 
+              = f.text_field :family_name_kana, class: 'content-default', placeholder: '  例）ヤマダ'
+              %br/ 
+              = f.text_field :first_name_kana, class: 'content-default', placeholder: '  例）タロウ'
+            .input-address__postal_code
+              = f.label :postal_code, "郵便番号", class: 'input-content'
+              %span.form-require 
+                必須
+              %br/ 
+              = f.text_field :postal_code, class: 'content-default', placeholder: '  例）123-4567'
+            .input-address__prefecture
+              = f.label :prefecture, "都道府県", class: 'input-content'
+              %span.form-require 
+                必須
+              %br/ 
+              = f.select :prefecture, Address.prefectures.keys, {prompt: '選択してください'}, class: 'prefecture-select'
+            .input-address__city
+              = f.label :city, "市区町町村", class: 'input-content'
+              %span.form-require 
+                必須
+              %br/ 
+              = f.text_field :city, class: 'content-default', placeholder: '  例）福岡市博多区'
+            .input-address__block
+              = f.label :address_block, "番地", class: 'input-content'
+              %span.form-require 
+                必須
+              %br/ 
+              = f.text_field :address_block, class: 'content-default', placeholder: '  例）中洲4-6−12'
+            .input-address__building_name
+              = f.label :building_name, "建物名", class: 'input-content'
+              %span.form-option 
+                任意
+              %br/ 
+              = f.text_field :building_name, class: 'content-default', placeholder: '  例）プラート中洲8F'
+            .input-address__room_number
+              = f.label :room_number, "部屋番号", class: 'input-content'
+              %span.form-option 
+                任意
+              %br/ 
+              = f.text_field :room_number, class: 'content-default', placeholder: '  例）801'
+            .input-address__phone_number
+              = f.label :phone_number, "電話番号", class: 'input-content'
+              %span.form-option 
+                任意
+              %br/ 
+              = f.text_field :phone_number, class: 'content-default', placeholder: '  例）090-1234-5678'
+            
+            .registration-btn
+              = f.submit '登録する', {class: 'btn-red'} 
+          
+  .bottom
+    %ul
+      %li 
+        = link_to 'プライバシーポリシー' , url = "#" 
+      %li
+        = link_to 'FURIMA' , url = "#" 
+      %br/ 
+      %li
+        = link_to '特定商取引に関する表記' , url = "#" 
+    .bottom__logo
+      = link_to image_tag("/material/logo/logo-white.png", with: "100", class: "logo-white"), root_path 
+      %p
+        © FURIMA
+
+
+-# = form_for @address do |f| 
+-# = form_with model: @address, url: addresses_path, method: :get, id: 'new_address', class: 'new_address', local: true do |f|
