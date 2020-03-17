@@ -33,15 +33,36 @@ class ItemsController < ApplicationController
   end
 
   def create
+  end
+
+  def destroy
+  end
+
+
+  def edit
+    # @item = Item.find(params[:id])
+    @user = current_user
+    # @item_images = Item_images.where(item_id: @item)
+    @category_parent_array = ["選択してください"]
+    categories = Category.where(ancestry: nil)
+    categories.each do |parent|
+      @category_parent_array << parent.name
+    end
     
   end
+
+  def update
+  end
+
 
 
   private
   
+  # def item_params
+  #   params.require(:item).permit(:name,:price)
+  # end
   def item_params
-    params.require(:item).permit(:name,:price)
+    params.require(:item).permit(:user_id, :name, :description, :category_id, :brand, :status, :size, :price, :buyer_id, :postage, :prefecture, :day)
   end
-
 
 end

@@ -106,12 +106,10 @@
         .item__post__container__price__btn
           .item__post__container__price__btn--red
             .input__submit
-              =f.submit "出品する",class:"input__submit"
+              =f.submit "変更する",class:"input__submit"
           .item__post__container__price__btn--gray
-            =link_to "もどる","#",class:".item__post__container__price__btn--gray"
-        %p.item__post__container__price__p
-          禁止されている行為および出品物を必ず確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。また、また、出品をもちまして加盟店規約に同意したことになります。
-
+            =link_to "キャンセル", new_item_path,class:".item__post__container__price__btn--gray"
+       
   %footer.single-footer
     %nav
       %ul.cleafix

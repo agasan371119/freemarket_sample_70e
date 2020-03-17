@@ -3,9 +3,8 @@
 @import "items/index" ;
 @import "items/new" ;
 @import "items/buy";
+@import "items/edit";
 @import "users/registrations";
-
-
 @import"users/sessions";
 @import"users/new_address";
 @import"users/create_address";
@@ -14,4 +13,4 @@
 
 @import "font-awesome";
 @import "font-awesome-sprockets";
-@import "rogin";
+
