@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       get 'buy'
     end
     collection do
+      get 'category_children_index', defaults: { format: 'json' }
       get 'category_children', defaults: { format: 'json' }
       get 'category_grandchildren', defaults: { format: 'json' }
     end

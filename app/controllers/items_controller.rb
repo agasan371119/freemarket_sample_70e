@@ -3,6 +3,11 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all
+    @categories = Category.where(ancestry: nil)
+  end
+
+  def category_children_index
+    @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
   end
   
   def buy

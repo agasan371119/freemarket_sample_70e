@@ -54,6 +54,7 @@
           color: black;
           font-size: 14px;
         }
+        
       }
       &__user {
         display: flex;
@@ -65,6 +66,28 @@
           font-size: 14px;
         }
       }
+    }
+    .none {
+      display: none;
+    }
+    .category__parent {
+      z-index: 2;
+      position: absolute;
+      background-color: #fff;
+      width: 240px;
+      top: 104px;
+      .category_link {
+        text-decoration: none;
+        color: black;
+        font-size: 14px;
+        color: #333;
+        line-height: 37px;
+        background-position: center right;
+        background-repeat: no-repeat;
+        background-size: 18px;
+        padding-right: 30px;
+        padding-left: 10px;
+      } 
     }
   }
 }
