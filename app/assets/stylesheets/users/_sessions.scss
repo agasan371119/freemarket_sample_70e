@@ -6,7 +6,7 @@
       margin: 0 auto;
       background: #fff;
       
-      &__newuser{
+      &__head {
         padding: 24px 32px;
         text-align: center;
         p.text{
@@ -26,7 +26,7 @@
       }
       .login-box {
         border-top: 1px solid #eee;
-        .login_user {
+        .new_user {
           padding: 24px 32px;
           border: 0;
           .login-box__content {
@@ -73,60 +73,4 @@
       }
     }
   }
-  .footer-sessions {
-    position: absolute;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
-    z-index: 1;
-    width: 100%;
-    padding: 40px 420px;
-    text-align: center;
-    padding-top: 180px;
-    margin: 0 auto;
-    ul {
-      padding: 20px 100px 20px;
-      list-style-type: none;
-      display: flex;
-      li {
-        display: inline-block;
-        margin: 0 0 0 16px;
-        font-size: 12px;
-        text-align: center;
-        &:hover {
-          text-decoration: underline;
-          opacity: 1 ;
-        }
-        a {
-          color: #333333;
-          text-decoration: none;
-          cursor: pointer;
-        }
-      }
-    }
-    
-    &__logo {
-      max-width: 160px;
-      width: 100%;
-      margin: 0 auto;
-      &:hover {
-        text-decoration: underline;
-        opacity: 1 ;
-      }
-      a {
-        text-decoration: none;
-        text-align: center;
-        color: rgb(51, 51, 51);
-        cursor: pointer;
-        .logo-white {
-          width: 100%;
-          vertical-align: bottom;
-          p {
-            text-align: center;
-            font-size: 14px;
-            padding-top: 10px;
-          }
-        }
-      }  
-    }
-  }
+  

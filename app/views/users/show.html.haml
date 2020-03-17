@@ -1,0 +1,153 @@
+.header
+  .header__box
+    .header__box__top
+      .header__box__top__logo
+        = link_to image_tag("/images/logo.png", width: "100", class: "header__logo")
+      .header__box__top__input
+        = form_with(url: "#", local: true, method: :get, class: "search-form") do |form|
+          .header__box__top__input__search
+            = form.text_field :name, placeholder: "キーワードから探す", class: "search-input"
+            %button{type: "submit"}
+              .header__box__top__input__search__btn
+                = image_tag("/images/icon-search 1.png", width: "25", height: "25")
+    .header__box__bottom
+      %ul.header__box__bottom__categorie
+        %li= link_to "カテゴリー", "#", class: "header__box__bottom__categorie__list"
+        %li= link_to "ブランド", "#", class: "header__box__bottom__categorie__list"
+      %ul.header__box__bottom__user
+        - if user_signed_in?
+          %li= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "header__box__bottom__user__btn"
+          %li= link_to "マイページ", "#", class: "header__box__bottom__user__btn"
+        - else  
+          %li= link_to "ログイン", new_user_session_path, class: "header__box__bottom__user__btn"
+          %li= link_to "新規会員登録", new_user_registration_path, class: "header__box__bottom__user__btn"
+.user__main
+  .user__main__content
+    .user__main__content__left
+      .user__main__content__left__nav
+        %ul.nav__list
+          %li
+            = link_to "マイページ", "#", class: "active" 
+          %li
+            = link_to "お知らせ", "#", class: "nav__list__link"
+          %li
+            = link_to "やることリスト", "#", class: "nav__list__link"
+          %li
+            = link_to "いいね！一覧", "#", class: "nav__list__link"
+          %li
+            = link_to "出品する", "#", class: "nav__list__link"
+          %li
+            = link_to "出品した商品 - 出品中", "#", class: "nav__list__link"
+          %li
+            = link_to "出品した商品 - 取引中", "#", class: "nav__list__link"
+          %li
+            = link_to "出品した商品 - 売却済み", "#", class: "nav__list__link"
+          %li
+            = link_to "購入した商品 - 取引中", "#", class: "nav__list__link"
+          %li
+            = link_to "購入した商品 - 過去の取引", "#", class: "nav__list__link"
+          %li
+            = link_to "ニュース一覧", "#", class: "nav__list__link"
+          %li
+            = link_to "評価一覧", "#", class: "nav__list__link"
+          %li
+            = link_to "ガイド", "#", class: "nav__list__link"
+          %li
+            = link_to "お問い合わせ", "#", class: "nav__list__link"
+        %h3.nav__head メルペイ
+        %ul.nav__list
+          %li
+            = link_to "売り上げ・振込申請", "#", class: "nav__list__link"
+          %li
+            = link_to "ポイント", "#", class: "nav__list__link"
+        %h3.nav__head 設定
+        %ul.nav__list
+          %li
+            = link_to "プロフィール", "#", class: "nav__list__link"
+          %li
+            = link_to "発送元・お届け先住所変更", "#", class: "nav__list__link"
+          %li
+            = link_to "支払い方法", new_user_path, class: "nav__list__link"
+          %li
+            = link_to "メール/パスワード", "#", class: "nav__list__link"
+          %li
+            = link_to "本人情報", "#", class: "nav__list__link"
+          %li
+            = link_to "電話番号の確認", "#", class: "nav__list__link"
+          %li
+            = link_to "ログアウト", "#", class: "nav__list__link"
+    .user__main__content__right
+      .user__main__content__right__top
+        .user__main__content__right__top__content
+          = link_to image_tag("/images/member_photo_noimage_thumb.png", width: "60", height: "60", class: "user__icon"), "#" 
+          .user__main__content__right__top__content__name
+            %h2 谷村有寿麻
+          .user__main__content__right__top__content__review
+            %div
+              評価
+              %span.bold 0
+            %div
+              出品数
+              %span.bold 0
+      .user__main__content__right__middle
+        %ul.middle__ul
+          %li.middle__ul__li.active
+            = link_to "お知らせ", "#", class: "middle__link"
+          %li.middle__ul__li
+            = link_to "やることリスト", "#", class: "middle__link"
+        %ul.middle__bottom__ul.delete.show
+          %li.middle__bottom__ul__li
+            .middle__bottom__ul__li__box
+              .middle__bottom__ul__li__box__logo
+                = image_tag("/images/mercari.logo2.png", width: "48", height: "48", class: "notice_logo")
+              .middle__bottom__ul__li__box__text
+                明日900P還元クーポンの有効期限が切れます！タップし詳細を確認しましょう。
+            .middle__bottom__ul__li__box
+              .middle__bottom__ul__li__box__logo
+                = image_tag("/images/mercari.logo2.png", width: "48", height: "48", class: "notice_logo")
+              .middle__bottom__ul__li__box__text
+                明日900P還元クーポンの有効期限が切れます！タップし詳細を確認しましょう。
+            .middle__bottom__ul__li__box
+              .middle__bottom__ul__li__box__logo
+                = image_tag("/images/mercari.logo2.png", width: "48", height: "48", class: "notice_logo")
+              .middle__bottom__ul__li__box__text
+                明日900P還元クーポンの有効期限が切れます！タップし詳細を確認しましょう。
+            .middle__bottom__ul__li__button
+              = link_to "", "#", class: "middle__bottom__ul__li__button__link"
+              %p.link_p 一覧を見る
+      .user__main__content__right__bottom
+        %h2 購入した商品
+        .user__main__content__right__bottom__container
+          %ul
+            %li.js__li.active
+              = link_to "取引中", "#", class: "bottom__li"
+            %li.js__li
+              = link_to "過去の取引", "#", class: "bottom__li"
+          %ul.ul__under
+            %li.li__bottom.delete.show
+              取引中の商品がありません
+            %li.li__bottom.delete
+              過去に取引した商品がありません
+.footer
+  .footer__box
+    .footer__box__info
+      %h2 FURIMAについて
+      = link_to "会社概要（運営会社）", "#", class: "footer__box__info__link"
+      = link_to "プライバシーポリシー", "#", class: "footer__box__info__link"
+      = link_to "FURIMA利用規約", "#", class: "footer__box__info__link"
+      = link_to "ポイントに関する特約", "#", class: "footer__box__info__link"
+    .footer__box__info
+      %h2 FURIMAを見る
+      = link_to "カテゴリー一覧", "#", class: "footer__box__info__link"
+      = link_to "ブランド一覧", "#", class: "footer__box__info__link"
+    .footer__box__info
+      %h2 ヘルプ＆ガイド
+      = link_to "FURIMAガイド", "#", class: "footer__box__info__link"
+      = link_to "FURIMAロゴ利用ガイドライン", "#", class: "footer__box__info__link"
+      = link_to "お知らせ", "#", class: "footer__box__info__link"
+  = link_to image_tag("/images/logo-white.png", width: "160", class: "footer__logo"), "#"
+  %p ©︎FURIMA
+
+.icon
+  %p 出品する
+  = link_to image_tag("/images/icon_camera.png", width: "52", height: "52"),new_item_path

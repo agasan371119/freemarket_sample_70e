@@ -1,6 +1,6 @@
 .item__post
   .item__post__header
-    =link_to image_tag("logo.png", width: "185", class: "item__post__header__logo"),  items_path
+    =link_to image_tag("/images/logo.png", width: "185", class: "item__post__header__logo"),  items_path
   .item__post__container
     =form_with(model: @item) do |f|
       .item__post__container__first
@@ -15,7 +15,7 @@
           %p.item__post__container__first__image__p
             またはクリックしてファイルをアップロード
         .hidden-content
-          =f.fields_for :images do |i|
+          =f.fields_for :item_images do |i|
             =i.file_field :image, class:"hidden-field"
             %input{class:"hidden-field",type:"file",name:"item[images_attributes][1][image]",id: "item_images_attributes_1_image"}
             %input{class:"hidden-field",type:"file",name:"item[images_attributes][2][image]",id: "item_images_attributes_2_image"}
@@ -43,6 +43,7 @@
       .item__post__container__third
         %h1.item__post__container__third__h1
           商品の詳細
+
         .item__post__container__third__category
           %h2.item__post__container__third__category__h
             カテゴリー
@@ -50,6 +51,8 @@
           .item__post__container__third__categoryform
             .input__category1
               = f.select :category, @category_parent_array, {} , class: "input__category"
+
+ 
         %h2.item__post__container__third__h2
           ブランド
           %span>任意
@@ -61,7 +64,7 @@
           %span>必須      
         .item__post__container__third__statusform
           .input__status
-            =f.select :status, [ ["新品、未使用",1], ["未使用に近い", 2], ["目立った傷や汚れ無し", 3 ] ,["やや傷や汚れ有り", 4], ["傷や汚れ有り", 5], ["全体的に状態が悪い", 6] ], prompt: "選択してください",class:"input__status"
+            = f.select :status, [ ["選択してください",0],["新品、未使用",1], ["未使用に近い", 2], ["目立った傷や汚れ無し", 3 ] ,["やや傷や汚れ有り", 4], ["傷や汚れ有り", 5], ["全体的に状態が悪い", 6] ], {} , class: "input__status"
       .item__post__container__delivery
         %h1.item__post__container__delivery__h1
           配送について
@@ -70,19 +73,19 @@
           %span>必須
         .item__post__container__delivery__postageform
           .input__postage
-            =f.select :postage, [ ["送料込み(出品者負担)",1], ["着払い(購入者負担)", 2]], prompt: "選択してください",class:"input__postage"   
+            =f.select :postage, [ ["選択してください",0],["送料込み(出品者負担)",1], ["着払い(購入者負担)", 2]], {},class:"input__postage"   
         %h2.item__post__container__delivery__h
           発送元の地域
           %span>必須
         .item__post__container__delivery__prefectureform
           .input__prefecture
-            =f.select :prefecture, [ ["北海道",1], ["青森県", 2], ["岩手県", 3 ] ,["宮城県", 4], ["秋田県", 5], ["山形県", 6] ], prompt: "選択してください",class:"input__prefecture"
+            =f.select :prefecture, [ ["選択してください",0],["北海道",1], ["青森県", 2], ["岩手県", 3 ] ,["宮城県", 4], ["秋田県", 5], ["山形県", 6] ], {} ,class:"input__prefecture"
         %h2.item__post__container__delivery__h
           発送までの日数
           %span>必須
         .item__post__container__delivery__dayform
           .input__day
-            =f.select :day, [ ["1~2日で発送",1], ["2~3日で発送", 2], ["4~7日で発送", 3 ]], prompt: "選択してください",class:"input__day"      
+            =f.select :day, [["選択してください",0], ["1~2日で発送",1], ["2~3日で発送", 2], ["4~7日で発送", 3 ]], {} ,class:"input__day"      
       .item__post__container__price
         %h1.item__post__container__price__h1
           価格(¥300~9,999,999)
@@ -95,14 +98,15 @@
               ¥            
             .item__post__container__price__box__right__form
               .input__price
-                =f.number_field :price,placeholder: "0", class:"input__price", min: 0, max:9999999
+                =f.number_field :price, placeholder: "0", class:"input__price", min: 0, max:9999999
         %h2.item__post__container__price__h2
           販売手数料  (10%)
         %h3.item__post__container__price__h3
           販売利益
         .item__post__container__price__btn
           .item__post__container__price__btn--red
-            =link_to "出品する","#",class:".item__post__container__price__btn--red"
+            .input__submit
+              =f.submit "出品する",class:"input__submit"
           .item__post__container__price__btn--gray
             =link_to "もどる","#",class:".item__post__container__price__btn--gray"
         %p.item__post__container__price__p
@@ -119,6 +123,6 @@
           = link_to "特定商取引に関する表記", "#", class: "taade"
     .single-footer-logo
       .footer-img
-        =link_to image_tag('logo.png', alt: 'aaaa', height: '49', width: '185', class: 'logo'),items_path
+        =link_to image_tag('/images/logo.png', alt: 'aaaa', height: '49', width: '185', class: 'logo'),items_path
     %p
       %small© Furima, Inc.
