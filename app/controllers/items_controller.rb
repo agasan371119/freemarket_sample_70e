@@ -1,12 +1,17 @@
 class ItemsController < ApplicationController
 
-
   def index
     @items = Item.all
   end
   
+
+  def show
+  end
+
+
   def buy
   end
+
 
   def new
     @item = Item.new
@@ -37,5 +42,6 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:name,:price)
   end
+
 
 end

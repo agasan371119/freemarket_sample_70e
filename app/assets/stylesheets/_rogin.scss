@@ -1,0 +1,90 @@
+* {
+  box-sizing: border-box;
+}
+
+
+  .sigle-container{
+    padding: 0 0 250px;
+    text-align: center;
+    background-color: #f5f5f5;
+    .single-head{
+      display: inline-block;
+      margin: 11px 0 12px;
+    }
+
+    .single-main{
+      height: 340px;
+      width: 400px;
+      margin: 0 auto;
+      background-color: white;
+      .login-panel{
+        max-width: 456px;
+        margin: 0 auto;
+        background: #fff;
+        .login-no-accout{
+          padding: 24px 32px;
+          text-align: center;
+        }
+        .login-form-inner{
+          padding: 24px 32px;
+          border-top: 1px solid #eee;
+          .kari__one{
+            background: #385185;
+            color: #fff;
+            display: block;
+              .kari{
+                display: inline-block;
+                // font-family: 'icon-font';
+                speak: none;
+                font-style: normal;
+                font-weight: 400;
+                font-variant: normal;
+                text-transform: none;
+                line-height: 1;
+              }
+          }
+          .kari__second{
+            margin: 16px 0 0;
+            background: #fff url(/jp/assets/img/common/common/google.svg) no-repeat 3px top;
+            border: #979797 solid 1px;
+            color: #333;
+            display: block;
+            width: 392px;
+          }
+          .login-form-inner{
+            padding: 24px 32px;
+            border: 0;
+            
+          }
+        }
+      }
+    }
+  }
+    .lost_password{
+      display: block;
+    }
+
+    .style{
+      width: 300px;
+      height: 50px;
+      background-color: black;
+    }
+
+    .form-group{
+      margin: 0;
+      margin-bottom: 30px;
+    }
+    .form-group{
+      margin: 24px 0 0;
+      margin-bottom: 30px;
+    }
+    .form-group{
+      margin: 24px 0 0; 
+    }
+    .login-submit-btn-red{
+      background: #ea352d;
+      border: 1px solid #ea352d;
+      color: #fff;
+    }
+
+    
