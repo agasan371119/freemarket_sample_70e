@@ -8,7 +8,7 @@
         %h1.icon
           %a{:href => "/"}
             .icon-img
-            = image_tag 'logo.png', alt: 'aaaa', height: '49', width: '100', class: 'logo'
+            = image_tag "/logo.png", alt: 'aaaa', height: '49', width: '100', class: 'logo'
         .searchbox
           %form{"accept-charset" => "UTF-8", :action => "#", :method => "get"}
           %input.searchbox-text{:name => "key", :placeholder => "検索"}/
@@ -65,14 +65,14 @@
             .itembox__body
               %ul.big__image
                 %li.all
-                  = image_tag 'icon-01.png', alt: 'tanimura', height: '100', width: '100', class: 'tanimura'
+                  = image_tag '/icon-01.png', alt: 'tanimura', height: '100', width: '100', class: 'tanimura'
                   %ul.samall__image
                     %li
-                      = image_tag 'icon-03.png', alt: 'minayoshi', height: '100', width: '100', class: 'minayoshi'
+                      = image_tag '/icon-03.png', alt: 'minayoshi', height: '100', width: '100', class: 'minayoshi'
                     %li
-                      = image_tag 'pict-reason-03.jpg', alt: 'nagasue', height: '100', width: '100', class: 'nagasue'
+                      = image_tag '/pict-reason-03.jpg', alt: 'nagasue', height: '100', width: '100', class: 'nagasue'
                     %li
-                      = image_tag 'pict-reason-02.jpeg', alt: 'gondo', height: '100', width: '100', class: 'gondo'
+                      = image_tag '/pict-reason-02.jpeg', alt: 'gondo', height: '100', width: '100', class: 'gondo'
 
             .itembox__price
               %span
@@ -153,9 +153,9 @@
       %p.inner__text  今すぐダウンロード
       .inner__icon
         = link_to class: "hoge8" do
-          = image_tag 'app.svg', alt: 'minayoshi', height: '80', width: '250', class: 'minayoshi'
+          = image_tag '/app.svg', alt: 'minayoshi', height: '80', width: '250', class: 'minayoshi'
         = link_to  "#", class: "hoge9" do
-          = image_tag 'google-play-badge (1).png', alt: 'gondo', height: '110', width: '275', class: 'hoge10'
+          = image_tag '/google-play-badge (1).png', alt: 'gondo', height: '110', width: '275', class: 'hoge10'
 
   .footer
     %ul.contents
@@ -194,9 +194,9 @@
             = link_to "メンズをもっと見る", "#",class: "hoge11"
     .footer__logo
       = link_to  "#", class: "hoge9" do
-        = image_tag 'logo.png', alt: 'aaa', height: '49', width: '185', class: 'logo2'
+        = image_tag '/logo.png', alt: 'aaa', height: '49', width: '185', class: 'logo2'
     %p  FURIMA
   = link_to '#', class: "hoge12" do
     .purchaseBtn  
       %span.purchaseBtn__text 出品する
-      = image_tag 'icon_camera.png', alt: 'gondo', height: '100', width: '250', class: 'hoge10'
+      = image_tag '/icon_camera.png', alt: 'gondo', height: '100', width: '250', class: 'hoge10'
