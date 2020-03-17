@@ -43,12 +43,16 @@
       .item__post__container__third
         %h1.item__post__container__third__h1
           商品の詳細
-        %h2.item__post__container__third__h
-          カテゴリー
-          %span>必須        
-        .item__post__container__third__categoryform
-          .input__category1
-            =f.select :category, [ ["レディース",1], ["メンズ", 2], ["ベビー・キッズ", 3 ] ,["インテリア・住まい・小物", 4], ["本・音楽・ゲーム", 5], ["おもちゃ・ホビー・グッズ", 6] ], prompt: "選択してください", class:"input__category"
+
+        .item__post__container__third__category
+          %h2.item__post__container__third__category__h
+            カテゴリー
+            %span>必須        
+          .item__post__container__third__categoryform
+            .input__category1
+              = f.select :category, @category_parent_array, {} , class: "input__category"
+
+ 
         %h2.item__post__container__third__h2
           ブランド
           %span>任意
