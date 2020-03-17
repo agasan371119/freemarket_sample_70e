@@ -1,6 +1,5 @@
 class ItemsController < ApplicationController
 
-
   def index
     @items = Item.all
     @categories = Category.where(ancestry: nil)
@@ -10,8 +9,14 @@ class ItemsController < ApplicationController
     @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
   end
   
+
+  def show
+  end
+
+
   def buy
   end
+
 
   def new
     @item = Item.new
@@ -40,7 +45,8 @@ class ItemsController < ApplicationController
   private
   
   def item_params
-    params.require(:item).permit(:name,:price)
+    params.require(:item).permit(:name,:price, buyer_id:current_user_id)
   end
+
 
 end

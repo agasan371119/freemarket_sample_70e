@@ -143,22 +143,14 @@ Things you may want to cover:
 |status|string|null: false|
 |size|null: false|
 |price|integer|null: false|
+|buyer_id|integer|foreign_key: true|
+|postage|string|null: false|
+|prefecture|string|null: false|
+|day|integer|
 ### Association		
 - has_many :comments		
 - has_many :likes		
 - has_many :images		
 - has_many :reviews
-- has_one :delivery
 - belongs_to :category	
 - belongs_to :user	
-
-# deliveriesテーブル
-|Column|Type|Options|
-|------|----|-------|
-|item_id|integer|null: false, foreign_key: true|
-|buyer_id|integer|null: false, foreign_key: true|
-|postage|string|null: false|
-|prefecture|string|null: false|
-|day|integer|
-### Association		
-- belongs_to :item
