@@ -9,23 +9,36 @@
           %span>必須
         %p.item__post__container__first__p
           最大10枚までアップロードできます   
-        .item__post__container__first__image
-          %p.item__post__container__first__image__p
-            ドラッグアンドドロップ
-          %p.item__post__container__first__image__p
-            またはクリックしてファイルをアップロード
-        .hidden-content
-          =f.fields_for :item_images do |i|
-            =i.file_field :image, class:"hidden-field"
-            %input{class:"hidden-field",type:"file",name:"item[images_attributes][1][image]",id: "item_images_attributes_1_image"}
-            %input{class:"hidden-field",type:"file",name:"item[images_attributes][2][image]",id: "item_images_attributes_2_image"}
-            %input{class:"hidden-field",type:"file",name:"item[images_attributes][3][image]",id: "item_images_attributes_3_image"}
-            %input{class:"hidden-field",type:"file",name:"item[images_attributes][4][image]",id: "item_images_attributes_4_image"}
-            %input{class:"hidden-field",type:"file",name:"item[images_attributes][5][image]",id: "item_images_attributes_5_image"}
-            %input{class:"hidden-field",type:"file",name:"item[images_attributes][6][image]",id: "item_images_attributes_6_image"}
-            %input{class:"hidden-field",type:"file",name:"item[images_attributes][7][image]",id: "item_images_attributes_7_image"}
-            %input{class:"hidden-field",type:"file",name:"item[images_attributes][8][image]",id: "item_images_attributes_8_image"}
-            %input{class:"hidden-field",type:"file",name:"item[images_attributes][9][image]",id: "item_images_attributes_9_image"}
+        = f.fields_for :item_images do |image|
+          .item__post__container__first__image
+            %ul#preview
+              %li.input
+                %label.upload-label
+                  .upload-label__text
+                    ドラッグアンドドロップ
+                    %br
+                    またはクリックしてファイルをアップロード
+                    .input-area
+                      = image.file_field :image, class:"hidden-field" 
+                        
+      
+        -# .item__post__container__first__image
+        -#   %p.item__post__container__first__image__p
+        -#     ドラッグアンドドロップ
+        -#   %br
+        -#     またはクリックしてファイルをアップロード
+        -# .hidden-content
+        -#   =f.fields_for :item_images do |i|
+        -#     =i.file_field :image, class:"hidden-field"
+        -#     %input{class:"hidden-field",type:"file",name:"item[images_attributes][1][image]",id: "item_images_attributes_1_image"}
+        -#     %input{class:"hidden-field",type:"file",name:"item[images_attributes][2][image]",id: "item_images_attributes_2_image"}
+        -#     %input{class:"hidden-field",type:"file",name:"item[images_attributes][3][image]",id: "item_images_attributes_3_image"}
+        -#     %input{class:"hidden-field",type:"file",name:"item[images_attributes][4][image]",id: "item_images_attributes_4_image"}
+        -#     %input{class:"hidden-field",type:"file",name:"item[images_attributes][5][image]",id: "item_images_attributes_5_image"}
+        -#     %input{class:"hidden-field",type:"file",name:"item[images_attributes][6][image]",id: "item_images_attributes_6_image"}
+        -#     %input{class:"hidden-field",type:"file",name:"item[images_attributes][7][image]",id: "item_images_attributes_7_image"}
+        -#     %input{class:"hidden-field",type:"file",name:"item[images_attributes][8][image]",id: "item_images_attributes_8_image"}
+        -#     %input{class:"hidden-field",type:"file",name:"item[images_attributes][9][image]",id: "item_images_attributes_9_image"}
           
       .item__post__container__second
         %h2.item__post__container__second__h
