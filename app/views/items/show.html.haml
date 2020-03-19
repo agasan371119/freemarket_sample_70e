@@ -1,34 +1,30 @@
-.wrapper
-!!!
-%html
-%body
-  %header.search-top
-    .Inner
-      .mainHeader
-        %h1.icon
-          %a{:href => "/"}
-            .icon-img
-            = image_tag 'logo.png', alt: 'aaaa', height: '49', width: '100', class: 'logo'
-        .searchbox
-          %form{"accept-charset" => "UTF-8", :action => "#", :method => "get"}
-          %input.searchbox-text{:name => "key", :placeholder => "検索"}/
-          %button{:type => "submit"}
-            .searchbox__icon
-              %img{:src => "/assets/icon-search-svg"}/
-      .nab
-        %ul.listsLeft
-          %li.listsLeft__item.listsLeft__item--first
-            = link_to " カテゴリー", "#", class: ".catBtn" 
-          %li.listsLeft__item
-            %a.brandBtn{:href => "#"} ブランド
-            %ul.brandsPulldown.displayNone
 
-        %ul.listsRight
-          %li.listsRight__item.listsRight__item--login
-            %a.rogBtn{:href => "#"} ログイン
-          %li.listsRight__item.listsRight__item--new
-            %a.newBtn{:href => "#"} 新規会員登録
-  
+.head
+  .header__box
+    .header__box__top
+      .header__box__top__logo
+        = link_to image_tag("/images/logo.png", width: "100", class: "header__logo")
+      .header__box__top__input
+        = form_with(url: "#", local: true, method: :get, class: "search-form") do |form|
+          .header__box__top__input__search
+            = form.text_field :name, placeholder: "キーワードから探す", class: "search-input"
+            %button{type: "submit"}
+              .header__box__top__input__search__btn
+                = image_tag("/images/icon-search 1.png", width: "25", height: "25")
+    .header__box__bottom
+      %ul.header__box__bottom__categorie
+        %li= link_to "カテゴリー", "#", class: "header__box__bottom__categorie__list"
+        %li= link_to "ブランド", "#", class: "header__box__bottom__categorie__list"
+      %ul.header__box__bottom__user
+        - if user_signed_in?
+          %li= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "header__box__bottom__user__btn"
+          %li= link_to "マイページ", "#", class: "header__box__bottom__user__btn"
+        - else  
+          %li= link_to "ログイン", new_user_session_path, class: "header__box__bottom__user__btn"
+          %li= link_to "新規会員登録", new_user_registration_path, class: "header__box__bottom__user__btn"     
+
+
+
   .winding
     %ul.winding-road
       %li.listone
@@ -55,28 +51,29 @@
         = link_to  "#", class: "branch" do
           product2
       
+
   .main
     .showmain
       .contentright
         .topcontent
           .itembox
             %h2.itembox__name
-              product2
+              = @item.name
             .itembox__body
               %ul.big__image
                 %li.all
-                  = image_tag 'icon-01.png', alt: 'tanimura', height: '100', width: '100', class: 'tanimura'
+                  = image_tag '/images/icon-01.png', alt: 'tanimura', height: '100', width: '100', class: 'tanimura'
                   %ul.samall__image
                     %li
-                      = image_tag 'icon-03.png', alt: 'minayoshi', height: '100', width: '100', class: 'minayoshi'
+                      = image_tag '/images/icon-03.png', alt: 'minayoshi', height: '100', width: '100', class: 'minayoshi'
                     %li
-                      = image_tag 'pict-reason-03.jpg', alt: 'nagasue', height: '100', width: '100', class: 'nagasue'
+                      = image_tag '/images/pict-reason-03.jpg', alt: 'nagasue', height: '100', width: '100', class: 'nagasue'
                     %li
-                      = image_tag 'pict-reason-02.jpeg', alt: 'gondo', height: '100', width: '100', class: 'gondo'
+                      = image_tag '/images/pict-reason-02.jpg', alt: 'gondo', height: '100', width: '100', class: 'gondo'
 
             .itembox__price
               %span
-                ¥800000
+                = @item.price
             .itemBox__price-detail
               %span
                 (税込み)
@@ -87,32 +84,32 @@
             こちら1枚ずつのバラ売りは応じません。
             こちら新品未使用品のため価格交渉には応じません
             送料に関しては交渉応じます。
-            %table.table{:border => "1",  :width => "500", :height => "500"}
+            %table.table{border: "1",  width: "500", height:"500"}
               %tr
-                %td.one{:bgcolor => "#eee", :width => "30%", :align=>"center"} 出品者
-                %td.abc{:width => "70%"} hoge
+                %td.one{bgcolor:"#eee", width:"30%", align:"center"} 出品者
+                %td.abc{width:"70%"} tattun
               %tr
-                %td.one{:bgcolor => "#eee", :align=>"center"} カテゴリー
-                %td.dfg{:width => "70%"} 
+                %td.one{bgcolor:"#eee", align:"center"} カテゴリー
+                %td.dfg{width:"70%"} 
                   = link_to "メンズ", "#", class: "hogehoge"
               %tr
-                %td.one{:bgcolor => "#eee", :align=>"center"} ブランド
+                %td.one{bgcolor:"#eee", align:"center"} ブランド
                 %td.abc 
               %tr
-                %td.one{:bgcolor => "#eee", :align=>"center"} 商品のサイズ	
+                %td.one{bgcolor:"#eee", align:"center"} 商品のサイズ	
                 %td.abc 
               %tr
-                %td.one{:bgcolor => "#eee", :align=>"center"} 商品の状態	
+                %td.one{bgcolor:"#eee", align:"center"} 商品の状態	
                 %td.abc 新品/未使用
               %tr
-                %td.one{:bgcolor => "#eee", :align=>"center"} 配送料の負担
+                %td.one{bgcolor:"#eee", align:"center"} 配送料の負担
                 %td.abc 着払い（購入者負担）
               %tr
-                %td.one{:bgcolor => "#eee", :align=>"center"} 発送元の地域
+                %td.one{bgcolor: "#eee", align: "center"} 発送元の地域
                 %td.dfg
                   = link_to "青森県", "#", class: "hogehoge"
               %tr
-                %td.one{:bgcolor => "#eee", :align=>"center"} 発送日の目安
+                %td.one{bgcolor: "#eee", align:"center"} 発送日の目安
                 %td.abc 1-2日で発送
 
             .optionalarea
@@ -126,14 +123,19 @@
                     = link_to "不適切な商品の通報", "#", class: "hoge3"
           .commentbox
             %form
-              %textarea{:placeholder => "ご要望をお書きください", class: "hoge4"}
+              %textarea{placeholder:"ご要望をお書きください", class: "hoge4"}
             %p.notice
               相手のことを考え丁寧なコメントを心がけましょう。
               %br/
               不快な言葉遣いなどは利用制限や退会処分となることがあります。
-            %button.commentBtn{:name => "button", :type => "submit"}
+            %button.commentBtn{name: "button", type: "submit"}
               %i.fa.fa-comment
               コメントするヨ
+            = link_to "購入しようかなー", buy_item_path, class: 'buy-btn'
+            = link_to "current_idなので編集ボタン欲し〜な〜", buy_item_path, class: 'edit-btn'
+            = link_to "current_idなので削除ボタン欲しーなー", buy_item_path, class: 'destroy-btn'
+
+
         %ul.links
           %li
             = link_to  "#", class: "hoge5" do
@@ -147,56 +149,38 @@
               %i.fa.fa-angle-right    
         .relateditems
           = link_to "メンズをもっと見る", "#", class: "hoge7"
+
   %aside.app-google
     .inner
-      %h2.inner__title フリマアプリ 
-      %p.inner__text  今すぐダウンロード
+      %h2.inner__title だれでもかんたん、人生を変えるフリマアプリ
+      %p.inner__text  今すぐ無料ダウンロード！
       .inner__icon
-        = link_to class: "hoge8" do
-          = image_tag 'app.svg', alt: 'minayoshi', height: '80', width: '250', class: 'minayoshi'
-        = link_to  "#", class: "hoge9" do
-          = image_tag 'google-play-badge (1).png', alt: 'gondo', height: '110', width: '275', class: 'hoge10'
+        = link_to image_tag("http://furima.tokyo/assets/app-store-9c5e28e8f81bd9912e0ded2f78821e04778a1356c05dc7c7bf1e88614be37c34.svg", width: "180", class: "main__bottom__box__btn__logo"), "#"
+        = link_to image_tag("http://furima.tokyo/assets/google-play-469c63f1269e456307c4dde176b33cc3bbbbf142ac4d7369656010130149db1a.svg", width: "180", class: "main__bottom__box__btn__logo"), "#"
 
-  .footer
-    %ul.contents
-      %li.content
-        %h2.content__head FURIMAについて
-        %ul
-          %li
-            = link_to "メンズをもっと見る", "#",class: "hoge11"
-          %li
-            = link_to "メンズをもっと見る", "#",class: "hoge11"
-          %li
-            = link_to "メンズをもっと見る", "#",class: "hoge11"
-          %li
-            = link_to "メンズをもっと見る", "#",class: "hoge11"
-      %li.content
-        %h2.content__head FURIMAについて
-        %ul
-          %li
-            = link_to "メンズをもっと見る", "#",class: "hoge11"
-          %li
-            = link_to "メンズをもっと見る", "#",class: "hoge11"
-          %li
-            = link_to "メンズをもっと見る", "#",class: "hoge11"
-          %li
-            = link_to "メンズをもっと見る", "#",class: "hoge11"
-      %li.content
-        %h2.content__head FURIMAについて
-        %ul
-          %li
-            = link_to "メンズをもっと見る", "#",class: "hoge11"
-          %li
-            = link_to "メンズをもっと見る", "#",class: "hoge11"
-          %li
-            = link_to "メンズをもっと見る", "#",class: "hoge11"
-          %li
-            = link_to "メンズをもっと見る", "#",class: "hoge11"
-    .footer__logo
-      = link_to  "#", class: "hoge9" do
-        = image_tag 'logo.png', alt: 'aaa', height: '49', width: '185', class: 'logo2'
-    %p  FURIMA
-  = link_to '#', class: "hoge12" do
-    .purchaseBtn  
-      %span.purchaseBtn__text 出品する
-      = image_tag 'icon_camera.png', alt: 'gondo', height: '100', width: '250', class: 'hoge10'
+  
+
+.footer
+  .footer__box
+    .footer__box__info
+      %h2 FURIMAについて
+      = link_to "会社概要（運営会社）", "#", class: "footer__box__info__link"
+      = link_to "プライバシーポリシー", "#", class: "footer__box__info__link"
+      = link_to "FURIMA利用規約", "#", class: "footer__box__info__link"
+      = link_to "ポイントに関する特約", "#", class: "footer__box__info__link"
+    .content
+      %h2 FURIMAを見る
+      = link_to "カテゴリー一覧", "#", class: "footer__box__info__link"
+      = link_to "ブランド一覧", "#", class: "footer__box__info__link"
+    .footer__box__info
+      %h2 ヘルプ＆ガイド
+      = link_to "FURIMAガイド", "#", class: "footer__box__info__link"
+      = link_to "FURIMAロゴ利用ガイドライン", "#", class: "footer__box__info__link"
+      = link_to "お知らせ", "#", class: "footer__box__info__link"
+  = link_to image_tag("/images/logo-white.png", width: "160", class: "footer__logo"), "#"
+  %p ©︎FURIMA
+
+.icon
+  %p 出品する
+  = link_to image_tag("/images/icon_camera.png", width: "52", height: "52"),new_item_path
+
