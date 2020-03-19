@@ -1,0 +1,30 @@
+// Place all the styles related to the items controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.logout {
+  width: 700px;
+  &__content {
+    background: #fff;
+    padding: 64px;
+    &__box {
+      max-width: 320px;
+      margin: 0 auto;
+      &__link {
+        background: #ea352d;
+        border: 1px solid #ea352d;
+        color: #fff;
+        display: block;
+        width: 100%;
+        line-height: 48px;
+        font-size: 14px;
+        border: 1px solid transparent;
+        -webkit-transition: all ease-out .3s;
+        transition: all ease-out .3s;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+      }
+    }
+  }
+}

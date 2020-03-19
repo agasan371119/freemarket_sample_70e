@@ -10,10 +10,16 @@ Rails.application.routes.draw do
   
   # root to: 'items#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :users, only: [:new, :show]
+  resources :users, only: [:new, :show] do
+    collection do
+      get 'credit'
+      get 'logout'
+    end
+  end
   resources :items, only: [:index, :new, :show] do
     member do
       get 'buy'
+      get 'item_sold'
     end
     collection do
       get 'category_children_index', defaults: { format: 'json' }
@@ -21,6 +27,5 @@ Rails.application.routes.draw do
       get 'category_grandchildren', defaults: { format: 'json' }
     end
   end
-
 end
 

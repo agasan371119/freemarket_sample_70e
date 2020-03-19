@@ -1,0 +1,62 @@
+// Place all the styles related to the items controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.credeit__new {
+  width: 700px;
+    &__content {
+      background: #fff;
+      .credit__new__content__text {
+        font-size: 24px;
+        padding: 8px 24px;
+        border-bottom: 1px solid #f5f5f5;
+        text-align: center;
+        font-weight: 600;
+      }
+      &__box {
+        padding: 64px;
+        border-top: 1px solid #f5f5f5;
+        .credeit__new__content__box__section__h3 {
+          max-width: 320px;
+          margin: 0 auto;
+          .credeit__head {
+            font-size: 16px;
+            font-weight: 600;
+          } 
+        }
+        &__bottom {
+          padding: 24px 0;
+          border-bottom: 1px solid #eee;
+          &__1 {
+            max-width: 320px;
+            margin: 0 auto;
+            .credit__link {
+              background: #ea352d;
+              border: 1px solid #ea352d;
+              color: #fff;
+              display: block;
+              width: 100%;
+              line-height: 48px;
+              font-size: 14px;
+              border: 1px solid transparent;
+              -webkit-transition: all ease-out .3s;
+              transition: all ease-out .3s;
+              cursor: pointer;
+              text-align: center;
+              text-decoration: none;
+
+            }
+          }
+        }
+        .how_to_pay {
+          display: block;
+          margin: 40px 0 0;
+          text-align: right;
+          color: #0099e8;
+          text-decoration: none;
+
+        }
+      }
+      
+    }
+}

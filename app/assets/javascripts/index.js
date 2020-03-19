@@ -1,5 +1,7 @@
 $(function () {
+
   
+
   $(".header__box__bottom__categorie__list").hover(
     function () {
       $(".category__parent").removeClass("none");
@@ -7,7 +9,9 @@ $(function () {
   );
 
   $(".category_link").hover(function () {
-    var parent_name = $(this).text();
+    var parent_name = $(this).value();
+    console.log(parent_name)
+    
     $.ajax({
       url: 'category_children_index',
       type: 'GET',
@@ -15,10 +19,6 @@ $(function () {
       dataType: 'json'
     })
 
-    .done(function(){  
-    })  
 
   })
 });
-
-
