@@ -16,10 +16,10 @@ class ItemsController < ApplicationController
 
   def buy
     @item = Item.find(1)
-    @address = Address.find_by(user_id: 1)
+    @address = Address.find_by(user_id: current_user.id)
   end
 
-  def item_sold
+  def sold
     item.update(buyer_id: current_user.id)
     redirect_to root_path
   end

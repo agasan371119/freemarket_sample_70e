@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   resources :items, only: [:index, :new, :show] do
     member do
       get 'buy'
-      get 'item_sold'
+      get 'sold'
     end
     collection do
       get 'category_children_index', defaults: { format: 'json' }
