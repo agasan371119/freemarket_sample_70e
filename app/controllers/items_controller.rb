@@ -15,6 +15,7 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    
     @category_parent_array = ["選択してください"]
     categories = Category.where(ancestry: nil)
     categories.each do |parent|
