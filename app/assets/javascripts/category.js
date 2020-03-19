@@ -35,7 +35,7 @@ $(function () {
 
   $('#item_category').on('change', function () {
     var parent_name = $('#item_category').val();
-
+    
     if (parent_name != "選択して下さい") { 
       $.ajax({
         url: 'category_children',
@@ -43,7 +43,6 @@ $(function () {
         data: { parent_name: parent_name },
         dataType: 'json'
       })
-
       .done(function(children){
         $('#children_wrapper').remove();
         $('#grandchildren_wrapper').remove();

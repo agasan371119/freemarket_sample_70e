@@ -47,7 +47,7 @@
                     #{@address.family_name}#{@address.first_name}
             .buy__content__form__info__bottom
               -# %button.buy__content__form__info__bottom__button{type: "submit"} 購入する
-              = button_to "購入する", item_sold_item_path(@item), class: "buy__content__form__info__bottom__button"
+              = button_to "購入する", sold_item_path(@item), class: "buy__content__form__info__bottom__button"
   %footer.single-footer
     %nav
       %ul.cleafix

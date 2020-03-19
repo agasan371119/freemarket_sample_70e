@@ -2,7 +2,7 @@
   .header__box
     .header__box__top
       .header__box__top__logo
-        = link_to image_tag("/images/logo.png", width: "100", class: "header__logo")
+        = link_to image_tag("/images/logo.png", width: "100", class: "header__logo"), root_path
       .header__box__top__input
         = form_with(url: "#", local: true, method: :get, class: "search-form") do |form|
           .header__box__top__input__search
