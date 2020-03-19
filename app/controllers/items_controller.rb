@@ -1,15 +1,27 @@
 class ItemsController < ApplicationController
 
   def index
-    @items = Item.all
+    @items = Item.all.limit(5).order("created_at DESC")
+    @ladies = Item.where(category_id: 5).limit(5)
+    @categories = Category.where(ancestry: nil)
+  end
+
+  def category_children_index
+    @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
   end
   
-
   def show
+    @item = Item.find(1     )
   end
 
-
   def buy
+    @item = Item.find(1)
+    @address = Address.find_by(user_id: current_user.id)
+  end
+
+  def sold
+    item.update(buyer_id: current_user.id)
+    redirect_to root_path
   end
 
 
@@ -40,7 +52,7 @@ class ItemsController < ApplicationController
   private
   
   def item_params
-    params.require(:item).permit(:name,:price)
+    params.require(:item).permit(:name,:price, buyer_id:current_user_id)
   end
 
 
