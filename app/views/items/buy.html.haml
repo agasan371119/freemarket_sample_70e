@@ -8,7 +8,7 @@
       .buy__content__info
         .buy__content__info__box
           .buy__content__info__box__image
-            = image_tag("/images/t.jpeg", width: "80px", height: "80px")
+            = image_tag("/images/#{@item.item_images[0][:image]}", width: "80px", height: "80px")
           .buy__content__info__box__name
             %p.item_name #{@item.name}
             %p.item_price
@@ -16,7 +16,7 @@
               %span （税込み）送料込み
       .buy__content__form
         .buy__content__form__info
-          = form_with model: @item, local: true do |f|
+          = form_with url: sold_item_path(@item.id), method: :get, local: true do |f|
             .buy__content__form__info__price
               .buy__content__form__info__price__p
                 %p 支払い金額
@@ -46,8 +46,7 @@
                     %br/
                     #{@address.family_name}#{@address.first_name}
             .buy__content__form__info__bottom
-              -# %button.buy__content__form__info__bottom__button{type: "submit"} 購入する
-              = button_to "購入する", sold_item_path(@item), class: "buy__content__form__info__bottom__button"
+              %button.buy__content__form__info__bottom__button{type: "submit"} 購入する
   %footer.single-footer
     %nav
       %ul.cleafix
@@ -62,5 +61,3 @@
         =link_to image_tag('/images/logo.png', alt: 'aaaa', height: '49', width: '185', class: 'logo'),items_path
     %p
       %small© Furima, Inc.
-
-            

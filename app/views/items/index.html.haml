@@ -12,20 +12,25 @@
                 = image_tag("/images/icon-search 1.png", width: "25", height: "25")
     .header__box__bottom
       %ul.header__box__bottom__categorie
-        %li= link_to "カテゴリー", "#", class: "header__box__bottom__categorie__list"
+        %li= link_to "カテゴリー", "#", class: "header__box__bottom__categorie__list header__box__bottom__categorie__list__left"
         %li= link_to "ブランド", "#", class: "header__box__bottom__categorie__list"
       %ul.header__box__bottom__user
         - if user_signed_in?
-          %li= link_to "ログアウト", logout_users_path, method: :delete, class: "header__box__bottom__user__btn"
+          %li= link_to "ログアウト", logout_users_path, class: "header__box__bottom__user__btn"
           %li= link_to "マイページ", user_path(current_user.id), class: "header__box__bottom__user__btn"
         - else  
           %li= link_to "ログイン", new_user_session_path, class: "header__box__bottom__user__btn"
           %li= link_to "新規会員登録", new_user_registration_path, class: "header__box__bottom__user__btn"
-    .category__parent.none
-      %ul.category__parent__ul
-        - @categories.each do |category|
-          %li.category__parent__li
-            = link_to category.name, "#", class: "category_link", id: category.id
+    .category_index
+      .category__parent.none
+        %ul.category__parent__ul
+          - @categories.each do |category|
+            %li.category__parent__li
+              = link_to category.name, "#", class: "category_link", id: category.id
+      .category__children
+        %ul.category__children__ul
+      .category__grandchildren
+        %ul.category__grandchildren__ul
 .main
   .main__first
     .main__first__content
@@ -114,10 +119,31 @@
     %h2 レディース一覧
   .item__box
     - @ladies.each do |lady|
-      .item__box__info
-        = link_to image_tag("/images/erika.jpeg", width: "100%", height: "230px"), item_path(@ladies)
-        .item__box__info__name
-          = lady.name
+      -if lady.buyer_id.present? 
+        .item__box__info
+          = link_to image_tag("/images/sould out.jpeg", width: "100%", height: "230px"), "#"
+          .item__box__info__name
+            申し訳ありません、売り切れました。
+      - else       
+        .item__box__info
+          = link_to image_tag("/images/#{lady.item_images[0][:image]}", width: "100%", height: "230px"), item_path(@ladies)
+          .item__box__info__name
+            = lady.name
+.item
+  .item__text
+    %h2 メンズ一覧
+  .item__box
+    - @mens.each do |man|
+      -if man.buyer_id.present? 
+        .item__box__info
+          = link_to image_tag("/images/sould out.jpeg", width: "100%", height: "230px"), "#"
+          .item__box__info__name
+            申し訳ありません、売り切れました。
+      - else       
+        .item__box__info
+          = link_to image_tag("/images/#{man.item_images[0][:image]}", width: "100%", height: "230px"), item_path(@ladies)
+          .item__box__info__name
+            = man.name
 .main__bottom
   .main__bottom__box
     .main__bottom__box__text
