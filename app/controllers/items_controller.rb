@@ -44,8 +44,7 @@ class ItemsController < ApplicationController
 
   def sold
     item = Item.find(params[:id])
-    item.save(buyer_id: current_user.id)
-    if item.save
+    if item.save(buyer_id: current_user.id)
       redirect_to root_path
   else
     flash.now[:alert] = "クレジットカードを登録して下さい"
