@@ -48,7 +48,6 @@ class ItemsController < ApplicationController
     if item.save
       redirect_to root_path
   else
-    item = Item.find(params[:id])
     flash.now[:alert] = "クレジットカードを登録して下さい"
       render :buy
     end
