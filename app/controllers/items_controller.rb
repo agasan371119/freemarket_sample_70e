@@ -11,11 +11,11 @@ class ItemsController < ApplicationController
   end
   
   def show
-    @item = Item.find(1     )
+    @item = Item.find(2)
   end
 
   def buy
-    @item = Item.find(1)
+    @item = Item.find(params[:id])
     @address = Address.find_by(user_id: current_user.id)
   end
 
@@ -48,6 +48,15 @@ class ItemsController < ApplicationController
     
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def destroy
+    items = Item.find(params[:id])
+    items.destroy 
+    redirect_to root_path    
+  end
 
   private
   

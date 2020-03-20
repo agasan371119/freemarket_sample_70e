@@ -80,10 +80,7 @@
               %span
                 送料込み
             .itemdetail
-            あのチームeのファイナルライブ物販限定商品が4枚セットなって出品！！
-            こちら1枚ずつのバラ売りは応じません。
-            こちら新品未使用品のため価格交渉には応じません
-            送料に関しては交渉応じます。
+              = @item.description
             %table.table{border: "1",  width: "500", height:"500"}
               %tr
                 %td.one{bgcolor:"#eee", width:"30%", align:"center"} 出品者
@@ -95,22 +92,27 @@
               %tr
                 %td.one{bgcolor:"#eee", align:"center"} ブランド
                 %td.abc 
+                  = @item.brand
               %tr
                 %td.one{bgcolor:"#eee", align:"center"} 商品のサイズ	
                 %td.abc 
+                = @item.size
               %tr
                 %td.one{bgcolor:"#eee", align:"center"} 商品の状態	
-                %td.abc 新品/未使用
+                %td.abc 
+                  = @item.status
               %tr
                 %td.one{bgcolor:"#eee", align:"center"} 配送料の負担
-                %td.abc 着払い（購入者負担）
+                %td.abc 
+                  = @item.postage
               %tr
                 %td.one{bgcolor: "#eee", align: "center"} 発送元の地域
                 %td.dfg
-                  = link_to "青森県", "#", class: "hogehoge"
+                  = link_to @item.prefecture, "#", class: "hogehoge"
               %tr
                 %td.one{bgcolor: "#eee", align:"center"} 発送日の目安
-                %td.abc 1-2日で発送
+                %td.abc 
+                  = @item.day
 
             .optionalarea
               %ul
@@ -131,9 +133,11 @@
             %button.commentBtn{name: "button", type: "submit"}
               %i.fa.fa-comment
               コメントするヨ
-            = link_to "購入しようかなー", buy_item_path, class: 'buy-btn'
-            = link_to "current_idなので編集ボタン欲し〜な〜", buy_item_path, class: 'edit-btn'
-            = link_to "current_idなので削除ボタン欲しーなー", buy_item_path, class: 'destroy-btn'
+          - if user_signed_in? && current_user.id == tweet.user_id
+            = link_to "購入ボタン", buy_item_path, class: 'buy-btn'
+          - else
+            = link_to "編集ボタン", edit_item_path(@item.id), class: 'edit-btn'
+            = link_to "削除ボタン", item_path(@item.id), method: :delete, class: 'destroy-btn'
 
 
         %ul.links
