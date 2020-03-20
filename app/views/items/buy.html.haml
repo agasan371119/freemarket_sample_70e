@@ -47,7 +47,6 @@
                     #{@address.family_name}#{@address.first_name}
             .buy__content__form__info__bottom
               %button.buy__content__form__info__bottom__button{type: "submit"} 購入する
-              -# = button_to "購入する", sold_item_path(@item.id), method: :get, class: "buy__content__form__info__bottom__button"
   %footer.single-footer
     %nav
       %ul.cleafix
@@ -62,5 +61,3 @@
         =link_to image_tag('/images/logo.png', alt: 'aaaa', height: '49', width: '185', class: 'logo'),items_path
     %p
       %small© Furima, Inc.
-
-            

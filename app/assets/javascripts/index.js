@@ -31,9 +31,7 @@ $(function () {
     });
   })
   $(document).on("hover", ".children_link", function () {
-    console.log("ok")
     var children_name = $(this).name
-    
     $.ajax({
       url: '/items',
       type: 'GET',
