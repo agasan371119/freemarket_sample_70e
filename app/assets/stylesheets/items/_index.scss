@@ -50,7 +50,7 @@
           margin-right: 50px;
           color: black;
           font-size: 14px;
-        }
+        } 
       }
       &__user {
         display: flex;
@@ -61,6 +61,71 @@
           color: black;
           font-size: 14px;
         }
+      }
+    }
+    .category_index {
+      display: flex;
+      .none {
+        display: none;
+      }
+      .category__parent {
+        z-index: 2;
+        position: absolute;
+        background-color: #fff;
+        width: 240px;
+        top: 104px;
+        .category_link {
+          text-decoration: none;
+          color: black;
+          font-size: 14px;
+          color: #333;
+          line-height: 37px;
+          background-position: center right;
+          background-repeat: no-repeat;
+          background-size: 18px;
+          padding-right: 30px;
+          padding-left: 10px;
+        } 
+      }
+      .category__children {
+        z-index: 2;
+        position: absolute;
+        background-color: #fff;
+        width: 240px;
+        top: 104px;
+        left: 440px;
+        .children_link {
+          text-decoration: none;
+          color: black;
+          font-size: 14px;
+          color: #333;
+          line-height: 37px;
+          background-position: center right;
+          background-repeat: no-repeat;
+          background-size: 18px;
+          padding-right: 30px;
+          padding-left: 10px;
+        } 
+      }
+      .category__grandchildren {
+        z-index: 2;
+        position: absolute;
+        background-color: #fff;
+        width: 240px;
+        top: 104px;
+        left: 880px;
+        .grandchildren_link {
+          text-decoration: none;
+          color: black;
+          font-size: 14px;
+          color: #333;
+          line-height: 37px;
+          background-position: center right;
+          background-repeat: no-repeat;
+          background-size: 18px;
+          padding-right: 30px;
+          padding-left: 10px;
+        } 
       }
     }
   }
@@ -251,7 +316,7 @@
     display: flex;
     padding: 15px 100px;
     &__info {
-      width: 25%;
+      width: 230px;
       border: 1px solid #000000;
       text-align: center;
       margin: 0 10px;

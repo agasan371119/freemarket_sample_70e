@@ -8,20 +8,20 @@
       .buy__content__info
         .buy__content__info__box
           .buy__content__info__box__image
-            = image_tag("/images/t.jpeg", width: "80px", height: "80px")
+            = image_tag("/images/#{@item.item_images[0][:image]}", width: "80px", height: "80px")
           .buy__content__info__box__name
-            %p.item_name item.name
+            %p.item_name #{@item.name}
             %p.item_price
-              %span ¥item.price
+              %span ¥#{@item.price}
               %span （税込み）送料込み
       .buy__content__form
         .buy__content__form__info
-          = form_with model: @item, local: true do |f|
+          = form_with url: sold_item_path(@item.id), method: :get, local: true do |f|
             .buy__content__form__info__price
               .buy__content__form__info__price__p
                 %p 支払い金額
               .buy__content__form__info__price__span
-                %span ¥6,900
+                %span ¥#{@item.price}
             .buy__content__form__info__point
               .buy__content__form__info__point__check
                 = f.check_box :point, class: "check-box"
@@ -38,13 +38,13 @@
                   = link_to "変更する", "#", class: "link-address"
                 .buy__content__form__info__address__info__bottom
                   %p
-                    〒953-3554
+                    〒#{@address.postal_code}
                     %br/
-                    福岡県南区平尾
-                    2-15-3
-                    ライオンズマンション305
+                    #{@address.prefecture}#{@address.city}
+                    #{@address.address_block}
+                    #{@address.building_name}#{@address.room_number}
                     %br/
-                    権藤伸之助
+                    #{@address.family_name}#{@address.first_name}
             .buy__content__form__info__bottom
               %button.buy__content__form__info__bottom__button{type: "submit"} 購入する
   %footer.single-footer
@@ -61,5 +61,3 @@
         =link_to image_tag('/images/logo.png', alt: 'aaaa', height: '49', width: '185', class: 'logo'),items_path
     %p
       %small© Furima, Inc.
-
-            

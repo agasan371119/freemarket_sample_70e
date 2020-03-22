@@ -2,15 +2,21 @@ class ItemsController < ApplicationController
   before_action :set_item
 
   def index
-    @items = Item.all
+    @items = Item.all.limit(5).order("created_at DESC")
+    @ladies = Item.where(category_id: 5).limit(5)
+    @mens = Item.where(category_id: 138).limit(5)
+    @categories = Category.where(ancestry: nil)
+    @category_children = Category.find_by(params[:parent_name]).children
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
-  
+
   def show
+    @item = Item.find(1)
   end
-  
-  def buy
-  end
-  
+
   def new
     @item = Item.new
     @images = @item.item_images.build
@@ -51,13 +57,30 @@ class ItemsController < ApplicationController
     @item.update(item_update_params)
   end
   
+  def buy
+    @item = Item.find(17)
+    @address = Address.find_by(user_id: current_user.id)
+  end
+
+  def sold
+    item = Item.find(params[:id])
+    if item.save(buyer_id: current_user.id)
+      redirect_to root_path
+  else
+    flash.now[:alert] = "クレジットカードを登録して下さい"
+      render :buy
+    end
+  end
+
   private
   def item_params
     params.require(:item).permit(:name,:price,:description,:status,:brand,:category_id,:postage_id,:prefecture_id,:day_id, item_images_attributes: [:image]).merge(user_id: current_user.id)
   end
 
+
   def set_item
     @item = Item.find(params[:id])
   end
+
 
 end
