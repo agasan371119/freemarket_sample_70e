@@ -67,7 +67,7 @@
           %li
             = link_to "発送元・お届け先住所変更", "#", class: "nav__list__link"
           %li
-            = link_to "支払い方法", credit_users_path, class: "nav__list__link"
+            = link_to "支払い方法", "#", class: "nav__list__link"
           %li
             = link_to "メール/パスワード", "#", class: "nav__list__link"
           %li
@@ -76,71 +76,18 @@
             = link_to "電話番号の確認", "#", class: "nav__list__link"
           %li
             = link_to "ログアウト", logout_users_path, class: "nav__list__link"
-    .user__main__content__right
-      .user__main__content__right__top
-        - if @user.image.present?
-          .user__main__content__right__top__content
-            = link_to image_tag("/images/#{@user[:image]}", width: "60", height: "60", class: "user__icon"), "#"
-            .user__main__content__right__top__content__name
-              %h2 #{@user.nickname}
-            .user__main__content__right__top__content__review
-              %div
-                評価
-                %span.bold 0
-              %div
-                出品数
-                %span.bold 0
-        - else
-          .user__main__content__right__top__content
-            = link_to image_tag("/images/member_photo_noimage_thumb.png", width: "60", height: "60", class: "user__icon"), "#" 
-            .user__main__content__right__top__content__name
-              %h2 #{@user.nickname}
-            .user__main__content__right__top__content__review
-              %div
-                評価
-                %span.bold 0
-              %div
-                出品数
-                %span.bold 0
-      .user__main__content__right__middle
-        %ul.middle__ul
-          %li.middle__ul__li.active
-            = link_to "お知らせ", "#", class: "middle__link"
-          %li.middle__ul__li
-            = link_to "やることリスト", "#", class: "middle__link"
-        %ul.middle__bottom__ul.delete.show
-          %li.middle__bottom__ul__li
-            .middle__bottom__ul__li__box
-              .middle__bottom__ul__li__box__logo
-                = image_tag("/images/mercari.logo2.png", width: "48", height: "48", class: "notice_logo")
-              .middle__bottom__ul__li__box__text
-                明日900P還元クーポンの有効期限が切れます！タップし詳細を確認しましょう。
-            .middle__bottom__ul__li__box
-              .middle__bottom__ul__li__box__logo
-                = image_tag("/images/mercari.logo2.png", width: "48", height: "48", class: "notice_logo")
-              .middle__bottom__ul__li__box__text
-                明日900P還元クーポンの有効期限が切れます！タップし詳細を確認しましょう。
-            .middle__bottom__ul__li__box
-              .middle__bottom__ul__li__box__logo
-                = image_tag("/images/mercari.logo2.png", width: "48", height: "48", class: "notice_logo")
-              .middle__bottom__ul__li__box__text
-                明日900P還元クーポンの有効期限が切れます！タップし詳細を確認しましょう。
-            .middle__bottom__ul__li__button
-              = link_to "", "#", class: "middle__bottom__ul__li__button__link"
-              %p.link_p 一覧を見る
-      .user__main__content__right__bottom
-        %h2 購入した商品
-        .user__main__content__right__bottom__container
-          %ul
-            %li.js__li.active
-              = link_to "取引中", "#", class: "bottom__li"
-            %li.js__li
-              = link_to "過去の取引", "#", class: "bottom__li"
-          %ul.ul__under
-            %li.li__bottom.delete.show
-              取引中の商品がありません
-            %li.li__bottom.delete
-              過去に取引した商品がありません
+    .credeit__new
+      .credeit__new__content
+        %h2.credit__new__content__text 支払い方法
+        .credeit__new__content__box
+          .credeit__new__content__box__section
+            .credeit__new__content__box__section__h3
+              %h3.credeit__head クレジットカード一覧
+          .credeit__new__content__box__bottom
+            .credeit__new__content__box__bottom__1
+              = link_to "クレジットカードを追加する", new_user_path, class: "credit__link"
+          .credeit__new__content__box__how
+            = link_to "支払い方法について", "#", class: "how_to_pay"
 .footer
   .footer__box
     .footer__box__info
@@ -158,9 +105,8 @@
       = link_to "FURIMAガイド", "#", class: "footer__box__info__link"
       = link_to "FURIMAロゴ利用ガイドライン", "#", class: "footer__box__info__link"
       = link_to "お知らせ", "#", class: "footer__box__info__link"
-  = link_to image_tag("/images/logo-white.png", width: "160", class: "footer__logo"), "#"
+  = link_to image_tag("/images/logo-white.png", width: "160", class: "footer__logo"), root_path
   %p ©︎FURIMA
-
 .icon
   %p 出品する
-  = link_to image_tag("/images/icon_camera.png", width: "52", height: "52"),new_item_path
+  = link_to image_tag("/images/icon_camera.png", width: "52", height: "52"), new_item_path
