@@ -2,7 +2,7 @@
   width:100%;
   height:100%;
   background-color: whitesmoke;
-  &__header {
+  &__header{
     width:100%;
     height:128px;
     padding:30px 0;
@@ -14,7 +14,7 @@
       display:block;
     }
   }
-  &__container {
+  &__container{
     padding:0 380px;
     &__first{
       padding:40px;
@@ -24,19 +24,18 @@
         font-weight:bold;
         font-size:14px;
         margin-bottom:10px;
-      
-        span{
-          color:white;
-          background-color: red;
-          padding:1px;
-          margin-left:7px;
-          font-size: 13px;
-        }
+      }
+      span{
+        color:white;
+        background-color: red;
+        padding:1px;
+        margin-left:7px;
+        font-size: 13px;
       }
       &__p{
         font-size:14px;
       }
-      &__image{
+      .select__image{
         width:100%;
         height:150px;
         margin-top:10px;
@@ -46,21 +45,14 @@
         text-align: center;
         align-items: center;
         position:relative;
-        ul#preview {
-          li.input {
-            label.upload-label {
-              &__text{
-                font-size: 12px;  
-                text-align: center;  
-                .input-area {
-                  .hidden-field {
-                    display:none;
-                  }
-                }
-              }
-            }
+        &__text{
+          font-size: 12px;       
+        }
+        .hidden-content{ 
+          .image-upload {
+            display:none;
           }
-        }      
+        }
       }
     }
   }

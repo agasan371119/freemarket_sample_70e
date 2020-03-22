@@ -9,7 +9,7 @@ class Address < ApplicationRecord
   end
   validates :family_name_kana, :first_name_kana, presence: true,
               format: { with: /\A([ァ-ン]|ー)+\z/, message: "全角で入力してください" }
-  validates :postal_code,presence: true,
+  validates :postal_code, presence: true,
               format: { with: /\A\d{3}-\d{4}\z/, message: "ハイフンを入れてください" }
   enum prefecture: {
       "--未選択--":0,北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,

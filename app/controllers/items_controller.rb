@@ -14,7 +14,6 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @images = @item.item_images.build
-    @item.item_images.new
     @category_parent_array = ["選択してください"]
     categories = Category.where(ancestry: nil)
     categories.each do |parent|
@@ -32,16 +31,31 @@ class ItemsController < ApplicationController
   
   def create
     @item = Item.new(item_params)
+    @category_parent_array = ["選択してください"]
+    categories = Category.where(ancestry: nil)
+    categories.each do |parent|
+      @category_parent_array << parent.name
+   end
     if @item.save
       redirect_to root_path
     else
-      render :new, alert: '入力してくだい'
+      flash[:alert] = '出品に失敗しました。必須項目を確認してください。'
+      redirect_to new_item_path
     end
+  end
+
+  def edit
+    @item = Item.find(params[:id])
+  end
+
+  def update
+    @item = Item.find(params[:id])
+    @item.update(item_update_params)
   end
   
   private
   def item_params
-    params.require(:item).permit(:name,:price,:description,:status,:brand,:category_id,:postage,:prefecture,:day, item_images_attributes: [:image]).merge(user_id: current_user.id)
+    params.require(:item).permit(:name,:price,:description,:status,:brand,:category_id,:postage_id,:prefecture_id,:day_id, item_images_attributes: [:image]).merge(user_id: current_user.id)
   end
 
   # def set_product

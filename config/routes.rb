@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   # root to: 'items#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :users, only: [:new, :show]
-  resources :items, only: [:index, :new, :show, :destroy, :edit, :update] do
+  resources :items, only: [:index, :new, :show, :create, :destroy, :edit, :update] do
     member do
       get 'buy'
     end
