@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  # before_action :set_item, except: [:new, :create]
+  before_action :set_item
 
   def index
     @items = Item.all
@@ -45,11 +45,9 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item = Item.find(params[:id])
   end
 
   def update
-    @item = Item.find(params[:id])
     @item.update(item_update_params)
   end
   
@@ -58,8 +56,8 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:name,:price,:description,:status,:brand,:category_id,:postage_id,:prefecture_id,:day_id, item_images_attributes: [:image]).merge(user_id: current_user.id)
   end
 
-  # def set_product
-  #   @product = Product.find(params[:id])
-  # end
+  def set_item
+    @item = Item.find(params[:id])
+  end
 
 end
