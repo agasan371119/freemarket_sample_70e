@@ -88,7 +88,7 @@
               %tr
                 %td.one{bgcolor:"#eee", align:"center"} カテゴリー
                 %td.dfg{width:"70%"} 
-                  = link_to "メンズ", "#", class: "hogehoge"
+                  = link_to @item.category_id, "#", class: "hogehoge"
               %tr
                 %td.one{bgcolor:"#eee", align:"center"} ブランド
                 %td.abc 
@@ -133,12 +133,13 @@
             %button.commentBtn{name: "button", type: "submit"}
               %i.fa.fa-comment
               コメントするヨ
-          - if user_signed_in? && current_user.id == tweet.user_id
-            = link_to "購入ボタン", buy_item_path, class: 'buy-btn'
-          - else
-            = link_to "編集ボタン", edit_item_path(@item.id), class: 'edit-btn'
-            = link_to "削除ボタン", item_path(@item.id), method: :delete, class: 'destroy-btn'
+            - if user_signed_in? && current_user.id == sailer.user_id
+              = link_to "編集ボタン", edit_item_path(@item.id), class: 'edit-btn'
+              = link_to "削除ボタン", item_path(@item.id), method: :delete, class: 'destroy-btn'
+            - else
+              = link_to "購入ボタン", buy_item_path, class: 'buy-btn'
 
+              
 
         %ul.links
           %li
