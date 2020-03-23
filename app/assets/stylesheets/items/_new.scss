@@ -1,10 +1,10 @@
-.item__post{
+.item__post {
   width:100%;
   height:100%;
   background-color: whitesmoke;
   &__header{
     width:100%;
-    height:128px;
+    height:100px;
     padding:30px 0;
     background-color:whitesmoke;
     align-items: center;
@@ -12,67 +12,128 @@
     &__logo{
       margin:0 auto;
       display:block;
-      }
     }
+  }
   &__container{
     padding:0 380px;
     &__first{
       padding:40px;
       background-color:white;
       border-bottom: 1px solid rgb(245, 245, 245) ;   
-      &__h{
+      &__h {
         font-weight:bold;
         font-size:14px;
         margin-bottom:10px;
-      }
-      span{
-        color:white;
-        background-color: red;
-        padding:1px;
-        margin-left:7px;
-        font-size: 13px;
+        span{
+          color:white;
+          background-color: red;
+          padding:1px;
+          margin-left:7px;
+          font-size: 13px;
+        }
       }
       &__p{
         font-size:14px;
       }
-      &__image{
-        width:100%;
-        height:150px;
-        margin-top:10px;
-        border-width:1px;
-        border-style:dashed;
-        background-color: rgb(245, 245, 245) ;
-        text-align: center;
-        align-items: center;
-        position:relative;
-        &__p{
-          font-size: 12px;       
+      .item-images__update-box {
+        display: block;
+        margin: 16px auto 0;
+        display: flex;
+        flex-wrap: wrap;
+        .preview__image {
+          display: flex;
+          .preview-box {
+            height: 162px;
+            width: 112px;
+            margin: 0 15px 10px 0;
+            .upper-box {
+              height: 112px;
+              width: 100%;
+              img{
+                width: 112px;
+                height: 112px;
+              }
+            }
+            .lower-box {
+              display: flex;
+              text-align: center;
+              .update-box {
+                color: #00b0ff;
+                width: 50%;
+                height: 50px;
+                line-height: 50px;
+                border: 1px solid #eee;
+                background: #f5f5f5;
+                cursor: pointer;
+              }
+              .delete-box {
+                color: #00b0ff;
+                width: 50%;
+                height: 50px;
+                line-height: 50px;
+                border: 1px solid #eee;
+                background: #f5f5f5;
+                cursor: pointer;
+              }
+            }
+          }
         }
-    }
-      
-      .hidden-content{ 
-        .hidden-field{
-          // display:none;
+        .preview__label {
+          margin-bottom: 10px;
+          width: 620px;
+          .label-box {
+            display: block;
+            border: 1px dashed #ccc;
+            position: relative;
+            background: #f5f5f5;
+            width: 100%;
+            height: 162px;
+            cursor: pointer;
+            &__text {
+              position: absolute;
+              top: 50%;
+              left: 16px;
+              right: 16px;
+              text-align: center;
+              font-size: 14px;
+              line-height: 1.5;
+              font-weight: bold;
+              -webkit-transform: translate(0, -50%);
+              transform: translate(0, -50%);
+              pointer-events: none;
+              white-space: pre-wrap;
+              word-wrap: break-word;
+            }
+          }
+        }
+        .hidden-content {
+          .hidden-field {
+            display: none;
+          }
+          .hidden-checkbox {
+            display: none;
+          }
         }
       }
-  }
-    &__second{
+    }
+  
+    &__second {
       padding:40px;
       background-color: white;
-      border-bottom: 1px solid rgb(245, 245, 245) ;   
-      &__h{
+      border-bottom: 1px solid rgb(245, 245, 245) ;
+      &__h {
         font-weight:bold;
         font-size:14px;
         margin-bottom:10px;
-      }
-      span{
-        color:white;
-        background-color: red;
-        padding:1px;
-        margin-left:7px;
-        font-size: 13px;
-      }
-      &__nameform{
+        span {
+          color:white;
+          background-color: red;
+          padding:1px;
+          margin-left:7px;
+          font-size: 13px;
+        }
+      }  
+      &__nameform {
         .input__name{
           width:100%;
           border: 1px solid #ccc;
@@ -98,57 +159,55 @@
           .input__textarea::placeholder {
             padding:10px 10px;
             font-size: 15px;
-        }
           }
-
         }
-    }
-    &__third{
+      }
+    }  
+    &__third {
       padding:40px;
       background-color: white;
       border-bottom: 1px solid rgb(245, 245, 245) ;
-      &__h1{
+      &__h1 {
         font-size: 14px;
         font-weight: bold;
         opacity: 0.5;
       }
-      .item__post__container__third__category__h{
+      h2.item__post__container__third__category__h {
         font-weight:bold;
         font-size:14px;
         margin-top: 20px;
-      }
-      span{
-        color:white;
-        background-color: red;
-        padding:1px;
-        margin-left:7px;
-        font-size: 13px;
+        span {
+          color:white;
+          background-color: red;
+          padding:1px;
+          margin-left:7px;
+          font-size: 13px;
+        }
       }
       &__categoryform{
         margin-top: 16px;
-        .input__category1{
-        width:100%;
-        height:45px;
-        .input__category{
-          width: 100%;
+        .input__category1 {
+          width:100%;
           height:45px;
+          .input__category{
+            width: 100%;
+            height:45px;
+          }
         }
-        }
-        }
-      &__h2{
+      }
+      h2.item__post__container__third__h2 {
         font-weight:bold;
         font-size:14px;
         margin-top: 20px;
         margin-bottom:10px;
-      
-      span{
-        color:white;
-        background-color:gray;
-        padding:1px;
-        margin-left:7px;
-        font-size: 13px;
-     }
-    }
+        span {
+          color:white;
+          background-color:gray;
+          padding:1px;
+          margin-left:7px;
+          font-size: 13px;
+        }
+      }
       &__brandform{
         .input__brand{
           width:100%;
@@ -167,117 +226,123 @@
         font-size:14px;
         margin-top: 20px;
         margin-bottom:10px;
+        span {
+          color:white;
+          background-color: red;
+          padding:1px;
+          margin-left:7px;
+          font-size: 13px;
+        }
       }
       &__statusform{
-        .input__status{
+        .input__status {
         width:100%;
         height:45px;
         }
       }
     }
-
-    &__delivery{
+    &__delivery {
       padding:40px;
       background-color: white;
       border-bottom: 1px solid rgb(245, 245, 245) ;
-      &__h1{
+      &__h1 {
         font-size: 14px;
         font-weight: bold;
         opacity: 0.5;
       }
-      &__h{
+      &__h {
         font-weight:bold;
         font-size:14px;
         margin-top: 20px;
         margin-bottom:10px;
-      }
-      span{
-        color:white;
-        background-color: red;
-        padding:1px;
-        margin-left:7px;
-        font-size: 13px;
-      } 
-      &__postageform{
-        .input__postage{
-        width:100%;
-        height:45px;
-      }
-    }
-      &__prefectureform{
-        .input__prefecture{
-        width:100%;
-        height:45px;
-        }
-      }
-      &__dayform{
-        .input__day{
-        width:100%;
-        height:45px;
+        span{
+          color:white;
+          background-color: red;
+          padding:1px;
+          margin-left:7px;
+          font-size: 13px;
         }
       }  
-  }
-    &__price{
+      &__postageform {
+        .input__postage {
+        width:100%;
+        height:45px;
+        }
+      }
+      &__prefectureform {
+        .input__prefecture {
+        width:100%;
+        height:45px;
+        }
+      }
+      &__dayform {
+        .input__day { 
+        width:100%;
+        height:45px;
+        }
+      }
+    }
+    &__price {
       padding:40px;
       background-color: white;
-      &__h1{
+      &__h1 {
         font-size: 14px;
         font-weight: bold;
         opacity: 0.5;
       }
-      &__h2{
-        font-size:14px;
-        width:100%;
-        padding:20px 0;
-        border-bottom: 1px solid rgb(245, 245, 245) ;
-      }
-      &__h3{
-        font-size:14px;
-        width:100%;
-        padding:20px 0;
-      }
-      &__box{
+      &__box {
         display:flex;
         justify-content: space-between;
-        &__h{
+        &__h {
           font-weight:bold;
           font-size:14px;
           margin-top: 20px;
-          margin-bottom:10px;       
-          span{
+          margin-bottom:10px;
+          span {
             color:white;
             background-color: red;
             padding:1px;
             margin-left:7px;
             font-size: 13px;
-            } 
+            }
         }
-        &__right{
+        &__right {
           display:flex;
-
-          &__h{
+          &__h {
             line-height: 45px;
             margin-right:10px;
           }
           &__form{
             .input__price{
-            width:250px;
-            height:45px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+              width:250px;
+              height:45px;
+              border: 1px solid #ccc;
+              border-radius: 4px;
             }
             .input__price::placeholder{
               padding:0 10px;
               text-align: right;
             }
           }
-        }       
-    }
-      &__btn{
+        }
+      }
+      &__h2 {
+        font-size:14px;
+        width:100%;
+        padding:20px 0;
+        border-bottom: 1px solid rgb(245, 245, 245) ;
+      }
+      &__h3 {
+        font-size:14px;
+        width:100%;
+        padding:20px 0;
+      }
+      &__btn {
         width:360px;
         margin:20px 130px 30px 130px;
         text-align: center;
-        &--red{
+        display:block;
+        &--red {
           width:100%;
           height:46px;
           line-height: 46px;
@@ -287,14 +352,18 @@
           border: 1px solid red;
           border-radius: 4px;
           margin-bottom:15px;
-          .input__submit{
+          .input__submit {
             font-size:17px;
             color:white;
             background-color: red;
             border:none;
+            cursor:pointer;
+            text-decoration: none;
+            width:100%;
+            height:100%;
           }
         }
-        &--gray{
+        &--gray {
           width:100%;
           height:46px;
           line-height: 46px;
@@ -303,7 +372,7 @@
           background-color:rgb(204, 204, 204);;
           border: 1px solid rgb(204, 204, 204);;
           border-radius: 4px;
-          a{
+          a {
             display:block;
             text-decoration: none;
             color:black;
@@ -313,44 +382,59 @@
       &__p{
         font-size:12px;
       }
-}
-}
-.single-footer{
-  width: 456px;
-  height: 200px;
-  margin: 30px auto;
-  .cleafix{
-    display: flex;
-    font-size: 12px;
-    margin: 0 0 0 40px;
-    justify-content: space-between;
-    text-decoration: none;
-  }
-  .single-footer-logo{
-    width: 450px;
-    height: 50px;
-    margin: 40px auto 0;
-    .footer-img{
-      padding-left: 135px;
+    }
+  } 
+  .botttom__footer.single-footer {
+    width:100%;
+    height: 140px;
+    padding: 20px 0;
+    background-color:whitesmoke;
+    align-items: center;
+    margin:0 auto;
+    ul {
+      padding: 10px 530px;
+      text-align: center;
+      list-style-type: none;
+      display: flex;
+      justify-content: space-between;
+      li {
+        display: inline-block;
+        margin: 0 0 0 16px;
+        font-size: 12px;
+        text-align: center;
+        a {
+          color: #333333;
+          text-decoration: none;
+          cursor: pointer;
+        }
+      }
+    }
+    .single-footer-logo {
+      max-width: 160px;
+      width: 100%;
+      margin: 0 auto;
+      a {
+        text-decoration: none;
+        text-align: center;
+        color: rgb(51, 51, 51);
+        .logo-white {
+          width: 100%;
+          vertical-align: bottom;
+        }
+      }
+      p.newitems-haml {
+        text-align: center;
+        font-size: 12px;
+        padding-top: 10px;
+      }
     }
   }
-  p{
-    text-align: center;
-  }
 }
-.privacy{
-text-decoration: none;
-color: black;
-}
-.userrule{
-text-decoration: none;
-color: black;
-}
-.taade{
-text-decoration: none;
-color: black;
-}
-a{
-display: block;
-}
-}
+
+
+
+
+
+
+
+
