@@ -27,7 +27,7 @@
       .user__main__content__left__nav
         %ul.nav__list
           %li
-            = link_to "マイページ", "#", class: "active" 
+            = link_to "マイページ", "#", class: "activee" 
           %li
             = link_to "お知らせ", "#", class: "nav__list__link"
           %li
@@ -104,11 +104,11 @@
                 %span.bold 0
       .user__main__content__right__middle
         %ul.middle__ul
-          %li.middle__ul__li.active
+          %li.middle__ul__li.activel
             = link_to "お知らせ", "#", class: "middle__link"
           %li.middle__ul__li
             = link_to "やることリスト", "#", class: "middle__link"
-        %ul.middle__bottom__ul.delete.show
+        %ul.middle__bottom__ul
           %li.middle__bottom__ul__li
             .middle__bottom__ul__li__box
               .middle__bottom__ul__li__box__logo
@@ -119,12 +119,36 @@
               .middle__bottom__ul__li__box__logo
                 = image_tag("/images/mercari.logo2.png", width: "48", height: "48", class: "notice_logo")
               .middle__bottom__ul__li__box__text
-                明日900P還元クーポンの有効期限が切れます！タップし詳細を確認しましょう。
+                《セブンカフェが¥11、松屋のプレミアム牛めしが実質180円》本人確認でおトクなクーポンプレゼント。
             .middle__bottom__ul__li__box
               .middle__bottom__ul__li__box__logo
                 = image_tag("/images/mercari.logo2.png", width: "48", height: "48", class: "notice_logo")
               .middle__bottom__ul__li__box__text
-                明日900P還元クーポンの有効期限が切れます！タップし詳細を確認しましょう。
+                《今日のお昼はメルペイでおトクに》毎日7時〜13時限定！セブン-イレブンやローソンで最大20%ポイント還元
+            .middle__bottom__ul__li__box.middle__bottom__ul__li__box__js
+              .middle__bottom__ul__li__box__flex
+                .middle__bottom__ul__li__box__logo
+                  = image_tag("/images/mercari.logo2.png", width: "48", height: "48", class: "notice_logo")
+                .middle__bottom__ul__li__box__text
+                  《ご登録記念》「900円分のクーポン(ポイントバック)」を付与しました！
+            .middle__bottom__ul__li__box.middle__bottom__ul__li__box__js
+              .middle__bottom__ul__li__box__flex
+                .middle__bottom__ul__li__box__logo
+                  = image_tag("/images/mercari.logo2.png", width: "48", height: "48", class: "notice_logo")
+                .middle__bottom__ul__li__box__text
+                  《1万名にP3,000》売っても買ってもおトクな新生活応援キャンペーン実施中！
+            .middle__bottom__ul__li__box.middle__bottom__ul__li__box__js
+              .middle__bottom__ul__li__box__flex
+                .middle__bottom__ul__li__box__logo
+                  = image_tag("/images/mercari.logo2.png", width: "48", height: "48", class: "notice_logo")
+                .middle__bottom__ul__li__box__text
+                  《今日が最終日》”最大1,000円分”のポイントをプレゼント！キャンペーン詳細はこちら！
+            .middle__bottom__ul__li__box.middle__bottom__ul__li__box__js
+              .middle__bottom__ul__li__box__flex
+                .middle__bottom__ul__li__box__logo
+                  = image_tag("/images/mercari.logo2.png", width: "48", height: "48", class: "notice_logo")
+                .middle__bottom__ul__li__box__text
+                  《ご登録記念》「900円分のクーポン(ポイントバック)」を付与しました！ 
             .middle__bottom__ul__li__button
               = link_to "", "#", class: "middle__bottom__ul__li__button__link"
               %p.link_p 一覧を見る
@@ -137,10 +161,18 @@
             %li.js__li
               = link_to "過去の取引", "#", class: "bottom__li"
           %ul.ul__under
-            %li.li__bottom.delete.show
-              取引中の商品がありません
-            %li.li__bottom.delete
-              過去に取引した商品がありません
+            %li.li__bottom.show
+              取引中の商品がありません 
+            - if @item
+              %li.li__bottom
+                .li__bottom__box
+                  .li__bottom__box__image
+                    = image_tag("/images/#{@item.item_images[0][:image]}", width: "50", height: "50", class: "notice_logo")
+                  .li__bottom__box__text
+                    = @item.name
+            - else
+              %li.li__bottom
+                過去に取引した商品がありません
 .footer
   .footer__box
     .footer__box__info

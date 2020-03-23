@@ -1,4 +1,7 @@
 class ItemsController < ApplicationController
+  
+  before_action :move_to_index, except: [:index, :show]
+  before_action :set_item, only: [:show, :edit, :destroy]
 
   def index
     @items = Item.all.limit(5).order("created_at DESC")
@@ -76,10 +79,9 @@ class ItemsController < ApplicationController
 
   def sold
     item = Item.find(params[:id])
-    if item.save(buyer_id: current_user.id)
+    if item.update(buyer_id: current_user.id)
       redirect_to root_path
-  else
-    flash.now[:alert] = "クレジットカードを登録して下さい"
+    else 
       render :buy
     end
   end
@@ -98,10 +100,12 @@ class ItemsController < ApplicationController
   end
 
 
+  def move_to_index
+    redirect_to root_path unless user_signed_in?
+  end
 
   def set_item
     @item = Item.find(params[:id])
   end
-
 
 end
