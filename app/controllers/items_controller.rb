@@ -1,5 +1,7 @@
 class ItemsController < ApplicationController
+  before_action :set_item, only: [:edit, :show, :buy]
 
+  set_item
   def index
     @items = Item.all.limit(5).order("created_at DESC")
     @ladies = Item.where(category_id: 5).limit(5)
@@ -11,11 +13,9 @@ class ItemsController < ApplicationController
   end
   
   def show
-    @item = Item.find(params[:id])
   end
 
   def buy
-    @item = Item.find(params[:id])
     @address = Address.find_by(user_id: current_user.id)
   end
 
@@ -52,10 +52,7 @@ class ItemsController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def destroy
-    items = Item.find(params[:id])
-    items.destroy 
-    redirect_to root_path    
+  def destroy 
   end
 
   private
@@ -64,5 +61,8 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:name,:price, buyer_id:current_user_id)
   end
 
+  def set_item
+    @items = Item.find(params[:id])
+  end
 
 end
