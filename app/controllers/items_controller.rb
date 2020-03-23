@@ -68,7 +68,7 @@ class ItemsController < ApplicationController
   end
   
   def buy
-    @item = Item.find(17)
+    @item = Item.find(params[:id])
     @address = Address.find_by(user_id: current_user.id)
   end
 
