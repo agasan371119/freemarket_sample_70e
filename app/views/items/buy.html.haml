@@ -8,7 +8,7 @@
       .buy__content__info
         .buy__content__info__box
           .buy__content__info__box__image
-            = image_tag("/images/#{@item.item_images[0][:image]}", width: "80px", height: "80px")
+            = image_tag("#{@item.item_images[0].image.url}", width: "80px", height: "80px")
           .buy__content__info__box__name
             %p.item_name #{@item.name}
             %p.item_price
@@ -47,17 +47,15 @@
                     #{@address.family_name}#{@address.first_name}
             .buy__content__form__info__bottom
               %button.buy__content__form__info__bottom__button{type: "submit"} 購入する
-  %footer.single-footer
-    %nav
-      %ul.cleafix
-        %li
-          = link_to "プライバシーポリシー", "#", class: "privacy"
-        %li
-          = link_to "メルカリ利用規約", "#", class: "userrule"
-        %li
-          = link_to "特定商取引に関する表記", "#", class: "taade"
+  .botttom__footer.single-footer
+    %ul
+      %li 
+        = link_to 'プライバシーポリシー' , url = "#" 
+      %li
+        = link_to 'FURIMA' , url = "#" 
+      %li
+        = link_to '特定商取引に関する表記' , url = "#" 
     .single-footer-logo
-      .footer-img
-        =link_to image_tag('/images/logo.png', alt: 'aaaa', height: '49', width: '185', class: 'logo'),items_path
-    %p
-      %small© Furima, Inc.
+      = link_to image_tag("/material/logo/logo-white.png", with: "185", class: "logo-white"), root_path 
+      %p.newitems-haml
+        © FURIMA

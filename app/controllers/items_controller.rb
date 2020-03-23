@@ -6,6 +6,10 @@ class ItemsController < ApplicationController
   def index
     @items = Item.all.limit(5).order("created_at DESC")
     @ladies = Item.where(category_id: 5).limit(5)
+
+
+    @mens = Item.where(category_id: 139).limit(5)
+
     @categories = Category.where(ancestry: nil)
   end
 
@@ -76,7 +80,7 @@ class ItemsController < ApplicationController
 
   
   def buy
-    @item = Item.find(17)
+    @item = Item.find(params[:id])
     @address = Address.find_by(user_id: current_user.id)
   end
 
