@@ -12,7 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2020_03_21_124325) do
 
-
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
     t.string "family_name", null: false
@@ -58,13 +57,9 @@ ActiveRecord::Schema.define(version: 2020_03_21_124325) do
     t.integer "user_id", null: false
     t.integer "category_id", null: false
     t.integer "buyer_id"
-
     t.integer "postage_id", null: false
     t.integer "prefecture_id", null: false
     t.integer "day_id", null: false
-
- 
-
     t.index ["name"], name: "index_items_on_name"
   end
 

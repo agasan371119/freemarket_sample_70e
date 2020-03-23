@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
   def index
     @items = Item.all.limit(5).order("created_at DESC")
     @ladies = Item.where(category_id: 5).limit(5)
-    @mens = Item.where(category_id: 138).limit(5)
+    @mens = Item.where(category_id: 139).limit(5)
     @categories = Category.where(ancestry: nil)
     @category_children = Category.find_by(params[:parent_name]).children
     respond_to do |format|

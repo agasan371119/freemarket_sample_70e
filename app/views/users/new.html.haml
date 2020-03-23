@@ -17,7 +17,7 @@
       %ul.header__box__bottom__user
         - if user_signed_in?
           %li= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "header__box__bottom__user__btn"
-          %li= link_to "マイページ", "#", class: "header__box__bottom__user__btn"
+          %li= link_to "マイページ", user_path(current_user.id), class: "header__box__bottom__user__btn"
         - else  
           %li= link_to "ログイン", new_user_session_path, class: "header__box__bottom__user__btn"
           %li= link_to "新規会員登録", new_user_registration_path, class: "header__box__bottom__user__btn"
@@ -27,7 +27,7 @@
       .user__main__content__left__nav
         %ul.nav__list
           %li
-            = link_to "マイページ", "#", class: "activee" 
+            = link_to "マイページ", user_path(current_user.id), class: "activee" 
           %li
             = link_to "お知らせ", "#", class: "nav__list__link"
           %li
@@ -75,7 +75,7 @@
           %li
             = link_to "電話番号の確認", "#", class: "nav__list__link"
           %li
-            = link_to "ログアウト", "#", class: "nav__list__link"
+            = link_to "ログアウト", logout_users_path, class: "nav__list__link"
     .credit
       .credit__content
         %h2.credit__text クレジットカード情報入力
