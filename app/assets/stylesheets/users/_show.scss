@@ -16,7 +16,7 @@
       .nav__list {
         li { 
           border-top: 1px solid #eee;
-          .active {
+          .activee {
             position: relative;
             display: block;
             min-height: 48px;
@@ -101,7 +101,7 @@
               font-weight: 600;
             }
           }
-          .active {
+          .activel {
             border-top: 2px solid #ea352d;
             background: white;
           }
@@ -123,6 +123,12 @@
                 padding-top: 5px;
               }      
             }
+            .middle__bottom__ul__li__box__js {
+              display: none;
+              .middle__bottom__ul__li__box__flex {
+                display: flex;
+              }
+            }
             &__button {
               padding: 16px;
               position: relative;
@@ -139,6 +145,12 @@
                 position: absolute;
                 top: 35px;
                 left: 300px; 
+              }
+              .link_p:hover {
+                position: absolute;
+                top: 35px;
+                left: 300px;
+                cursor: pointer; 
               }
             }
           }
@@ -189,16 +201,33 @@
               color: #ccc;
               width: 100%;
               background-color: white; 
+              display: none;
+              position: relative;
+              &__box {
+                display: flex;
+                min-height: 80px;
+                padding: 16px;
+                border-top: 1px solid #eee;
+                border-bottom: 1px solid #eee;
+                position: absolute;
+                top: 0;
+                &__text {
+                  margin-left: 30px;
+                  color: #333;
+                }
+              }
+              
+            }
+            .show {
+              display: block;
             }
           }
         }
       }
     }
   }
-  .delete {
-    display: none;
-  }
-  .show {
-    display: block;
-  }
+  // .delete {
+  //   display: none;
+  // }
+  
 }
