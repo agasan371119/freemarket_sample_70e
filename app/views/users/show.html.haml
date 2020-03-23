@@ -27,7 +27,7 @@
       .user__main__content__left__nav
         %ul.nav__list
           %li
-            = link_to "マイページ", "#", class: "activee" 
+            = link_to "マイページ", user_path(current_user.id), class: "activee" 
           %li
             = link_to "お知らせ", "#", class: "nav__list__link"
           %li
@@ -167,7 +167,7 @@
               %li.li__bottom
                 .li__bottom__box
                   .li__bottom__box__image
-                    = image_tag("/images/#{@item.item_images[0][:image]}", width: "50", height: "50", class: "notice_logo")
+                    = image_tag("#{@item.item_images[0].image.url}", width: "50", height: "50", class: "notice_logo")
                   .li__bottom__box__text
                     = @item.name
             - else
