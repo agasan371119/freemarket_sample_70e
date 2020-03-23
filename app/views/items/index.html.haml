@@ -109,7 +109,7 @@
           = link_to image_tag("/images/sould out.jpeg", width: "100%", height: "230px"), "#"
           .item__box__info__name
             申し訳ありません、売り切れました。
-      - else        
+      - else
         .item__box__info
           = link_to image_tag("/images/#{item.item_images[0][:image]}", width: "100%", height: "230px"), item_path(@items)
           .item__box__info__name
