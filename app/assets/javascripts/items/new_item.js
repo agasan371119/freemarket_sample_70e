@@ -133,7 +133,6 @@ $(document).on('turbolinks:load', function(){
           $('.label-box').attr({id: `label-box--${id}`,for: `item_images_attributes_${id}_image`});
         }
       }
-      //=============================================================================
     });
   });
 });

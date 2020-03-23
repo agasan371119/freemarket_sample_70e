@@ -81,9 +81,7 @@ gem 'mini_magick'
 gem 'jquery-rails'
 gem 'fog-aws'
 gem 'ancestry'
-
 gem 'gon'
 gem 'active_hash'
-
 gem 'pry-rails'
 

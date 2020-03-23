@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item
+  before_action :set_item, only: [:show, :edit, :destroy]
 
   def index
     @items = Item.all.limit(5).order("created_at DESC")
@@ -55,6 +55,15 @@ class ItemsController < ApplicationController
 
   def update
     @item.update(item_update_params)
+    if item.user_id == current_user.id
+      item.update(item_params)
+      redirect_to root_path
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
   end
   
   def buy
@@ -74,8 +83,15 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:name,:price,:description,:status,:brand,:category_id,:postage_id,:prefecture_id,:day_id, item_images_attributes: [:image]).merge(user_id: current_user.id)
+    params.require(:item).permit(
+      :name,:price,:description,:status,:brand,:category_id,:postage_id,:prefecture_id,:day_id, item_images_attributes: [:image]).merge(user_id: current_user.id)
   end
+
+  def item_update_params
+    params.require(:item).permit(
+      :name,:price,:description,:status,:brand,:category_id,:postage_id,:prefecture_id,:day_id, item_images_attributes: [:image, :_destroy, :id]).merge(user_id: current_user.id)
+  end
+
 
 
   def set_item
