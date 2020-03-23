@@ -14,7 +14,7 @@ class ItemsController < ApplicationController
   end
   
   def show
-    @item = Item.find(3)
+    @item = Item.find(params[:id])
   end
 
   def buy
@@ -74,8 +74,6 @@ class ItemsController < ApplicationController
     end
   end
 
-  def destroy
-  end
   
   def buy
     @item = Item.find(17)
