@@ -82,9 +82,7 @@ gem 'jquery-rails'
 gem 'fog-aws'
 gem 'ancestry'
 gem 'pry-rails'
-
 gem 'gon'
 gem 'active_hash'
-
 gem 'pry-rails'
 
