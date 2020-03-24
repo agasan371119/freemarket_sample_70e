@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
-  before_action :set_item, only: [:show, :edit, :destroy]
+  before_action :set_item, only: [:show, :edit, :destroy, :buy]
 
   def index
     @items = Item.all.limit(5).order("created_at DESC")
@@ -68,7 +68,6 @@ class ItemsController < ApplicationController
   end
   
   def buy
-    @item = Item.find(params[:id])
     @address = Address.find_by(user_id: current_user.id)
   end
 
