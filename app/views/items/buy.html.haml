@@ -5,6 +5,7 @@
     - if @item.buyer_id.present?
       .buy__content
         = image_tag("/images/sold.png", class: "sold_icon")
+        = link_to "TOPページへ戻る", root_path, class: "move__to__index"
     -else
       .buy__content
         .buy__content__text
