@@ -4,8 +4,8 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all.limit(5).order("created_at DESC")
-    @ladies = Item.where(category_id: 5).limit(5)
-    @mens = Item.where(category_id: 139).limit(5)
+    @ladies = Item.where(category_id: 5).limit(5).order("created_at DESC")
+    @mens = Item.where(category_id: 139).limit(5).order("created_at DESC")
     @categories = Category.where(ancestry: nil)
     @category_children = Category.find_by(params[:parent_name]).children
     respond_to do |format|
@@ -76,6 +76,7 @@ class ItemsController < ApplicationController
     if item.update(buyer_id: current_user.id)
       redirect_to root_path
     else 
+      flash[:alert] = 'クレジットカード情報を入力して下さい'
       render :buy
     end
   end
