@@ -52,8 +52,9 @@ $(document).on('turbolinks:load', function(){
       setLabel();
       //hidden-fieldのidの数値のみ取得
       var id = $(this).attr('id').replace(/[^0-9]/g, '');
+      
       //labelボックスのidとforを更新
-      $('.label-box').attr({id: `label-box--${id}`,for: `item_images_attributes_${id}_image`});
+      $('.label-box').attr({id: `label-box--${id}`,for: `item_item_images_attributes_${id}_image`});
       //選択したfileのオブジェクトを取得
       var file = this.files[0];
       var reader = new FileReader();
@@ -62,10 +63,12 @@ $(document).on('turbolinks:load', function(){
       //読み込み時に発火するイベント
       reader.onload = function() {
         var image = this.result;
+        
         //プレビューが元々なかった場合はhtmlを追加
         if ($(`#preview-box__${id}`).length == 0) {
           var count = $('.preview-box').length;
           var html = buildHTML(id);
+          
           //ラベルの直前のプレビュー群にプレビューを追加
           var prevContent = $('.preview__label').prev();
           $(prevContent).append(html);
@@ -73,13 +76,14 @@ $(document).on('turbolinks:load', function(){
         //イメージを追加
         $(`#preview-box__${id} img`).attr('src', `${image}`);
         var count = $('.preview-box').length;
+        
         //プレビューが5個あったらラベルを隠す 
         if (count == 5) { 
           $('.preview__label').hide();
         }
          //プレビュー削除したフィールドにdestroy用のチェックボックスがあった場合、チェックを外す=============
-         if ($(`#item_images_attributes_${id}__destroy`)){
-          $(`#item_images_attributes_${id}__destroy`).prop('checked',false);
+         if ($(`#item_item_images_attributes_${id}__destroy`)){
+          $(`#item_item_images_attributes_${id}__destroy`).prop('checked',false);
         } 
 
         //ラベルのwidth操作
@@ -87,7 +91,7 @@ $(document).on('turbolinks:load', function(){
         //ラベルのidとforの値を変更
         if(count < 5){
           //プレビューの数でラベルのオプションを更新する
-          $('.label-box').attr({id: `label-box--${count}`,for: `item_images_attributes_${count}_image`});
+          $('.label-box').attr({id: `label-box--${count}`,for: `item_item_images_attributes_${count}_image`});
         }
       }
     });
@@ -103,23 +107,24 @@ $(document).on('turbolinks:load', function(){
 //新規登録時と編集時の場合分け==========================================================
       //新規投稿時
       //削除用チェックボックスの有無で判定
-      if ($(`#item_images_attributes_${id}__destroy`).length == 0) {
+      if ($(`#item_item_images_attributes_${id}__destroy`).length == 0) {
         //フォームの中身を削除 
-        $(`#item_images_attributes_${id}_image`).val("");
+        $(`#item_item_images_attributes_${id}_image`).val("");
         var count = $('.preview-box').length;
+       
         //5個めが消されたらラベルを表示
         if (count == 4) {
           $('.label-content').show();
         }
         setLabel(count);
         if(id < 5){
-          $('.label-box').attr({id: `label-box--${id}`,for: `item_images_attributes_${id}_image`});
+          $('.label-box').attr({id: `label-box--${id}`,for: `item_item_images_attributes_${id}_image`});
 
         }
       } else {
 
         //投稿編集時
-        $(`#item_images_attributes_${id}__destroy`).prop('checked',true);
+        $(`#item_item_images_attributes_${id}__destroy`).prop('checked',true);
         //5個めが消されたらラベルを表示
         if (count == 4) {
           $('.preview__label').show();
@@ -130,7 +135,7 @@ $(document).on('turbolinks:load', function(){
         //ラベルのidとforの値を変更
         //削除したプレビューのidによって、ラベルのidを変更する
         if(id < 5){
-          $('.label-box').attr({id: `label-box--${id}`,for: `item_images_attributes_${id}_image`});
+          $('.label-box').attr({id: `label-box--${id}`,for: `item_item_images_attributes_${id}_image`});
         }
       }
     });

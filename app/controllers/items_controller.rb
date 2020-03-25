@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show]
   before_action :set_item, only: [:show, :edit, :destroy, :buy]
 
+
   def index
     @items = Item.all.limit(5).order("created_at DESC")
     @ladies = Item.where(category_id: 5).limit(5).order("created_at DESC")
@@ -27,7 +28,7 @@ class ItemsController < ApplicationController
       @category_parent_array << parent.name
    end
   end
-  
+
   def category_children
     @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
   end
@@ -35,6 +36,8 @@ class ItemsController < ApplicationController
   def category_grandchildren
     @category_grandchildren = Category.find("#{params[:child_id]}").children
   end
+  
+  
   
   def create
     @item = Item.new(item_params)
@@ -52,15 +55,34 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    
+    grand_child_category = @item.category
+    # binding.pry
+    child_category = grand_child_category.parent
+    
+    @category_parent_array = ["選択してください"]
+    Category.where(ancestry: nil).each do |parent|
+      @category_parent_array << parent.name
+    end
+
+    @category_children_array = ["選択してください"]
+    Category.where(ancestry: child_category.ancestry).each do |children|
+      @category_children_array << children.name
+    end
+
+    @category_grandchildren_array = ["選択してください"]
+    Category.where(ancestry: grand_child_category.ancestry).each do |grandchildren|
+      @category_grandchildren_array << grandchildren.name
+    end
   end
+  
 
   def update
-    @item.update(item_update_params)
-    if item.user_id == current_user.id
-      item.update(item_params)
-      redirect_to root_path
+    if @item.update(item_params)
+       redirect_to root_path
     else
-      render 'edit'
+      flash[:alert] = '編集に失敗しました。必須項目を確認してください。'
+      redirect_to edit_item_path
     end
   end
 
