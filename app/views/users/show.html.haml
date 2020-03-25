@@ -163,13 +163,14 @@
           %ul.ul__under
             %li.li__bottom.show
               取引中の商品がありません 
-            - if @item
+            - if @items
               %li.li__bottom
-                .li__bottom__box
-                  .li__bottom__box__image
-                    = image_tag("#{@item.item_images[0].image.url}", width: "50", height: "50", class: "notice_logo")
-                  .li__bottom__box__text
-                    = @item.name
+                - @items.each do |item|
+                  .li__bottom__box
+                    .li__bottom__box__image
+                      = image_tag("#{item.item_images[0].image.url}", width: "50", height: "50", class: "notice_logo")
+                    .li__bottom__box__text
+                      = item.name
             - else
               %li.li__bottom
                 過去に取引した商品がありません

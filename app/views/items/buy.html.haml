@@ -52,6 +52,52 @@
                       #{@address.family_name}#{@address.first_name}
               .buy__content__form__info__bottom
                 %button.buy__content__form__info__bottom__button{type: "submit"} 購入する
+    -# - elsif @item.user.credit.present?
+    -#   .buy__content
+    -#     .buy__content__text
+    -#       %h2 購入内容の確認
+    -#     .buy__content__info
+    -#       .buy__content__info__box
+    -#         .buy__content__info__box__image
+    -#           = image_tag("#{@item.item_images[0].image.url}", width: "80px", height: "80px")
+    -#         .buy__content__info__box__name
+    -#           %p.item_name #{@item.name}
+    -#           %p.item_price
+    -#             %span ¥#{@item.price}
+    -#             %span （税込み）送料込み
+    -#     .buy__content__form
+    -#       .buy__content__form__info
+    -#         = form_with url: sold_item_path(@item.id), method: :get, local: true do |f|
+    -#           .buy__content__form__info__price
+    -#             .buy__content__form__info__price__p
+    -#               %p 支払い金額
+    -#             .buy__content__form__info__price__span
+    -#               %span ¥#{@item.price}
+    -#           .buy__content__form__info__point
+    -#             .buy__content__form__info__point__check
+    -#               = f.check_box :point, class: "check-box"
+    -#               %i.icon-check
+    -#               = f.label :name, "ポイントを使用（所持ポイント:P0）"
+    -#           .buy__content__form__info__way
+    -#             .buy__content__form__info__way__box
+    -#               %h3 支払い方法
+    -#               = link_to "+ 登録してください", new_user_path, class: "link-credit"
+    -#           .buy__content__form__info__address
+    -#             .buy__content__form__info__address__info
+    -#               .buy__content__form__info__address__info__top
+    -#                 %h3 配送先
+    -#                 = link_to "変更する", "#", class: "link-address"
+    -#               .buy__content__form__info__address__info__bottom
+    -#                 %p
+    -#                   〒#{@address.postal_code}
+    -#                   %br/
+    -#                   #{@address.prefecture}#{@address.city}
+    -#                   #{@address.address_block}
+    -#                   #{@address.building_name}#{@address.room_number}
+    -#                   %br/
+    -#                   #{@address.family_name}#{@address.first_name}
+    -#           .buy__content__form__info__bottom
+    
   .botttom__footer.single-footer
     %ul
       %li 
