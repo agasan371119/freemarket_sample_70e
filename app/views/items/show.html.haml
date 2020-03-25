@@ -84,11 +84,12 @@
             %table.table{border: "1",  width: "500", height:"500"}
               %tr
                 %td.one{bgcolor:"#eee", width:"30%", align:"center"} 出品者
-                %td.abc{width:"70%"} tattun
+                %td.abc{width:"70%"} 
+                  = @item.user.nickname
               %tr
                 %td.one{bgcolor:"#eee", align:"center"} カテゴリー
                 %td.dfg{width:"70%"} 
-                  = link_to @item.category_id, "#", class: "hogehoge"
+                  = link_to @item.category.name, "#", class: "hogehoge"
               %tr
                 %td.one{bgcolor:"#eee", align:"center"} ブランド
                 %td.abc 

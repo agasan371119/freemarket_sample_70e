@@ -29,6 +29,7 @@ class ItemsController < ApplicationController
   def sold
     item.update(buyer_id: current_user.id)
     redirect_to root_path
+    # TODO: やる内容
   end
 
 
