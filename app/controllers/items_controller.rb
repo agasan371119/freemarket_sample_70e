@@ -1,16 +1,15 @@
 class ItemsController < ApplicationController
   
   before_action :move_to_index, except: [:index, :show]
-  before_action :set_item, only: [:show, :edit, :destroy, :buy]
-
+  before_action :set_item, only: [:show, :edit, :destroy]
 
   def index
     @items = Item.all.limit(5).order("created_at DESC")
+    @ladies = Item.where(category_id: 5).limit(5)
 
 
+    @mens = Item.where(category_id: 139).limit(5)
 
-    @ladies = Item.where(category_id: 5).limit(5).order("created_at DESC")
-    @mens = Item.where(category_id: 139).limit(5).order("created_at DESC")
     @categories = Category.where(ancestry: nil)
   end
 
@@ -66,40 +65,22 @@ class ItemsController < ApplicationController
       redirect_to root_path
     else
       render :show
-
-    
-    grand_child_category = @item.category
-    # binding.pry
-    child_category = grand_child_category.parent
-    
-    @category_parent_array = ["選択してください"]
-    Category.where(ancestry: nil).each do |parent|
-      @category_parent_array << parent.name
-    end
-
-    @category_children_array = ["選択してください"]
-    Category.where(ancestry: child_category.ancestry).each do |children|
-      @category_children_array << children.name
-    end
-
-    @category_grandchildren_array = ["選択してください"]
-    Category.where(ancestry: grand_child_category.ancestry).each do |grandchildren|
-      @category_grandchildren_array << grandchildren.name
     end
   end
-  
 
   def update
-    if @item.update(item_params)
-       redirect_to root_path
+    @item.update(item_update_params)
+    if item.user_id == current_user.id
+      item.update(item_params)
+      redirect_to root_path
     else
-      flash[:alert] = '編集に失敗しました。必須項目を確認してください。'
-      redirect_to edit_item_path
+      render 'edit'
     end
   end
 
   
   def buy
+    @item = Item.find(params[:id])
     @address = Address.find_by(user_id: current_user.id)
   end
 
@@ -108,7 +89,6 @@ class ItemsController < ApplicationController
     if item.update(buyer_id: current_user.id)
       redirect_to root_path
     else 
-      flash[:alert] = 'クレジットカード情報を入力して下さい'
       render :buy
     end
   end
