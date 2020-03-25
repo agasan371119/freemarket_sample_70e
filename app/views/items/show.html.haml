@@ -60,16 +60,18 @@
             %h2.itembox__name
               = @item.name
             .itembox__body
-              %ul.big__image
-                %li.all
-                  = image_tag '/images/icon-01.png', alt: 'image', height: '100', width: '100', class: 'image-one'
-                  %ul.samall__image
-                    %li
-                      = image_tag '/images/icon-03.png', alt: 'image', height: '100', width: '100', class: 'image-second'
-                    %li
-                      = image_tag '/images/pict-reason-03.jpg', alt: 'image', height: '100', width: '100', class: 'image-third'
-                    %li
-                      = image_tag '/images/pict-reason-02.jpg', alt: 'image', height: '100', width: '100', class: 'image-four'
+              - @item.item_images.each do |item_image|
+                = image_tag item_image.image.url
+                %ul.big__image
+                  %li.all
+                    -# = image_tag '#', alt: 'image', height: '100', width: '100', class: 'image-one'
+                    %ul.samall__image
+                      %li
+                        -# = image_tag '/images/icon-03.png', alt: 'image', height: '100', width: '100', class: 'image-second'
+                      %li
+                        -# = image_tag '/images/pict-reason-03.jpg', alt: 'image', height: '100', width: '100', class: 'image-third'
+                      %li
+                        -# = image_tag '/images/pict-reason-02.jpg', alt: 'image', height: '100', width: '100', class: 'image-four'
 
             .itembox__price
               %span
