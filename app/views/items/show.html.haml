@@ -96,7 +96,7 @@
               %tr
                 %td.one{bgcolor:"#eee", align:"center"} 商品のサイズ	
                 %td.abc 
-                = @item.size
+                  = @item.size
               %tr
                 %td.one{bgcolor:"#eee", align:"center"} 商品の状態	
                 %td.abc 
@@ -104,15 +104,15 @@
               %tr
                 %td.one{bgcolor:"#eee", align:"center"} 配送料の負担
                 %td.abc 
-                  = @item.postage
+                  = @item.postage.name
               %tr
                 %td.one{bgcolor: "#eee", align: "center"} 発送元の地域
                 %td.dfg
-                  = link_to @item.prefecture, "#", class: "hogehoge"
+                  = link_to @item.prefecture.name, "#", class: "hogehoge"
               %tr
                 %td.one{bgcolor: "#eee", align:"center"} 発送日の目安
                 %td.abc 
-                  = @item.day
+                  = @item.day.name
 
             .optionalarea
               %ul
@@ -133,11 +133,11 @@
             %button.commentBtn{name: "button", type: "submit"}
               %i.fa.fa-comment
               コメントするヨ
-            - if user_signed_in? && current_user.id == sailer.user_id
-              = link_to "購入ボタン", buy_item_path, class: 'buy-btn'
-            - else
+            - if user_signed_in? && current_user.id == @item.user_id
               = link_to "編集ボタン", edit_item_path(@item.id), class: 'edit-btn'
-              = link_to item_path(@item.id), "削除する", method: :delete, data: {confirm: "削除しますか？"}, class: 'destroy-btn'
+              = link_to "削除する", item_path(@item.id), method: :delete, data: {confirm: "削除しますか？"}, class: 'destroy-btn'
+            - else
+              = link_to "購入ボタン", buy_item_path, class: 'buy-btn'
 
               
 
