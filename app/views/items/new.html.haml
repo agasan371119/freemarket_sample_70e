@@ -5,12 +5,11 @@
   .item__post__container
     =form_with(model: @item ,local:true) do |f|
       .item__post__container__first
-      .item__post__container__first
         %h2.item__post__container__first__h
           出品画像
           %span>必須
         %p.item__post__container__first__p
-          最大10枚までアップロードできます
+          最大5枚までアップロードできます
         .item-images__update-box
           .preview__image
           .preview__label
@@ -26,11 +25,6 @@
               %input{class:"hidden-field", type:"file", name:"item[item_images_attributes][2][image]",id: "item_images_attributes_2_image"}    
               %input{class:"hidden-field", type:"file", name:"item[item_images_attributes][3][image]",id: "item_images_attributes_3_image"}
               %input{class:"hidden-field", type:"file", name:"item[item_images_attributes][4][image]",id: "item_images_attributes_4_image"}
-              %input{class:"hidden-field", type:"file", name:"item[item_images_attributes][5][image]",id: "item_images_attributes_5_image"}
-              %input{class:"hidden-field", type:"file", name:"item[item_images_attributes][6][image]",id: "item_images_attributes_6_image"}
-              %input{class:"hidden-field", type:"file", name:"item[item_images_attributes][7][image]",id: "item_images_attributes_7_image"}
-              %input{class:"hidden-field", type:"file", name:"item[item_images_attributes][8][image]",id: "item_images_attributes_8_image"}
-              %input{class:"hidden-field", type:"file", name:"item[item_images_attributes][9][image]",id: "item_images_attributes_9_image"}
       .item__post__container__second
         %h2.item__post__container__second__h
           商品名
@@ -100,10 +94,10 @@
             .item__post__container__price__box__right__form
               .input__price
                 =f.number_field :price, placeholder: "0", class:"input__price", min: 0, max:9999999
-        %h2.item__post__container__price__h2
-          販売手数料  (10%)
-        %h3.item__post__container__price__h3
-          販売利益
+        -# %h2.item__post__container__price__h2
+        -#   販売手数料  (10%)
+        -# %h3.item__post__container__price__h3
+        -#   販売利益
         .item__post__container__price__btn
           .item__post__container__price__btn--red
             .input__submit
