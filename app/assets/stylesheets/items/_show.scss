@@ -53,21 +53,21 @@
                 &__body{
                   text-align: center;
                   display: flex;
-                  max-width: 50%;
+                  max-width: 80%;
                   margin: 0 auto;
                 }
-                  &__price{
-                    margin: 24px 0 24px;
-                    text-align: center;
-                    font-weight: bold;
-                    margin: 0 10px 0 0;
-                    font-size: 25px;
-                  }
-                  &__price-detail{
-                    font-size: 18px;
-                    text-align: center;
-                    margin-bottom: 30px;
-                  }
+                &__price{
+                  margin: 24px 0 24px;
+                  text-align: center;
+                  font-weight: bold;
+                  margin: 0 10px 0 0;
+                  font-size: 25px;
+                }
+                &__detail{
+                  font-size: 18px;
+                  text-align: center;
+                  margin-bottom: 30px;
+                }
                   .table{
                     margin-bottom: 20px;
                       .text{

@@ -18,11 +18,9 @@ class ItemsController < ApplicationController
   end
   
   def show
-    @item = Item.find(params[:id])
   end
 
   def buy
-    @item = Item.find(params[:id])
     @address = Address.find_by(user_id: current_user.id)
   end
 
