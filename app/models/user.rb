@@ -25,4 +25,5 @@ class User < ApplicationRecord
   has_many :profits
   has_one :credit_card
   has_one :address
+  has_many :cards
 end

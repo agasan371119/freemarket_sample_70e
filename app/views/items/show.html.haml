@@ -26,7 +26,7 @@
 
 
   .winding
-    %ul.winding-road
+    %ul.road
       %li.listone
         = link_to  "#", class: "branch" do
           FURIMA
@@ -59,58 +59,70 @@
           .itembox
             %h2.itembox__name
               = @item.name
+              .big-image
+                = image_tag @item.item_images[0].image.url,height: '300', width: '300'
             .itembox__body
-              %ul.big__image
-                %li.all
-                  = image_tag '/images/icon-01.png', alt: 'tanimura', height: '100', width: '100', class: 'tanimura'
-                  %ul.samall__image
-                    %li
-                      = image_tag '/images/icon-03.png', alt: 'minayoshi', height: '100', width: '100', class: 'minayoshi'
-                    %li
-                      = image_tag '/images/pict-reason-03.jpg', alt: 'nagasue', height: '100', width: '100', class: 'nagasue'
-                    %li
-                      = image_tag '/images/pict-reason-02.jpg', alt: 'gondo', height: '100', width: '100', class: 'gondo'
+              - @item.item_images.each do |item_image|
+                %ul
+                  %li
+                    = image_tag item_image.image.url,height: '100', width: '100'
+                  -# %li.im2
+                  -#   = image_tag item_image.image.url,height: '100', width: '100'
+                -# %ul.big__image
+                  -# %li.all
+                    -# = image_tag item_image.image.url,height: '200', width: '200'
+                    -# %ul.samall__image
+                      -# %li
+                        -# = image_tag '/images/icon-03.png', alt: 'image', height: '100', width: '100', class: 'image-second'
+                      -# %li
+                        -# = image_tag '/images/pict-reason-03.jpg', alt: 'image', height: '100', width: '100', class: 'image-third'
+                      -# %li
+                        -# = image_tag '/images/pict-reason-02.jpg', alt: 'image', height: '100', width: '100', class: 'image-four'
 
             .itembox__price
-              %span
+              %span 
+                ¥
                 = @item.price
-            .itemBox__price-detail
+            .itemBox__detail
               %span
                 (税込み)
               %span
                 送料込み
-            .itemdetail
-            あのチームeのファイナルライブ物販限定商品が4枚セットなって出品！！
-            こちら1枚ずつのバラ売りは応じません。
-            こちら新品未使用品のため価格交渉には応じません
-            送料に関しては交渉応じます。
+            .itemsentence
+              = @item.description
             %table.table{border: "1",  width: "500", height:"500"}
               %tr
-                %td.one{bgcolor:"#eee", width:"30%", align:"center"} 出品者
-                %td.abc{width:"70%"} tattun
+                %td.text{bgcolor:"#eee", width:"30%", align:"center"} 出品者
+                %td.right-text{width:"70%"} 
+                  = @item.user.nickname
               %tr
-                %td.one{bgcolor:"#eee", align:"center"} カテゴリー
-                %td.dfg{width:"70%"} 
-                  = link_to "メンズ", "#", class: "hogehoge"
+                %td.text{bgcolor:"#eee", align:"center"} カテゴリー
+                %td.text-link{width:"70%"} 
+                  = link_to @item.category.name, "#", class: "prefecture"
               %tr
-                %td.one{bgcolor:"#eee", align:"center"} ブランド
-                %td.abc 
+                %td.text{bgcolor:"#eee", align:"center"} ブランド
+                %td.right-text 
+                  = @item.brand
               %tr
-                %td.one{bgcolor:"#eee", align:"center"} 商品のサイズ	
-                %td.abc 
+                %td.text{bgcolor:"#eee", align:"center"} 商品のサイズ	
+                %td.right-text 
+                  = @item.size
               %tr
-                %td.one{bgcolor:"#eee", align:"center"} 商品の状態	
-                %td.abc 新品/未使用
+                %td.text{bgcolor:"#eee", align:"center"} 商品の状態	
+                %td.right-text 
+                  = @item.status
               %tr
-                %td.one{bgcolor:"#eee", align:"center"} 配送料の負担
-                %td.abc 着払い（購入者負担）
+                %td.text{bgcolor:"#eee", align:"center"} 配送料の負担
+                %td.right-text 
+                  = @item.postage.name
               %tr
-                %td.one{bgcolor: "#eee", align: "center"} 発送元の地域
-                %td.dfg
-                  = link_to "青森県", "#", class: "hogehoge"
+                %td.text{bgcolor: "#eee", align: "center"} 発送元の地域
+                %td.text-link
+                  = link_to @item.prefecture.name, "#", class: "prefecture"
               %tr
-                %td.one{bgcolor: "#eee", align:"center"} 発送日の目安
-                %td.abc 1-2日で発送
+                %td.text{bgcolor: "#eee", align:"center"} 発送日の目安
+                %td.right-text
+                  = @item.day.name
 
             .optionalarea
               %ul
@@ -120,35 +132,40 @@
               %ul.optional
                 %li.optionalBtn
                   %i.fa.fa-flag
-                    = link_to "不適切な商品の通報", "#", class: "hoge3"
+                    = link_to "不適切な商品の通報", "#", class: "alert"
           .commentbox
             %form
-              %textarea{placeholder:"ご要望をお書きください", class: "hoge4"}
+              %textarea{placeholder:"ご要望をお書きください", class: "infomation"}
             %p.notice
               相手のことを考え丁寧なコメントを心がけましょう。
               %br/
               不快な言葉遣いなどは利用制限や退会処分となることがあります。
-            %button.commentBtn{name: "button", type: "submit"}
+            %button.writeBtn{name: "button", type: "submit"}
               %i.fa.fa-comment
-              コメントするヨ
-            = link_to "購入しようかなー", buy_item_path, class: 'buy-btn'
-            = link_to "current_idなので編集ボタン欲し〜な〜", edit_item_path(@item), class: 'edit-btn'
-            = link_to "current_idなので削除ボタン欲しーなー", buy_item_path, class: 'destroy-btn'
 
+              コメントする
+            - if user_signed_in? && current_user.id == @item.user_id
+              = link_to "編集ボタン", edit_item_path(@item.id), class: 'edit-btn'
+              = link_to "削除ボタン", item_path(@item.id), method: :delete, data: {confirm: "削除しますか？"}, class: 'destroy-btn'
+            - else
+              = link_to "購入ボタン", buy_item_path, class: 'buy-btn'
+
+
+              
 
         %ul.links
           %li
-            = link_to  "#", class: "hoge5" do
+            = link_to  "#", class: "gain" do
               %i.fa.fa-angle-left
               %span
               前の商品
           %li
-            = link_to  "#", class: "hoge6" do
+            = link_to  "#", class: "back" do
               %span
               後ろの商品
               %i.fa.fa-angle-right    
         .relateditems
-          = link_to "メンズをもっと見る", "#", class: "hoge7"
+          = link_to "メンズをもっと見る", "#", class: "mens-more"
 
   %aside.app-google
     .inner

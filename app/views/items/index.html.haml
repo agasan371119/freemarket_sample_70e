@@ -106,7 +106,9 @@
     - @items.each do |item|
       -if item.buyer_id.present? 
         .item__box__info
-          = link_to image_tag("/images/sould out.jpeg", width: "100%", height: "230px"), buy_item_path(item)
+        
+          = link_to image_tag("/images/sold out.jpeg", width: "100%", height: "230px"), buy_item_path(item)
+
           .item__box__info__name
             申し訳ありません、売り切れました。
       - else
@@ -121,7 +123,7 @@
     - @ladies.each do |lady|
       -if lady.buyer_id.present? 
         .item__box__info
-          = link_to image_tag("/images/sould out.jpeg", width: "100%", height: "230px"), buy_item_path(lady)
+          = link_to image_tag("/images/sold out.jpeg", width: "100%", height: "230px"), buy_item_path(lady)
           .item__box__info__name
             申し訳ありません、売り切れました。
       - else       
@@ -136,7 +138,7 @@
     - @mens.each do |man|
       -if man.buyer_id.present? 
         .item__box__info
-          = link_to image_tag("/images/sould out.jpeg", width: "100%", height: "230px"), buy_item_path(man)
+          = link_to image_tag("/images/sold out.jpeg", width: "100%", height: "230px"), buy_item_path(man)
           .item__box__info__name
             申し訳ありません、売り切れました。
       - else       

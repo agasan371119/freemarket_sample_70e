@@ -3,11 +3,13 @@
     =link_to image_tag("/images/logo.png", width: "185", class: "item__post__header__logo"),  items_path
   .item__post__container 
     = form_with(model: @item ,local:true) do |f|
+
       .item__post__container__first
         %h2.item__post__container__first__h
           出品画像
           %span>必須
         %p.item__post__container__first__p
+
           最大5枚までアップロードできます
         .item-images__update-box
           .preview__image
@@ -25,11 +27,13 @@
             =f.label :"item_images_attributes_#{@item.item_images.length}_image", class: "label-box", id: "label-box--#{@item.item_images.length}" do
               .select__image__text
               クリックしてファイルをアップロード
+              
           .hidden-content
             =f.fields_for :item_images do |i|
               =i.file_field :image, class: "hidden-field"
               =i.check_box:_destroy, class: "hidden-checkbox"
             - @item.item_images.length.upto(4) do |i|
+
               %input{name: "item[item_images_attributes][#{i}][image]", id: "item_images_attributes_#{i}_image", class:"hidden-field", type:"file"}
       .item__post__container__second
         %h2.item__post__container__second__h
@@ -66,6 +70,7 @@
           -#   = f.select :child_id, options_for_select(@category_children_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {prompt: "指定なし", selected: @item.category.parent.id}),{}, {class: "input__category", id: "child_category"}
           -# .category-grandchildren#grandchildren_wrapper 
           -#   = f.select :category_id, options_for_select(@category_grandchildren_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {prompt: "指定なし", selected: @item.category.id}),{}, {class: "input__category", id: "grandchild_category"}
+
 
 
 
