@@ -84,7 +84,6 @@ gem 'ancestry'
 gem 'pry-rails'
 gem 'gon'
 gem 'active_hash'
-gem 'turbolinks'
 gem 'payjp'
 gem 'dotenv-rails'
 
