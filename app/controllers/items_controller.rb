@@ -9,11 +9,13 @@ class ItemsController < ApplicationController
   def index
     @items = Item.all.limit(5).order("created_at DESC")
     @ladies = Item.where(category_id: 5).limit(5)
-
-
     @mens = Item.where(category_id: 139).limit(5)
-
     @categories = Category.where(ancestry: nil)
+    @category_children = Category.find_by(params[:parent_name]).children
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def category_children_index
@@ -59,7 +61,7 @@ class ItemsController < ApplicationController
   def edit
     @user = User.find(params[:id])
   end
-    
+  
   def destroy
     if @item.destroy
       redirect_to root_path
