@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     member do
       get 'buy'
       get 'sold'
+      post 'pay'
     end
     collection do
       get 'category_children', defaults: { format: 'json' }
@@ -29,6 +30,13 @@ Rails.application.routes.draw do
     member do 
       get 'category_children', defaults: { format: 'json' }
       get 'category_grandchildren', defaults: { format: 'json' }
+    end
+  end
+  resources :card, only: [:new, :show, :create] do
+    collection do
+      post 'show', to: 'card#show'
+      post 'pay', to: 'card#pay'
+      post 'delete', to: 'card#delete'
     end
   end
 end
