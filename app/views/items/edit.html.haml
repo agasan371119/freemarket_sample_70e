@@ -1,3 +1,39 @@
+
+.item__post
+  .item__post__header
+    =link_to image_tag("/images/logo.png", width: "185", class: "item__post__header__logo"),  items_path
+  .item__post__container
+    =form_with(model: @item ,local:true) do |f|
+      .item__post__container__first
+        %h2.item__post__container__first__h
+          出品画像
+          %span>必須
+        %p.item__post__container__first__p
+          最大10枚までアップロードできます
+        .item-images__update-box
+          .preview__image
+          - @item.item_images.each do |item_image|
+            .preview-box
+              .upper-box
+                = image_tag image_url, width: "112", height: "112", alt: "preview"
+              .lower-box
+                .update-box
+                  %label.edit-btn 編集
+                .delete-box
+                  .delete-btn
+                    %span 削除
+          .preview__label 
+            =f.label :"images_attributes_#{@item.item_images.length}_image", class: "label-box", id: "label-box--#{@item.item_images.length}" do
+              .select__image__text
+              ドラッグアンドドロップ
+              %br   
+              またはクリックしてファイルをアップロード
+          .hidden-content
+            =f.fields_for :item_images do |i|
+              =i.file_field :image, class: "hidden-field"
+              =i.check_box:_destroy, class: "hidden-checkbox"
+            - @item.item_images.length.upto(4) do |i|
+              %input{name: "item[images_attributes][#{i}][image]", id: "item_images_attributes_#{i}_image", class:"hidden-field", type:"file"}
 -# .item__post
 -#   .item__post__header
 -#     =link_to image_tag("/images/logo.png", width: "185", class: "item__post__header__logo"),  items_path
@@ -31,6 +67,7 @@
 -#               =i.check_box:_destroy, class: "hidden-checkbox"
 -#             - @item.item_images.length.upto(4) do |i|
 -#               %input{name: "item[images_attributes][#{i}][image]", id: "item_images_attributes_#{i}_image", class:"hidden-field", type:"file"}
+
           
 -#       .item__post__container__second
 -#         %h2.item__post__container__second__h
