@@ -2,7 +2,7 @@
   .item__post__header
     =link_to image_tag("/images/logo.png", width: "185", class: "item__post__header__logo"),  items_path
   .item__post__container 
-    =form_with(model: @item , url: "/items/#{@item.id}/edit") do |f|
+    = form_with(model: @item ,local:true) do |f|
       .item__post__container__first
         %h2.item__post__container__first__h
           出品画像
@@ -11,18 +11,18 @@
           最大5枚までアップロードできます
         .item-images__update-box
           .preview__image
-          - @item.item_images.each do |item_image|
-            .preview-box
-              .upper-box
-                = image_tag item_image.image.url, width: "112", height: "112", alt: "preview"
-              .lower-box
-                .update-box
-                  %label.edit-btn 編集
-                .delete-box
-                  .delete-btn
-                    %span 削除
+            - @item.item_images.each do |item_image|
+              .preview-box
+                .upper-box
+                  = image_tag item_image.image.url, width: "112", height: "112", alt: "preview"
+                .lower-box
+                  .update-box
+                    %label.edit-btn 編集
+                  .delete-box
+                    .delete-btn
+                      %span 削除
           .preview__label 
-            =f.label :"images_attributes_#{@item.item_images.length}_image", class: "label-box", id: "label-box--#{@item.item_images.length}" do
+            =f.label :"item_images_attributes_#{@item.item_images.length}_image", class: "label-box", id: "label-box--#{@item.item_images.length}" do
               .select__image__text
               クリックしてファイルをアップロード
           .hidden-content
@@ -30,8 +30,7 @@
               =i.file_field :image, class: "hidden-field"
               =i.check_box:_destroy, class: "hidden-checkbox"
             - @item.item_images.length.upto(4) do |i|
-              %input{name: "item[images_attributes][#{i}][image]", id: "item_images_attributes_#{i}_image", class:"hidden-field", type:"file"}
-          
+              %input{name: "item[item_images_attributes][#{i}][image]", id: "item_images_attributes_#{i}_image", class:"hidden-field", type:"file"}
       .item__post__container__second
         %h2.item__post__container__second__h
           商品名
@@ -48,16 +47,50 @@
       .item__post__container__third
         %h1.item__post__container__third__h1
           商品の詳細
-
         .item__post__container__third__category
           %h2.item__post__container__third__category__h
             カテゴリー
             %span>必須        
-            .item__post__container__third__categoryform
-              .input__category1
-                = f.select :category_id, @category_parent_array, {} , class: "input__category", id: "item_category"
- 
-       
+        .item__post__container__third__categoryform
+          .category-parent
+            = f.collection_select(:parent_name, Category.roots, :id, :name, {selected:@item.category.parent.parent.id}, {class: 'input__category', id: 'parent_category'})
+          .category-children#children_wrapper
+            = f.collection_select(:child_id, @item.category.root.children, :id, :name, {selected:@item.category.parent.id}, {class: 'input__category', id: 'child_category'})
+          .category-grandchildren#grandchildren_wrapper                                                                       
+            = f.collection_select(:category_id, @item.category.root.indirects, :id, :name, {selected: @item.category.id}, {class: 'input__category', id: 'grandchild_category'})
+      
+      
+          -# .category-parent
+          -#   = f.select :parent_name, @category_parent_array, {selected:@item.category.parent.parent.name}, { class: "input__category", id: "parent_category"}
+          -# .category-children#children_wrapper
+          -#   = f.select :child_id, options_for_select(@category_children_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {prompt: "指定なし", selected: @item.category.parent.id}),{}, {class: "input__category", id: "child_category"}
+          -# .category-grandchildren#grandchildren_wrapper 
+          -#   = f.select :category_id, options_for_select(@category_grandchildren_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {prompt: "指定なし", selected: @item.category.id}),{}, {class: "input__category", id: "grandchild_category"}
+
+
+
+          -# -if @item.persisted?
+          -#   .category-parent
+          -#     = f.collection_select(:category_id, @category_parent_array, :id, :name, {prompt: ""}, {class: 'input__category', id: 'parent_category'})
+          -#   .category-children
+          -#     = f.collection_select(:category_id, @category_children_array, :id, :name, {prompt: ""}, {class: 'input__category', id: 'child_category'})
+          -#   .category-grandchildren                                                                                                        
+          -# .category-parent
+          -#   = f.collection_select :parent_name, @category_parent_array, {selected:@item.category.parent.parent.name}, {class: 'input__category', id: 'parent_category'}
+          -# -if @item.persisted?
+          -#   .category-children
+          -#     .item__post__container__third__categoryform#children_wrapper
+          -#       = f.select :child_id, options_for_select(@category_children_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {prompt: "選択して下さい", selected: @item.category.parent.id}), {}, {class: 'input__category', id: 'child_category'}
+          -#   .category-grandchildren                                                                                                        
+          -#     .item__post__container__third__categoryform#grandchildren_wrapper
+          -#       = f.select :category_id, options_for_select(@category_grandchildren_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {prompt: "選択して下さい", selected: @item.category.id}), {}, {class: 'input__category', id: 'grandchild_category'}
+          -# -if @item.persisted?
+          -#   .category-parent
+          -#     = f.collection_select :category_id, @category_parent_array, :id, :name, {prompt: "選択して下さい"}, {class: 'input__category', id: 'parent_category'}
+          -#   .category-children
+          -#     = f.collection_select :category_id, @category_children_array, :id, :name, {prompt: "選択して下さい"}, {class: 'input__category', id: 'child_category'}
+          -#   .category-grandchildren                                                                                                        
+          -#     = f.collection_select :category_id, @category_grandchildren_array, :id, :name, {prompt: "選択して下さい"}, {prompt: "選択して下さい"}, {class: 'input__category', id: 'grandchild_category'}                                                                                                         
         %h2.item__post__container__third__h2
           ブランド
           %span>任意
@@ -78,19 +111,19 @@
           %span>必須
         .item__post__container__delivery__postageform
           .input__postage
-            =f.select :postage, [ ["選択してください",0],["送料込み(出品者負担)",1], ["着払い(購入者負担)", 2]], {},class:"input__postage"   
+            =f.collection_select :postage_id,Postage.all,:id,:name,{prompt: '選択してください'},class:"input__postage"
         %h2.item__post__container__delivery__h
           発送元の地域
           %span>必須
         .item__post__container__delivery__prefectureform
           .input__prefecture
-            =f.select :prefecture, [ ["選択してください",0],["北海道",1], ["青森県", 2], ["岩手県", 3 ] ,["宮城県", 4], ["秋田県", 5], ["山形県", 6] ], {} ,class:"input__prefecture"
+            =f.collection_select :prefecture_id, Prefecture.all,:id,:name, {prompt: '選択してください'} ,class:"input__prefecture"
         %h2.item__post__container__delivery__h
           発送までの日数
           %span>必須
         .item__post__container__delivery__dayform
           .input__day
-            =f.select :day, [["選択してください",0], ["1~2日で発送",1], ["2~3日で発送", 2], ["4~7日で発送", 3 ]], {} ,class:"input__day"      
+            =f.collection_select :day_id, Day.all,:id,:name, {prompt: '選択してください'} ,class:"input__day"
       .item__post__container__price
         %h1.item__post__container__price__h1
           価格(¥300~9,999,999)
@@ -104,10 +137,6 @@
             .item__post__container__price__box__right__form
               .input__price
                 =f.number_field :price, placeholder: "0", class:"input__price", min: 0, max:9999999
-        %h2.item__post__container__price__h2
-          販売手数料  (10%)
-        %h3.item__post__container__price__h3
-          販売利益
         .item__post__container__price__btn
           .item__post__container__price__btn--red
             .input__submit

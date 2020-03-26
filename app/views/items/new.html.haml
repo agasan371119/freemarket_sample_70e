@@ -15,9 +15,7 @@
           .preview__label
             %label{for: "item_item_images_attributes_0_image", class: "label-box", id: "label-box--0"}
               .select__image__text
-                ドラッグアンドドロップ
-                %br   
-                またはクリックしてファイルをアップロード
+                クリックしてファイルをアップロード
           .hidden-content
             =f.fields_for :item_images do |i|
               =i.file_field :image, class:"hidden-field"
@@ -46,8 +44,10 @@
             カテゴリー
             %span>必須
           .item__post__container__third__categoryform
-            .input__category1
-              = f.select :category_id, @category_parent_array, {} , class: "input__category", id: "item_category"
+            = f.collection_select :category_id, @categories.map{:name, :id}, {include_blank: "選択して下さい", selected: "選択して下さい"} ,class: "input__category", id: "item_category"
+       
+       
+       
         %h2.item__post__container__third__h2
           ブランド
           %span>任意
@@ -59,7 +59,7 @@
           %span>必須
         .item__post__container__third__statusform
           .input__status
-            = f.select :status, [ ["新品、未使用",1], ["未使用に近い", 2], ["目立った傷や汚れ無し", 3] ,["やや傷や汚れ有り", 4], ["傷や汚れ有り", 5], ["全体的に状態が悪い", 6] ], {prompt: '選択してください'} , class: "input__status"
+            = f.select :status, [ ["新品、未使用",1], ["未使用に近い", 2], ["目立った傷や汚れ無し", 3] ,["やや傷や汚れ有り", 4], ["傷や汚れ有り", 5], ["全体的に状態が悪い", 6] ], {prompt: '選択して下さい'} , class: "input__status"
       .item__post__container__delivery
         %h1.item__post__container__delivery__h1
           配送について
@@ -94,10 +94,6 @@
             .item__post__container__price__box__right__form
               .input__price
                 =f.number_field :price, placeholder: "0", class:"input__price", min: 0, max:9999999
-        -# %h2.item__post__container__price__h2
-        -#   販売手数料  (10%)
-        -# %h3.item__post__container__price__h3
-        -#   販売利益
         .item__post__container__price__btn
           .item__post__container__price__btn--red
             .input__submit

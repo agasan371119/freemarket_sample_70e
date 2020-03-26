@@ -23,29 +23,28 @@ class ItemsController < ApplicationController
     @item = Item.new
     @images = @item.item_images.build
     @category_parent_array = ["選択してください"]
-    categories = Category.where(ancestry: nil)
-    categories.each do |parent|
-      @category_parent_array << parent.name
-   end
+    @categories = Category.where(ancestry: nil)
+    # categories = Category.where(ancestry: nil)
+    # categories.each do |parent|
+    #   @category_parent_array << parent.name
+  #  end
   end
 
   def category_children
-    @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
+    @category_children = Category.find("#{params[:parent_id]}").children
   end
   
   def category_grandchildren
     @category_grandchildren = Category.find("#{params[:child_id]}").children
   end
   
-  
-  
   def create
     @item = Item.new(item_params)
     @category_parent_array = ["選択してください"]
-    categories = Category.where(ancestry: nil)
-    categories.each do |parent|
-      @category_parent_array << parent.name
-   end
+    @categories = Category.where(ancestry: nil)
+  #   categories.each do |parent|
+  #     @category_parent_array << parent.name
+  #  end
     if @item.save
       redirect_to root_path
     else
@@ -55,24 +54,25 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    
     grand_child_category = @item.category
-    # binding.pry
     child_category = grand_child_category.parent
-    
+    # binding.pry
     @category_parent_array = ["選択してください"]
     Category.where(ancestry: nil).each do |parent|
       @category_parent_array << parent.name
+      # @category_parent_array = @item.category.parent.parent
     end
 
     @category_children_array = ["選択してください"]
     Category.where(ancestry: child_category.ancestry).each do |children|
-      @category_children_array << children.name
+      @category_children_array << children
+      # @category_children_array = @item.category.parent      
     end
 
     @category_grandchildren_array = ["選択してください"]
     Category.where(ancestry: grand_child_category.ancestry).each do |grandchildren|
-      @category_grandchildren_array << grandchildren.name
+      @category_grandchildren_array << grandchildren
+      # @category_grandchildren_array = @item.category
     end
   end
   
