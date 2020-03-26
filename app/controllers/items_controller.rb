@@ -38,15 +38,15 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @category_parent_array = ["選択してください"]
-    categories = Category.where(ancestry: nil)
-    categories.each do |parent|
-      @category_parent_array << parent.name
-   end
+    @categories = Category.where(ancestry: nil)
+    # categories = Category.where(ancestry: nil)
+    # categories.each do |parent|
+    #   @category_parent_array << parent.name
+  #  end
   end
 
   def category_children
-    @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
-
+    @category_children = Category.find("#{params[:parent_id]}").children
   end
 
  
@@ -54,14 +54,48 @@ class ItemsController < ApplicationController
     @category_grandchildren = Category.find("#{params[:child_id]}").children
   end
 
+  
   def create
-    
+    @item = Item.new(item_params)
+    @category_parent_array = ["選択してください"]
+    @categories = Category.where(ancestry: nil)
+  #   categories.each do |parent|
+  #     @category_parent_array << parent.name
+  #  end
+    if @item.save
+      redirect_to root_path
+    else
+      flash[:alert] = '出品に失敗しました。必須項目を確認してください。'
+      redirect_to new_item_path
+    end
   end
 
   def edit
     @user = User.find(params[:id])
   end
-  
+    
+
+    grand_child_category = @item.category
+    child_category = grand_child_category.parent
+    # binding.pry
+    @category_parent_array = ["選択してください"]
+    Category.where(ancestry: nil).each do |parent|
+      @category_parent_array << parent.name
+      # @category_parent_array = @item.category.parent.parent
+    end
+
+    @category_children_array = ["選択してください"]
+    Category.where(ancestry: child_category.ancestry).each do |children|
+      @category_children_array << children
+      # @category_children_array = @item.category.parent      
+    end
+
+
+    @category_grandchildren_array = ["選択してください"]
+    Category.where(ancestry: grand_child_category.ancestry).each do |grandchildren|
+      @category_grandchildren_array << grandchildren
+      # @category_grandchildren_array = @item.category
+      
   def destroy
     if @item.destroy
       redirect_to root_path
