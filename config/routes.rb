@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     member do
       get 'buy'
       get 'sold'
+      post 'pay'
     end
     collection do
       get 'category_children', defaults: { format: 'json' }
