@@ -23,14 +23,14 @@ class ItemsController < ApplicationController
   def show
   end
 
-  def buy
-    @address = Address.find_by(user_id: current_user.id)
-  end
+  # def buy
+  #   @address = Address.find_by(user_id: current_user.id)
+  # end
 
-  def sold
-    item.update(buyer_id: current_user.id)
-    redirect_to root_path
-  end
+  # # def sold
+  # #   item.update(buyer_id: current_user.id)
+  # #   redirect_to root_path
+  # end
 
 
   def new
