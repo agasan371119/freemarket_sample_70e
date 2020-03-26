@@ -73,29 +73,7 @@ class ItemsController < ApplicationController
   def edit
     @user = User.find(params[:id])
   end
-    
-
-    grand_child_category = @item.category
-    child_category = grand_child_category.parent
-    # binding.pry
-    @category_parent_array = ["選択してください"]
-    Category.where(ancestry: nil).each do |parent|
-      @category_parent_array << parent.name
-      # @category_parent_array = @item.category.parent.parent
-    end
-
-    @category_children_array = ["選択してください"]
-    Category.where(ancestry: child_category.ancestry).each do |children|
-      @category_children_array << children
-      # @category_children_array = @item.category.parent      
-    end
-
-
-    @category_grandchildren_array = ["選択してください"]
-    Category.where(ancestry: grand_child_category.ancestry).each do |grandchildren|
-      @category_grandchildren_array << grandchildren
-      # @category_grandchildren_array = @item.category
-      
+          
   def destroy
     if @item.destroy
       redirect_to root_path
