@@ -17,14 +17,29 @@ Rails.application.routes.draw do
       get 'logout'
     end
   end
+
+
   resources :items, only: [:index, :new, :show, :create, :destroy, :edit, :update] do
+
     member do
       get 'buy'
       get 'sold'
+      post 'pay'
     end
     collection do
       get 'category_children', defaults: { format: 'json' }
       get 'category_grandchildren', defaults: { format: 'json' }
+    end
+    member do 
+      get 'category_children', defaults: { format: 'json' }
+      get 'category_grandchildren', defaults: { format: 'json' }
+    end
+  end
+  resources :card, only: [:new, :show, :create] do
+    collection do
+      post 'show', to: 'card#show'
+      post 'pay', to: 'card#pay'
+      post 'delete', to: 'card#delete'
     end
   end
 end
