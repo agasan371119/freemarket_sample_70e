@@ -1,0 +1,172 @@
+.header
+  .header__box
+    .header__box__top
+      .header__box__top__logo
+        = link_to image_tag("/images/logo.png", width: "100", class: "header__logo"), root_path
+      .header__box__top__input
+        = form_with(url: "#", local: true, method: :get, class: "search-form") do |form|
+          .header__box__top__input__search
+            = form.text_field :name, placeholder: "キーワードから探す", class: "search-input"
+            %button{type: "submit"}
+              .header__box__top__input__search__btn
+                = image_tag("/images/icon-search 1.png", width: "25", height: "25")
+    .header__box__bottom
+      %ul.header__box__bottom__categorie
+        %li= link_to "カテゴリー", "#", class: "header__box__bottom__categorie__list"
+        %li= link_to "ブランド", "#", class: "header__box__bottom__categorie__list"
+      %ul.header__box__bottom__user
+        - if user_signed_in?
+          %li= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "header__box__bottom__user__btn"
+          %li= link_to "マイページ", user_path(current_user.id), class: "header__box__bottom__user__btn"
+        - else  
+          %li= link_to "ログイン", new_user_session_path, class: "header__box__bottom__user__btn"
+          %li= link_to "新規会員登録", new_user_registration_path, class: "header__box__bottom__user__btn"
+          -# =render "layouts/flash2"
+.user__main
+  .user__main__content
+    .user__main__content__left
+      .user__main__content__left__nav
+        %ul.nav__list
+          %li
+            = link_to "マイページ", user_path(current_user.id), class: "activee" 
+          %li
+            = link_to "お知らせ", "#", class: "nav__list__link"
+          %li
+            = link_to "やることリスト", "#", class: "nav__list__link"
+          %li
+            = link_to "いいね！一覧", "#", class: "nav__list__link"
+          %li
+            = link_to "出品する", "#", class: "nav__list__link"
+          %li
+            = link_to "出品した商品 - 出品中", "#", class: "nav__list__link"
+          %li
+            = link_to "出品した商品 - 取引中", "#", class: "nav__list__link"
+          %li
+            = link_to "出品した商品 - 売却済み", "#", class: "nav__list__link"
+          %li
+            = link_to "購入した商品 - 取引中", "#", class: "nav__list__link"
+          %li
+            = link_to "購入した商品 - 過去の取引", "#", class: "nav__list__link"
+          %li
+            = link_to "ニュース一覧", "#", class: "nav__list__link"
+          %li
+            = link_to "評価一覧", "#", class: "nav__list__link"
+          %li
+            = link_to "ガイド", "#", class: "nav__list__link"
+          %li
+            = link_to "お問い合わせ", "#", class: "nav__list__link"
+        %h3.nav__head メルペイ
+        %ul.nav__list
+          %li
+            = link_to "売り上げ・振込申請", "#", class: "nav__list__link"
+          %li
+            = link_to "ポイント", "#", class: "nav__list__link"
+        %h3.nav__head 設定
+        %ul.nav__list
+          %li
+            = link_to "プロフィール", "#", class: "nav__list__link"
+          %li
+            = link_to "発送元・お届け先住所変更", "#", class: "nav__list__link"
+          %li
+            = link_to "支払い方法", "#", class: "nav__list__link"
+          %li
+            = link_to "メール/パスワード", "#", class: "nav__list__link"
+          %li
+            = link_to "本人情報", "#", class: "nav__list__link"
+          %li
+            = link_to "電話番号の確認", "#", class: "nav__list__link"
+          %li
+            = link_to "ログアウト", logout_users_path, class: "nav__list__link"
+    .credit
+      .credit__content
+        %h2.credit__text クレジットカード情報入力
+        = form_with url: pay_card_index_path, method: :post, class: "credit__form", id: 'charge-form', name: "inputForm", local: true do |f|
+          .credit__info
+            .credit__info__group
+              = f.label :number, "カード番号", class: "credit__info__group__number"
+              %span.span
+                必須
+              .credit__info__group__text_field
+                = f.text_field :number, placeholder: "半角数字のみ", class: "text_field__number", maxlength: "16", name: "card_number", id: "card_number"
+              %ul.credit__info__group__ul
+                %li.credit__info__group__li
+                  = image_tag("/images/credit-card2 (1).jpg", width: "40", height: "25")
+                %li.credit__info__group__li
+                  = image_tag("/images/credit-card2 (2).jpg", width: "40", height: "25")
+                %li.credit__info__group__li
+                  = image_tag("/images/credit-card2 (3).jpg", width: "40", height: "25")
+                %li.credit__info__group__li
+                  = image_tag("/images/credit-card2.jpg", width: "40", height: "25")     
+            .credit__info__expire
+              = f.label :expire, "有効期限", class: "credit__info__group__number"
+              %span.span
+                必須
+              .credit__info__expire__box
+                .credit__info__expire__box__manth
+                  %select#exp_month{name: "exp_month", type: "text", class: "select__manth", name: "exp_month"}
+                    %option{value: "0"}-
+                    %option{value: "1"}01
+                    %option{value: "2"}02
+                    %option{value: "3"}03
+                    %option{value: "4"}04
+                    %option{value: "5"}05
+                    %option{value: "6"}06
+                    %option{value: "7"}07
+                    %option{value: "8"}08
+                    %option{value: "9"}09
+                    %option{value: "10"}10
+                    %option{value: "11"}11
+                    %option{value: "12"}12
+                  %span.span__year
+                    月
+                .credit__info__expire__box__manth
+                  %select#exp_year{name: "exp_year", type: "text", class: "select__manth", name: "exp_year"}
+                    %option{value: "2018"}-
+                    %option{value: "2020"}20
+                    %option{value: "2021"}21
+                    %option{value: "2022"}22
+                    %option{value: "2023"}23
+                    %option{value: "2024"}24
+                    %option{value: "2025"}25
+                    %option{value: "2026"}26
+                    %option{value: "2027"}27
+                    %option{value: "2028"}28
+                    %option{value: "2029"}29
+                  %span.span__year     
+                    年
+            .credit__info__security
+              = f.label :code, "セキュリティコード", class: "credit__info__group__number"
+              %span.span
+                必須
+              .credit__info__security__text_field
+                = f.text_field :code, placeholder: "カード背面4桁もしくは3桁の番号", class: "text_field__security", maxlength: "4", name: "cvc", id: "cvc"
+              .credit__info__security__notice
+                .credit__info__security__notice__a
+                  %span.question ?
+                  カード裏面の番号とは？ 
+              #card_token
+              = f.submit "追加する", class: "credit__button",id: "token_submit", type: "submit"
+
+.footer
+  .footer__box
+    .footer__box__info
+      %h2 FURIMAについて
+      = link_to "会社概要（運営会社）", "#", class: "footer__box__info__link"
+      = link_to "プライバシーポリシー", "#", class: "footer__box__info__link"
+      = link_to "FURIMA利用規約", "#", class: "footer__box__info__link"
+      = link_to "ポイントに関する特約", "#", class: "footer__box__info__link"
+    .footer__box__info
+      %h2 FURIMAを見る
+      = link_to "カテゴリー一覧", "#", class: "footer__box__info__link"
+      = link_to "ブランド一覧", "#", class: "footer__box__info__link"
+    .footer__box__info
+      %h2 ヘルプ＆ガイド
+      = link_to "FURIMAガイド", "#", class: "footer__box__info__link"
+      = link_to "FURIMAロゴ利用ガイドライン", "#", class: "footer__box__info__link"
+      = link_to "お知らせ", "#", class: "footer__box__info__link"
+  = link_to image_tag("/images/logo-white.png", width: "160", class: "footer__logo"), "#"
+  %p ©︎FURIMA
+
+.icon
+  %p 出品する
+  = link_to image_tag("/images/icon_camera.png", width: "52", height: "52"),new_item_path

@@ -60,9 +60,7 @@
 -#           .preview__label 
 -#             =f.label :"images_attributes_#{@item.item_images.length}_image", class: "label-box", id: "label-box--#{@item.item_images.length}" do
 -#               .select__image__text
--#               ドラッグアンドドロップ
--#               %br   
--#               またはクリックしてファイルをアップロード
+-#               クリックしてファイルをアップロード
 -#           .hidden-content
 -#             =f.fields_for :item_images do |i|
 -#               =i.file_field :image, class: "hidden-field"
@@ -95,16 +93,16 @@
 -#           .item__post__container__third__categoryform
 -#             .category-parent
 -#               .input__categor
--#                = f.select :category_id, @category_parent_array, {} , class: "input__category"
+-#                = f.select :category_id, @category_parent_array, {selected:@item.category.parent.parent.name}, class: "input__category"
 -#             .category-children
 -#               .input__categor
--#                = f.select :category_id, options_for_select(@category_children_array, {} , class: "input__category"
+-#                = f.select :category_id, options_for_select(@category_children_array.map{|b| [b.name, b.id, {data:category: b.id}}]}, {prompt: ""}), {} , class: "input__category"
 -#             .category-grandchildren
 -#               .input__categor
 -#                = f.select :category_id, @category_grandchildren_array, {} , class: "input__category"
-
-
--#               = f.select :sample, options_for_select(@sample_array_2.map{|c|[c[:name], c[:id]]}), {}, {class: 'hoge', id: 'hogehoge'}
+-#               = f.select :child_id, options_for_select(@category_children_array.map{|b|[b.name, b.id, {data:{category: b.id}]}, {prompt: "指定なし", selected: @item.category.parent.id}),{}, {class: class: "input__category"}
+-#               = f.select :child_id, options_for_select(@category_children_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {prompt: "指定なし", selected: @item.category.parent.id}),{}, {class: class: "input__category"}
+-#               = f.select :sample, options_for_select(@sample_array_2.map{|c|[c[:name], c[:id]] }), {}, {class: 'hoge', id: 'hogehoge'}
 
  
 -#         %h2.item__post__container__third__h2

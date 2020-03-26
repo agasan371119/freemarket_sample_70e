@@ -1,7 +1,10 @@
 class ItemsController < ApplicationController
   
   before_action :move_to_index, except: [:index, :show]
-  before_action :set_item, only: [:show, :edit, :destroy]
+  before_action :set_item, only: [:show, :edit, :destroy, :buy]
+
+  require 'payjp'
+
 
   def index
     @items = Item.all.limit(5).order("created_at DESC")
@@ -56,6 +59,19 @@ class ItemsController < ApplicationController
   def edit
     @user = User.find(params[:id])
   end
+    
+    grand_child_category = @item.category
+    child_category = grand_child_category.parent
+    
+    @category_parent_array = ["選択してください"]
+    Category.where(ancestry: nil).each do |parent|
+      @category_parent_array << parent.name
+    end
+
+    @category_children_array = ["選択してください"]
+    Category.where(ancestry: child_category.ancestry).each do |children|
+      @category_children_array << children.name
+    end
 
   def destroy
     if @item.destroy
@@ -83,12 +99,38 @@ class ItemsController < ApplicationController
 
   def sold
     item = Item.find(params[:id])
-    if item.update(buyer_id: current_user.id)
-      redirect_to root_path
-    else 
-      render :buy
+    card = Card.where(user_id: current_user.id).first
+    if card.nil?
+      # flash[:alert] = 'クレジットカード情報を入力して下さい'
+      redirect_to controller: "card", action: "new", notice: 'クレジットカード情報を入力して下さい'
+    else
+      Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
+      customer = Payjp::Customer.retrieve(card.customer_id) 
+      @default_card_information = customer.cards.retrieve(card.card_id)
+      Payjp::Charge.create(
+        amount: item.price, 
+        customer: card.customer_id,
+        currency: 'jpy',              
+      )
+      if item.update(buyer_id: current_user.id)
+        redirect_to root_path
+      else  
+        render :buy
+      end
     end
   end
+
+  def pay
+    card = Card.find_by(user_id: current_user.id)
+    Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
+    Payjp::Charge.create(
+      amount: @item.price, 
+      customer: card.customer_id,
+      currency: 'jpy',              
+    )
+    redirect_to root_path
+  end
+
 
   private
   
