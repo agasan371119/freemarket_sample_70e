@@ -59,6 +59,24 @@ class ItemsController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    grand_child_category = @item.category
+    # binding.pry
+    child_category = grand_child_category.parent
+    
+    @category_parent_array = ["選択してください"]
+    Category.where(ancestry: nil).each do |parent|
+      @category_parent_array << parent.name
+    end
+
+    @category_children_array = ["選択してください"]
+    Category.where(ancestry: child_category.ancestry).each do |children|
+      @category_children_array << children.name
+    end
+
+    @category_grandchildren_array = ["選択してください"]
+    Category.where(ancestry: grand_child_category.ancestry).each do |grandchildren|
+      @category_grandchildren_array << grandchildren.name
+    end
   end
 
     

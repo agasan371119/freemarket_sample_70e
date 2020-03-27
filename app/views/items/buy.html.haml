@@ -42,14 +42,6 @@
                     %h3 配送先
                     = link_to "変更する", "#", class: "link-address"
                   .buy__content__form__info__address__info__bottom
-                    %p
-                      〒#{@address.postal_code}
-                      %br/
-                      #{@address.prefecture}#{@address.city}
-                      #{@address.address_block}
-                      #{@address.building_name}#{@address.room_number}
-                      %br/
-                      #{@address.family_name}#{@address.first_name}
               .buy__content__form__info__bottom
                 = link_to sold_item_path, action: :pay, method: :GET, class: "buy__content__form__info__bottom__button", inputType: "submit" do 
                   購入    
