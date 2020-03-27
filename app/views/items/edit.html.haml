@@ -12,7 +12,7 @@
 
           最大5枚までアップロードできます
         .item-images__update-box
-          .preview__image
+          .prev-content
             - @item.item_images.each do |item_image|
               .preview-box
                 .upper-box
@@ -23,7 +23,7 @@
                   .delete-box
                     .delete-btn
                       %span 削除
-          .preview__label 
+          .label-content 
             =f.label :"item_images_attributes_#{@item.item_images.length}_image", class: "label-box", id: "label-box--#{@item.item_images.length}" do
               .select__image__text
               クリックしてファイルをアップロード
@@ -54,48 +54,14 @@
         .item__post__container__third__category
           %h2.item__post__container__third__category__h
             カテゴリー
-            %span>必須        
+            %span>必須               
         .item__post__container__third__categoryform
-          .category-parent
-            = f.collection_select(:parent_name, Category.roots, :id, :name, {selected:@item.category.parent.parent.id}, {class: 'input__category', id: 'parent_category'})
-          .category-children#children_wrapper
-            = f.collection_select(:child_id, @item.category.root.children, :id, :name, {selected:@item.category.parent.id}, {class: 'input__category', id: 'child_category'})
-          .category-grandchildren#grandchildren_wrapper                                                                       
-            = f.collection_select(:category_id, @item.category.root.indirects, :id, :name, {selected: @item.category.id}, {class: 'input__category', id: 'grandchild_category'})
-      
-      
-          -# .category-parent
-          -#   = f.select :parent_name, @category_parent_array, {selected:@item.category.parent.parent.name}, { class: "input__category", id: "parent_category"}
-          -# .category-children#children_wrapper
-          -#   = f.select :child_id, options_for_select(@category_children_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {prompt: "指定なし", selected: @item.category.parent.id}),{}, {class: "input__category", id: "child_category"}
-          -# .category-grandchildren#grandchildren_wrapper 
-          -#   = f.select :category_id, options_for_select(@category_grandchildren_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {prompt: "指定なし", selected: @item.category.id}),{}, {class: "input__category", id: "grandchild_category"}
-
-
-
-
-          -# -if @item.persisted?
-          -#   .category-parent
-          -#     = f.collection_select(:category_id, @category_parent_array, :id, :name, {prompt: ""}, {class: 'input__category', id: 'parent_category'})
-          -#   .category-children
-          -#     = f.collection_select(:category_id, @category_children_array, :id, :name, {prompt: ""}, {class: 'input__category', id: 'child_category'})
-          -#   .category-grandchildren                                                                                                        
-          -# .category-parent
-          -#   = f.collection_select :parent_name, @category_parent_array, {selected:@item.category.parent.parent.name}, {class: 'input__category', id: 'parent_category'}
-          -# -if @item.persisted?
-          -#   .category-children
-          -#     .item__post__container__third__categoryform#children_wrapper
-          -#       = f.select :child_id, options_for_select(@category_children_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {prompt: "選択して下さい", selected: @item.category.parent.id}), {}, {class: 'input__category', id: 'child_category'}
-          -#   .category-grandchildren                                                                                                        
-          -#     .item__post__container__third__categoryform#grandchildren_wrapper
-          -#       = f.select :category_id, options_for_select(@category_grandchildren_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {prompt: "選択して下さい", selected: @item.category.id}), {}, {class: 'input__category', id: 'grandchild_category'}
-          -# -if @item.persisted?
-          -#   .category-parent
-          -#     = f.collection_select :category_id, @category_parent_array, :id, :name, {prompt: "選択して下さい"}, {class: 'input__category', id: 'parent_category'}
-          -#   .category-children
-          -#     = f.collection_select :category_id, @category_children_array, :id, :name, {prompt: "選択して下さい"}, {class: 'input__category', id: 'child_category'}
-          -#   .category-grandchildren                                                                                                        
-          -#     = f.collection_select :category_id, @category_grandchildren_array, :id, :name, {prompt: "選択して下さい"}, {prompt: "選択して下さい"}, {class: 'input__category', id: 'grandchild_category'}                                                                                                         
+          = f.collection_select(:category_id, Category.roots, :id, :name, {include_blank: "選択して下さい", selected:@item.category.parent.parent.id}, {class: 'input__category', id: 'parent_category'})
+        .category-children#children_wrapper
+          = f.collection_select(:category_id, @item.category.root.children, :id, :name, {include_blank: "選択して下さい", selected:@item.category.parent.id}, {class: 'input__category', id: 'children_wrapper'})
+        .item__post__container__third__categoryform
+        .category-grandochildren#grandchildren_wrapper
+          = f.collection_select(:category_id, @item.category.subtree, :id, :name, {include_blank: "選択して下さい", selected: @item.category.id}, {class: 'input__category', id: 'grandchild_category'})                                                                       
         %h2.item__post__container__third__h2
           ブランド
           %span>任意
