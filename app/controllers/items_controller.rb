@@ -68,73 +68,50 @@ class ItemsController < ApplicationController
     end
   end
 
-  def edit
-<<<<<<< Updated upstream
-    @user = User.find(params[:id])
-  end
+  # def edit
+  #   @user = User.find(params[:id])
+  
     
 
-    grand_child_category = @item.category
-    child_category = grand_child_category.parent
-=======
-    # grand_child_category = @item.category
-    # child_category = grand_child_category.parent
->>>>>>> Stashed changes
-    # binding.pry
-    @category_parent_array = ["選択してください"]
-    Category.where(ancestry: nil).each do |parent|
-      @category_parent_array << parent.name
-      # @category_parent_array = @item.category.parent.parent
-    end
+  #   grand_child_category = @item.category
+  #   child_category = grand_child_category.parent
+  #   # binding.pry
+  #   @category_parent_array = ["選択してください"]
+  #   Category.where(ancestry: nil).each do |parent|
+  #     @category_parent_array << parent.name
+  #     # @category_parent_array = @item.category.parent.parent
+  #   end
 
-<<<<<<< Updated upstream
-    @category_children_array = ["選択してください"]
-    Category.where(ancestry: child_category.ancestry).each do |children|
-      @category_children_array << children
-      # @category_children_array = @item.category.parent      
-    end
+  #   @category_children_array = ["選択してください"]
+  #   Category.where(ancestry: child_category.ancestry).each do |children|
+  #     @category_children_array << children
+  #     # @category_children_array = @item.category.parent      
+  #   end
 
 
-    @category_grandchildren_array = ["選択してください"]
-    Category.where(ancestry: grand_child_category.ancestry).each do |grandchildren|
-      @category_grandchildren_array << grandchildren
-      # @category_grandchildren_array = @item.category
-      
+  #   @category_grandchildren_array = ["選択してください"]
+  #   Category.where(ancestry: grand_child_category.ancestry).each do |grandchildren|
+  #     @category_grandchildren_array << grandchildren
+  #     # @category_grandchildren_array = @item.category
+  # end
+
   def destroy
     if @item.destroy
       redirect_to root_path
     else
       render :show
     end
-=======
-    # @category_children_array = ["選択してください"]
-    # Category.where(ancestry: child_category.ancestry).each do |children|
-    #   @category_children_array << children
-      @category_children_array =  @item.category.parent.parent.children    
-    # end
-
-    # @category_grandchildren_array = ["選択してください"]
-    # Category.where(ancestry: grand_child_category.ancestry).each do |grandchildren|
-    #   @category_grandchildren_array << grandchildren
-      @category_grandchildren_array = @item.category.parent.children
-    # end
->>>>>>> Stashed changes
   end
 
-  def update
-<<<<<<< Updated upstream
-    @item.update(item_update_params)
-    if item.user_id == current_user.id
-      item.update(item_params)
-      redirect_to root_path
-=======
-    if @item.update(item_update_params)
-       redirect_to root_path
->>>>>>> Stashed changes
-    else
-      render 'edit'
-    end
-  end
+  # def update
+  #   @item.update(item_update_params)
+  #   if item.user_id == current_user.id
+  #     item.update(item_params)
+  #     redirect_to root_path
+  #   else
+  #     render 'edit'
+  #   end
+  # end
 
   
   def buy
@@ -180,19 +157,14 @@ class ItemsController < ApplicationController
   private
   
   def item_params
-<<<<<<< Updated upstream
-
     params.require(:item).permit(
-=======
-      params.require(:item).permit(
->>>>>>> Stashed changes
-      :name,:price,:description,:status,:brand,:category_id,:postage_id,:prefecture_id,:day_id, item_images_attributes: [:image]).merge(user_id: current_user.id)
+    :name,:price,:description,:status,:brand,:category_id,:postage_id,:prefecture_id,:day_id, item_images_attributes: [:image]).merge(user_id: current_user.id)
   end
 
-  def item_update_params
-    params.require(:item).permit(
-      :name,:price,:description,:status,:brand,:category_id,:postage_id,:prefecture_id,:day_id, item_images_attributes: [:image, :_destroy, :id]).merge(user_id: current_user.id)
-  end
+  # def item_update_params
+  #   params.require(:item).permit(
+  #     :name,:price,:description,:status,:brand,:category_id,:postage_id,:prefecture_id,:day_id, item_images_attributes: [:image, :_destroy, :id]).merge(user_id: current_user.id)
+  # end
 
 
   def move_to_index
