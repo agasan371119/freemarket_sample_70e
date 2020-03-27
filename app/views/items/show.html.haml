@@ -148,7 +148,7 @@
               = link_to "編集ボタン", edit_item_path(@item.id), class: 'edit-btn'
               = link_to "削除ボタン", item_path(@item.id), method: :delete, data: {confirm: "削除しますか？"}, class: 'destroy-btn'
             - else
-              = link_to "購入ボタン", sold_item_path, class: 'buy-btn'
+              = link_to "購入ボタン", buy_item_path, class: 'buy-btn'
 
 
               
