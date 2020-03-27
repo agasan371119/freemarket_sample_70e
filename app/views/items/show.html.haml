@@ -17,7 +17,7 @@
         %li= link_to "ブランド", "#", class: "header__box__bottom__categorie__list"
       %ul.header__box__bottom__user
         - if user_signed_in?
-          %li= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "header__box__bottom__user__btn"
+          %li= link_to "ログアウト", logout_users_path, class: "header__box__bottom__user__btn"
           %li= link_to "マイページ", "#", class: "header__box__bottom__user__btn"
         - else  
           %li= link_to "ログイン", new_user_session_path, class: "header__box__bottom__user__btn"
@@ -25,31 +25,31 @@
 
 
 
-  .winding
-    %ul.road
-      %li.listone
-        = link_to  "#", class: "branch" do
-          FURIMA
-      %li.listone
-        %i.fa.fa-angle-right
-      %li.listone
-        = link_to  "#", class: "branch" do
-          メンズ
-      %li.listone
-        %i.fa.fa-angle-right
-      %li.listone
-        = link_to  "#", class: "branch" do
-          ジャッケット
-      %li.listone
-        %i.fa.fa-angle-right
-      %li.listone
-        = link_to  "#", class: "branch" do
-          ノーカラージャケット
-      %li.listone
-        %i.fa.fa-angle-right
-      %li.listone
-        = link_to  "#", class: "branch" do
-          product2
+  -# .winding
+  -#   %ul.road
+  -#     %li.listone
+  -#       = link_to  "#", class: "branch" do
+  -#         FURIMA
+  -#     %li.listone
+  -#       %i.fa.fa-angle-right
+  -#     %li.listone
+  -#       = link_to  "#", class: "branch" do
+  -#         メンズ
+  -#     %li.listone
+  -#       %i.fa.fa-angle-right
+  -#     %li.listone
+  -#       = link_to  "#", class: "branch" do
+  -#         ジャッケット
+  -#     %li.listone
+  -#       %i.fa.fa-angle-right
+  -#     %li.listone
+  -#       = link_to  "#", class: "branch" do
+  -#         ノーカラージャケット
+  -#     %li.listone
+  -#       %i.fa.fa-angle-right
+  -#     %li.listone
+  -#       = link_to  "#", class: "branch" do
+  -#         product2
       
 
   .main
