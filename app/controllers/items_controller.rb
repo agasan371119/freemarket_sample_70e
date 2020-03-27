@@ -46,9 +46,6 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     @category_parent_array = ["選択してください"]
     @categories = Category.where(ancestry: nil)
-  #   categories.each do |parent|
-  #     @category_parent_array << parent.name
-  #  end
     if @item.save
       redirect_to root_path
     else
