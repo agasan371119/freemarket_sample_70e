@@ -1,7 +1,7 @@
 .item__post
   .item__post__header
     =link_to image_tag("/images/logo.png", width: "185", class: "item__post__header__logo"),  items_path
-    =render "layouts/flash"
+  = render "layouts/flash"
   .item__post__container
     =form_with(model: @item ,local:true) do |f|
       .item__post__container__first
@@ -14,7 +14,7 @@
           .prev-content
           .label-content
             %label{for: "item_item_images_attributes_0_image", class: "label-box", id: "label-box--0"}
-              %pre.label-box__text-visible クリックしてファイルをアップロード
+              %pre.label-box__text-visible 画像を選択してファイルをアップロード
           .hidden-content
             =f.fields_for :item_images do |i|
               =i.file_field :image, class:"hidden-field"
