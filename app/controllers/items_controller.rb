@@ -18,31 +18,18 @@ class ItemsController < ApplicationController
     end
   end
 
-  def category_children_index
-    @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
+  def show
+    @item = Item.find(1)
   end
   
-  def show
-  end
-
-  # def buy
-  #   @address = Address.find_by(user_id: current_user.id)
-  # end
-
-  # # def sold
-  # #   item.update(buyer_id: current_user.id)
-  # #   redirect_to root_path
-  # end
-
-
   def new
     @item = Item.new
     @category_parent_array = ["選択してください"]
     @categories = Category.where(ancestry: nil)
-    # categories = Category.where(ancestry: nil)
-    # categories.each do |parent|
-    #   @category_parent_array << parent.name
-  #  end
+    categories = Category.where(ancestry: nil)
+    categories.each do |parent|
+      @category_parent_array << parent.name
+   end
   end
 
   def category_children
@@ -59,9 +46,9 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     @category_parent_array = ["選択してください"]
     @categories = Category.where(ancestry: nil)
-  #   categories.each do |parent|
-  #     @category_parent_array << parent.name
-  #  end
+    categories.each do |parent|
+      @category_parent_array << parent.name
+   end
     if @item.save
       redirect_to root_path
     else
@@ -72,7 +59,9 @@ class ItemsController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-  end
+  
+
+    
           
   def destroy
     if @item.destroy
