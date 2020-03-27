@@ -3,7 +3,7 @@
   .header__box
     .header__box__top
       .header__box__top__logo
-        = link_to image_tag("/images/logo.png", width: "100", class: "header__logo")
+        = link_to image_tag("/images/logo.png", width: "100", class: "header__logo"), root_path
       .header__box__top__input
         = form_with(url: "#", local: true, method: :get, class: "search-form") do |form|
           .header__box__top__input__search
@@ -17,39 +17,39 @@
         %li= link_to "ブランド", "#", class: "header__box__bottom__categorie__list"
       %ul.header__box__bottom__user
         - if user_signed_in?
-          %li= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "header__box__bottom__user__btn"
-          %li= link_to "マイページ", "#", class: "header__box__bottom__user__btn"
+          %li= link_to "ログアウト", logout_users_path, class: "header__box__bottom__user__btn"
+          %li= link_to "マイページ", user_path(current_user.id), class: "header__box__bottom__user__btn"
         - else  
           %li= link_to "ログイン", new_user_session_path, class: "header__box__bottom__user__btn"
           %li= link_to "新規会員登録", new_user_registration_path, class: "header__box__bottom__user__btn"     
 
 
 
-  .winding
-    %ul.road
-      %li.listone
-        = link_to  "#", class: "branch" do
-          FURIMA
-      %li.listone
-        %i.fa.fa-angle-right
-      %li.listone
-        = link_to  "#", class: "branch" do
-          メンズ
-      %li.listone
-        %i.fa.fa-angle-right
-      %li.listone
-        = link_to  "#", class: "branch" do
-          ジャッケット
-      %li.listone
-        %i.fa.fa-angle-right
-      %li.listone
-        = link_to  "#", class: "branch" do
-          ノーカラージャケット
-      %li.listone
-        %i.fa.fa-angle-right
-      %li.listone
-        = link_to  "#", class: "branch" do
-          product2
+  -# .winding
+  -#   %ul.road
+  -#     %li.listone
+  -#       = link_to  "#", class: "branch" do
+  -#         FURIMA
+  -#     %li.listone
+  -#       %i.fa.fa-angle-right
+  -#     %li.listone
+  -#       = link_to  "#", class: "branch" do
+  -#         メンズ
+  -#     %li.listone
+  -#       %i.fa.fa-angle-right
+  -#     %li.listone
+  -#       = link_to  "#", class: "branch" do
+  -#         ジャッケット
+  -#     %li.listone
+  -#       %i.fa.fa-angle-right
+  -#     %li.listone
+  -#       = link_to  "#", class: "branch" do
+  -#         ノーカラージャケット
+  -#     %li.listone
+  -#       %i.fa.fa-angle-right
+  -#     %li.listone
+  -#       = link_to  "#", class: "branch" do
+  -#         product2
       
 
   .main
@@ -194,7 +194,7 @@
       = link_to "FURIMAガイド", "#", class: "footer__box__info__link"
       = link_to "FURIMAロゴ利用ガイドライン", "#", class: "footer__box__info__link"
       = link_to "お知らせ", "#", class: "footer__box__info__link"
-  = link_to image_tag("/images/logo-white.png", width: "160", class: "footer__logo"), "#"
+  = link_to image_tag("/material/logo/logo-white.png", width: "160", class: "footer__logo"), "#"
   %p ©︎FURIMA
 
 .icon

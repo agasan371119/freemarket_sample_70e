@@ -9,38 +9,27 @@ class ItemsController < ApplicationController
   def index
     @items = Item.all.limit(5).order("created_at DESC")
     @ladies = Item.where(category_id: 5).limit(5)
-
-
     @mens = Item.where(category_id: 139).limit(5)
-
     @categories = Category.where(ancestry: nil)
+    @category_children = Category.find_by(params[:parent_name]).children
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
-  def category_children_index
-    @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
+  def show
+    @item = Item.find(params[:id])
   end
   
-  def show
-  end
-
-  def buy
-    @address = Address.find_by(user_id: current_user.id)
-  end
-
-  def sold
-    item.update(buyer_id: current_user.id)
-    redirect_to root_path
-  end
-
-
   def new
     @item = Item.new
     @category_parent_array = ["選択してください"]
     @categories = Category.where(ancestry: nil)
-    # categories = Category.where(ancestry: nil)
-    # categories.each do |parent|
-    #   @category_parent_array << parent.name
-  #  end
+    categories = Category.where(ancestry: nil)
+    categories.each do |parent|
+      @category_parent_array << parent.name
+   end
   end
 
   def category_children
@@ -57,9 +46,9 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     @category_parent_array = ["選択してください"]
     @categories = Category.where(ancestry: nil)
-  #   categories.each do |parent|
-  #     @category_parent_array << parent.name
-  #  end
+    categories.each do |parent|
+      @category_parent_array << parent.name
+   end
     if @item.save
       redirect_to root_path
     else
@@ -67,6 +56,32 @@ class ItemsController < ApplicationController
       redirect_to new_item_path
     end
   end
+
+
+  # def edit
+  #   @user = User.find(params[:id])
+  #   grand_child_category = @item.category
+  #   # binding.pry
+  #   child_category = grand_child_category.parent
+    
+  #   @category_parent_array = ["選択してください"]
+  #   Category.where(ancestry: nil).each do |parent|
+  #     @category_parent_array << parent.name
+  #   end
+
+  #   @category_children_array = ["選択してください"]
+  #   Category.where(ancestry: child_category.ancestry).each do |children|
+  #     @category_children_array << children.name
+  #   end
+
+  #   @category_grandchildren_array = ["選択してください"]
+  #   Category.where(ancestry: grand_child_category.ancestry).each do |grandchildren|
+  #     @category_grandchildren_array << grandchildren.name
+  #   end
+  # end
+
+    
+          
 
   # def edit
   #   @user = User.find(params[:id])
@@ -95,6 +110,7 @@ class ItemsController < ApplicationController
   #     # @category_grandchildren_array = @item.category
   # end
 
+
   def destroy
     if @item.destroy
       redirect_to root_path
@@ -115,7 +131,6 @@ class ItemsController < ApplicationController
 
   
   def buy
-    @item = Item.find(params[:id])
     @address = Address.find_by(user_id: current_user.id)
   end
 
@@ -174,5 +189,4 @@ class ItemsController < ApplicationController
   def set_item
     @item = Item.find(params[:id])
   end
-
 end
