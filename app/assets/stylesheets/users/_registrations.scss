@@ -186,11 +186,6 @@
               }
             }
             .input-box__birthdate {
-              input[type="number"] {
-                width: 84px;
-                height: 50px;
-                margin: 10px 0;
-              }
               .input-label {
                 font-weight: 600;
               }
@@ -198,9 +193,10 @@
                 color: white;
                 background-color:red;
               }
-              .input-deflut {
-                width: 80%;
-                margin: 8px 0 0;
+              #user_birth_year,#user_birth_month, #user_birth_day {
+                width: 84px;
+                height: 50px;
+                margin: 10px 0;
               }
             }
             .birthdate-text {
