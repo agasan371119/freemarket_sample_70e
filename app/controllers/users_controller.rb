@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @items = Item.where(buyer_id: @user.id)
+    @item = Item.find_by(buyer_id: @user.id)
 
   end
 

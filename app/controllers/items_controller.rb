@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   
   before_action :move_to_index, except: [:index, :show]
-  before_action :set_item, only: [:show, :edit, :destroy, :buy]
+  before_action :set_item, only: [:show, :edit, :destroy, :buy, :update]
 
   require 'payjp'
 
@@ -46,9 +46,6 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     @category_parent_array = ["選択してください"]
     @categories = Category.where(ancestry: nil)
-    categories.each do |parent|
-      @category_parent_array << parent.name
-   end
     if @item.save
       redirect_to root_path
     else
@@ -59,24 +56,6 @@ class ItemsController < ApplicationController
 
 
   def edit
-    grand_child_category = @item.category
-    # binding.pry
-    child_category = grand_child_category.parent
-    
-    @category_parent_array = ["選択してください"]
-    @category_parent_array = Category.where(ancestry: nil).each do |parent|
-      @category_parent_array << parent.name
-    end
-
-    @category_children_array = ["選択してください"]
-    Category.where(ancestry: child_category.ancestry).each do |children|
-      @category_children_array << children
-    end
-
-    @category_grandchildren_array = ["選択してください"]
-    Category.where(ancestry: grand_child_category.ancestry).each do |grandchildren|
-      @category_grandchildren_array << grandchildren
-    end
   end
 
   def destroy
@@ -87,15 +66,14 @@ class ItemsController < ApplicationController
     end
   end
 
-  # def update
-  #   @item.update(item_update_params)
-  #   if item.user_id == current_user.id
-  #     item.update(item_params)
-  #     redirect_to root_path
-  #   else
-  #     render 'edit'
-  #   end
-  # end
+  def update
+    if @item.update(item_update_params)
+      redirect_to root_path
+    else
+      flash[:alert] = '出品に失敗しました。必須項目を確認してください。'
+      render :edit
+    end
+  end
 
   
   def buy
@@ -144,10 +122,10 @@ class ItemsController < ApplicationController
     :name,:price,:description,:status,:brand,:category_id,:postage_id,:prefecture_id,:day_id, item_images_attributes: [:image]).merge(user_id: current_user.id)
   end
 
-  # def item_update_params
-  #   params.require(:item).permit(
-  #     :name,:price,:description,:status,:brand,:category_id,:postage_id,:prefecture_id,:day_id, item_images_attributes: [:image, :_destroy, :id]).merge(user_id: current_user.id)
-  # end
+  def item_update_params
+    params.require(:item).permit(
+      :name,:price,:description,:status,:brand,:category_id,:postage_id,:prefecture_id,:day_id, item_images_attributes: [:image, :_destroy, :id]).merge(user_id: current_user.id)
+  end
 
 
   def move_to_index
