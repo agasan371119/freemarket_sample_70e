@@ -24,6 +24,7 @@ class ItemsController < ApplicationController
   
   def new
     @item = Item.new
+    @item.item_images.new
     @category_parent_array = ["選択してください"]
     @categories = Category.where(ancestry: nil)
     categories = Category.where(ancestry: nil)
@@ -43,6 +44,7 @@ class ItemsController < ApplicationController
 
   
   def create
+    
     @item = Item.new(item_params)
     @category_parent_array = ["選択してください"]
     @categories = Category.where(ancestry: nil)
@@ -56,7 +58,29 @@ class ItemsController < ApplicationController
 
 
   def edit
+    grand_child_category = @item.category
+    child_category = grand_child_category.parent
+    
+    @category_parent_array = ["選択してください"]
+    Category.where(ancestry: nil).each do |parent|
+      @category_parent_array << parent.name
+    end
+
+    @category_children_array = ["選択してください"]
+    Category.where(ancestry: child_category.ancestry).each do |children|
+      @category_children_array << children
+    end
+
+
+    @category_grandchildren_array = ["選択してください"]
+    Category.where(ancestry: grand_child_category.ancestry).each do |grandchildren|
+      @category_grandchildren_array << grandchildren
+    end
+  end    
+  
+
   end
+
 
   def destroy
     if @item.destroy
@@ -84,7 +108,6 @@ class ItemsController < ApplicationController
     item = Item.find(params[:id])
     card = Card.where(user_id: current_user.id).first
     if card.nil?
-      # flash[:alert] = 'クレジットカード情報を入力して下さい'
       redirect_to controller: "card", action: "new", notice: 'クレジットカード情報を入力して下さい'
     else
       Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_PRIVATE_KEY]
