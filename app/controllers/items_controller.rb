@@ -1,10 +1,7 @@
 class ItemsController < ApplicationController
-  
   before_action :move_to_index, except: [:index, :show]
   before_action :set_item, only: [:show, :edit, :destroy, :buy, :update]
-
   require 'payjp'
-
 
   def index
     @items = Item.all.limit(5).order("created_at DESC")
@@ -30,7 +27,7 @@ class ItemsController < ApplicationController
     categories = Category.where(ancestry: nil)
     categories.each do |parent|
       @category_parent_array << parent.name
-   end
+    end
   end
 
   def category_children
@@ -78,9 +75,6 @@ class ItemsController < ApplicationController
     end
   end    
   
-
-  end
-
 
   def destroy
     if @item.destroy
