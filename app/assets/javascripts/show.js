@@ -14,4 +14,3 @@ $(document).on('turbolinks:load', function () {
     tabs.hover(tabSwitch);
   });
 })
-

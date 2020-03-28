@@ -1,3 +1,4 @@
+
 // $(function () {
 //   function buildChildHTML(child){
 //     var html =`<li class="category__children__li">
@@ -47,19 +48,22 @@
 
   
 
-//   // $(document).on("mouseover", ".children_link", function () {
-//   //   console.log("ok")
-//   //   var children_name = $(this).name
-//   //   $.ajax({
-//   //     url: '/items',
-//   //     type: 'GET',
-//   //     data: {parent_name: children_name},
-//   //     dataType: 'json'
-//   //   }).done(function(children) {
-//   //     children.forEach(function (child) {
-//   //       var html = buildGrandChildHTML(child);
-//   //       $(".category__grandchildren__ul").append(html);
-//   //     })
-//   //   });
-//   // })
+
+  // $(document).on("mouseover", ".children_link", function () {
+  //   console.log("ok")
+  //   var children_name = $(this).name
+  //   $.ajax({
+  //     url: '/items',
+  //     type: 'GET',
+  //     data: {parent_name: children_name},
+  //     dataType: 'json'
+  //   }).done(function(children) {
+  //     children.forEach(function (child) {
+  //       var html = buildGrandChildHTML(child);
+  //       $(".category__grandchildren__ul").append(html);
+  //     })
+  //   });
+  // })
+
 // });
+
