@@ -2,7 +2,7 @@
   .item__post__header
     =link_to image_tag("/images/logo.png", width: "185", class: "item__post__header__logo"),  items_path
   .item__post__container 
-    = form_with(model: @item ,local:true) do |f|
+    = form_with(model: @item, local: true) do |f|
 
       .item__post__container__first
         %h2.item__post__container__first__h
