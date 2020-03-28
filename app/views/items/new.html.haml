@@ -44,7 +44,7 @@
             %span>必須
           .item__post__container__third__categoryform
             .input__category1
-              = f.collection_select :category ,@categories, :id, :name, {include_blank: "選択して下さい", selected: "選択して下さい"}, {class: "input__category", id: "item_category"}
+              =f.collection_select :category, @categories, :id, :name, {include_blank: "選択して下さい", selected: "選択して下さい"}, {class: "input__category", id: "item_category"}
         %h2.item__post__container__third__h2
           ブランド
           %span>任意
@@ -56,7 +56,7 @@
           %span>必須
         .item__post__container__third__statusform
           .input__status
-            = f.select :status, [ ["選択してください",0],["新品、未使用",1], ["未使用に近い", 2], ["目立った傷や汚れ無し", 3 ] ,["やや傷や汚れ有り", 4], ["傷や汚れ有り", 5], ["全体的に状態が悪い", 6] ], {} , class: "input__status"
+            =f.collection_select :status_id, Status.all, :id, :name, {prompt: '選択してください'}, class: "input__status"
       .item__post__container__delivery
         %h1.item__post__container__delivery__h1
           配送について
