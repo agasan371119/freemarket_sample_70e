@@ -8,7 +8,7 @@ $(document).on('turbolinks:load', function(){
       var childSelectHtml = '';
       childSelectHtml = `<div class="item__post__container__third__categoryform" id="children_wrapper">
                           <div class="input__category1">
-                            <select class="input__category" name="item[category_id]" id="child_category"><option value>選択してください</option>
+                            <select class="input__category" name="item[category_id]" id="child_category"><option value="">選択してください</option>
                               ${insertHTML}
                             </select>
                           </div>
@@ -19,7 +19,7 @@ $(document).on('turbolinks:load', function(){
       var grandchildSelectHtml = '';
       grandchildSelectHtml = `<div class="item__post__container__third__categoryform" id="grandchildren_wrapper">
                               <div class="input__category1">
-                                <select class="input__category" name="item[category_id]" id="grandchild_category"><option value>選択してください</option>
+                                <select class="input__category" name="item[category_id]" id="grandchild_category"><option value="">選択してください</option>
                                   ${insertHTML}
                                 </select>
                               </div>
@@ -29,7 +29,9 @@ $(document).on('turbolinks:load', function(){
     $('#item_category').on('change', function () {
       var parent_id = $(this).val();
 
+
       // if (parent_name != "選択して下さい") {
+
         $.ajax({
           url: 'category_children',
           type: 'GET',
@@ -42,13 +44,14 @@ $(document).on('turbolinks:load', function(){
         })
         .done(function(children){
           var insertHTML = '';
-          
           children.forEach(function(child){
             insertHTML += buildoption(child);
           });
           buildchidrenbox(insertHTML);
         })
         .fail(function(){
+          $('#children_wrapper').remove();
+          $('#grandchildren_wrapper').remove();
         })
       // }else{
         
@@ -58,7 +61,6 @@ $(document).on('turbolinks:load', function(){
     });
     $('.item__post__container__third__category').on('change', '#child_category', function () {
       var child_Id = $('#child_category option:selected').data('category');
-      
       if (child_Id != "選択して下さい"){
         $.ajax({
           url: 'category_grandchildren',
@@ -67,7 +69,6 @@ $(document).on('turbolinks:load', function(){
           dataType: 'json'
         })
         .done(function(grandchildren){
-          
           if (grandchildren.length != 0) {
             $('#grandchildren_wrapper').remove();
             var insertHTML = '';
@@ -78,7 +79,7 @@ $(document).on('turbolinks:load', function(){
           }
         })
         .fail(function(){
-          alert('エラー');
+          $('#grandchildren_wrapper').remove();
         })
       }else{
         $('#grandchildren_wrapper').remove();

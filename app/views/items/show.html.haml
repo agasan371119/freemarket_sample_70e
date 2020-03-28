@@ -1,9 +1,8 @@
-
 .header
   .header__box
     .header__box__top
       .header__box__top__logo
-        = link_to image_tag("/images/logo.png", width: "100", class: "header__logo")
+        = link_to image_tag("/images/logo.png", width: "100", class: "header__logo"), root_path
       .header__box__top__input
         = form_with(url: "#", local: true, method: :get, class: "search-form") do |form|
           .header__box__top__input__search
@@ -17,41 +16,11 @@
         %li= link_to "ブランド", "#", class: "header__box__bottom__categorie__list"
       %ul.header__box__bottom__user
         - if user_signed_in?
-          %li= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "header__box__bottom__user__btn"
-          %li= link_to "マイページ", "#", class: "header__box__bottom__user__btn"
+          %li= link_to "ログアウト", logout_users_path, class: "header__box__bottom__user__btn"
+          %li= link_to "マイページ", user_path(current_user.id), class: "header__box__bottom__user__btn"
         - else  
           %li= link_to "ログイン", new_user_session_path, class: "header__box__bottom__user__btn"
           %li= link_to "新規会員登録", new_user_registration_path, class: "header__box__bottom__user__btn"     
-
-
-
-  .winding
-    %ul.road
-      %li.listone
-        = link_to  "#", class: "branch" do
-          FURIMA
-      %li.listone
-        %i.fa.fa-angle-right
-      %li.listone
-        = link_to  "#", class: "branch" do
-          メンズ
-      %li.listone
-        %i.fa.fa-angle-right
-      %li.listone
-        = link_to  "#", class: "branch" do
-          ジャッケット
-      %li.listone
-        %i.fa.fa-angle-right
-      %li.listone
-        = link_to  "#", class: "branch" do
-          ノーカラージャケット
-      %li.listone
-        %i.fa.fa-angle-right
-      %li.listone
-        = link_to  "#", class: "branch" do
-          product2
-      
-
   .main
     .showmain
       .contentright
@@ -66,19 +35,6 @@
                 %ul
                   %li
                     = image_tag item_image.image.url,height: '100', width: '100'
-                  -# %li.im2
-                  -#   = image_tag item_image.image.url,height: '100', width: '100'
-                -# %ul.big__image
-                  -# %li.all
-                    -# = image_tag item_image.image.url,height: '200', width: '200'
-                    -# %ul.samall__image
-                      -# %li
-                        -# = image_tag '/images/icon-03.png', alt: 'image', height: '100', width: '100', class: 'image-second'
-                      -# %li
-                        -# = image_tag '/images/pict-reason-03.jpg', alt: 'image', height: '100', width: '100', class: 'image-third'
-                      -# %li
-                        -# = image_tag '/images/pict-reason-02.jpg', alt: 'image', height: '100', width: '100', class: 'image-four'
-
             .itembox__price
               %span 
                 ¥
@@ -123,7 +79,6 @@
                 %td.text{bgcolor: "#eee", align:"center"} 発送日の目安
                 %td.right-text
                   = @item.day.name
-
             .optionalarea
               %ul
                 %li#likeBtn.optionalBtn.likeBtn
@@ -142,17 +97,12 @@
               不快な言葉遣いなどは利用制限や退会処分となることがあります。
             %button.writeBtn{name: "button", type: "submit"}
               %i.fa.fa-comment
-
               コメントする
             - if user_signed_in? && current_user.id == @item.user_id
               = link_to "編集ボタン", edit_item_path(@item.id), class: 'edit-btn'
               = link_to "削除ボタン", item_path(@item.id), method: :delete, data: {confirm: "削除しますか？"}, class: 'destroy-btn'
             - else
               = link_to "購入ボタン", buy_item_path, class: 'buy-btn'
-
-
-              
-
         %ul.links
           %li
             = link_to  "#", class: "gain" do
@@ -166,7 +116,6 @@
               %i.fa.fa-angle-right    
         .relateditems
           = link_to "メンズをもっと見る", "#", class: "mens-more"
-
   %aside.app-google
     .inner
       %h2.inner__title だれでもかんたん、人生を変えるフリマアプリ
@@ -174,9 +123,6 @@
       .inner__icon
         = link_to image_tag("http://furima.tokyo/assets/app-store-9c5e28e8f81bd9912e0ded2f78821e04778a1356c05dc7c7bf1e88614be37c34.svg", width: "180", class: "main__bottom__box__btn__logo"), "#"
         = link_to image_tag("http://furima.tokyo/assets/google-play-469c63f1269e456307c4dde176b33cc3bbbbf142ac4d7369656010130149db1a.svg", width: "180", class: "main__bottom__box__btn__logo"), "#"
-
-  
-
 .footer
   .footer__box
     .footer__box__info
@@ -194,9 +140,8 @@
       = link_to "FURIMAガイド", "#", class: "footer__box__info__link"
       = link_to "FURIMAロゴ利用ガイドライン", "#", class: "footer__box__info__link"
       = link_to "お知らせ", "#", class: "footer__box__info__link"
-  = link_to image_tag("/images/logo-white.png", width: "160", class: "footer__logo"), "#"
+  = link_to image_tag("/material/logo/logo-white.png", width: "160", class: "footer__logo"), "#"
   %p ©︎FURIMA
-
 .icon
   %p 出品する
   = link_to image_tag("/images/icon_camera.png", width: "52", height: "52"),new_item_path

@@ -112,41 +112,41 @@
           %li.middle__bottom__ul__li
             .middle__bottom__ul__li__box
               .middle__bottom__ul__li__box__logo
-                = image_tag("/images/mercari.logo2.png", width: "48", height: "48", class: "notice_logo")
+                = image_tag("/images/logo.e.png", width: "48", height: "48", class: "notice_logo")
               .middle__bottom__ul__li__box__text
                 明日900P還元クーポンの有効期限が切れます！タップし詳細を確認しましょう。
             .middle__bottom__ul__li__box
               .middle__bottom__ul__li__box__logo
-                = image_tag("/images/mercari.logo2.png", width: "48", height: "48", class: "notice_logo")
+                = image_tag("/images/logo.e.png", width: "48", height: "48", class: "notice_logo")
               .middle__bottom__ul__li__box__text
                 《セブンカフェが¥11、松屋のプレミアム牛めしが実質180円》本人確認でおトクなクーポンプレゼント。
             .middle__bottom__ul__li__box
               .middle__bottom__ul__li__box__logo
-                = image_tag("/images/mercari.logo2.png", width: "48", height: "48", class: "notice_logo")
+                = image_tag("/images/logo.e.png", width: "48", height: "48", class: "notice_logo")
               .middle__bottom__ul__li__box__text
                 《今日のお昼はメルペイでおトクに》毎日7時〜13時限定！セブン-イレブンやローソンで最大20%ポイント還元
             .middle__bottom__ul__li__box.middle__bottom__ul__li__box__js
               .middle__bottom__ul__li__box__flex
                 .middle__bottom__ul__li__box__logo
-                  = image_tag("/images/mercari.logo2.png", width: "48", height: "48", class: "notice_logo")
+                  = image_tag("/images/logo.e.png", width: "48", height: "48", class: "notice_logo")
                 .middle__bottom__ul__li__box__text
                   《ご登録記念》「900円分のクーポン(ポイントバック)」を付与しました！
             .middle__bottom__ul__li__box.middle__bottom__ul__li__box__js
               .middle__bottom__ul__li__box__flex
                 .middle__bottom__ul__li__box__logo
-                  = image_tag("/images/mercari.logo2.png", width: "48", height: "48", class: "notice_logo")
+                  = image_tag("/images/logo.e.png", width: "48", height: "48", class: "notice_logo")
                 .middle__bottom__ul__li__box__text
                   《1万名にP3,000》売っても買ってもおトクな新生活応援キャンペーン実施中！
             .middle__bottom__ul__li__box.middle__bottom__ul__li__box__js
               .middle__bottom__ul__li__box__flex
                 .middle__bottom__ul__li__box__logo
-                  = image_tag("/images/mercari.logo2.png", width: "48", height: "48", class: "notice_logo")
+                  = image_tag("/images/logo.e.png", width: "48", height: "48", class: "notice_logo")
                 .middle__bottom__ul__li__box__text
                   《今日が最終日》”最大1,000円分”のポイントをプレゼント！キャンペーン詳細はこちら！
             .middle__bottom__ul__li__box.middle__bottom__ul__li__box__js
               .middle__bottom__ul__li__box__flex
                 .middle__bottom__ul__li__box__logo
-                  = image_tag("/images/mercari.logo2.png", width: "48", height: "48", class: "notice_logo")
+                  = image_tag("/images/logo.e.png", width: "48", height: "48", class: "notice_logo")
                 .middle__bottom__ul__li__box__text
                   《ご登録記念》「900円分のクーポン(ポイントバック)」を付与しました！ 
             .middle__bottom__ul__li__button
@@ -163,14 +163,13 @@
           %ul.ul__under
             %li.li__bottom.show
               取引中の商品がありません 
-            - if @items
+            - if @item
               %li.li__bottom
-                - @items.each do |item|
-                  .li__bottom__box
-                    .li__bottom__box__image
-                      = image_tag("#{item.item_images[0].image.url}", width: "50", height: "50", class: "notice_logo")
-                    .li__bottom__box__text
-                      = item.name
+                .li__bottom__box
+                  .li__bottom__box__image
+                    = image_tag("#{@item.item_images[0].image.url}", width: "50", height: "50", class: "notice_logo")
+                  .li__bottom__box__text
+                    = @item.name
             - else
               %li.li__bottom
                 過去に取引した商品がありません

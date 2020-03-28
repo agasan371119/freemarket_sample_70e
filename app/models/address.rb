@@ -2,8 +2,8 @@ class Address < ApplicationRecord
   belongs_to :user, optional: true
   validates :family_name, :first_name, :city, :address_block,presence: true
   validate :check_prefecture
-  extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to_active_hash :prefecture
+  # extend ActiveHash::Associations::ActiveRecordExtensions
+  # belongs_to_active_hash :prefecture
   # belongs_to_active_hash :postage
   def check_prefecture
     if prefecture == "--未選択--"

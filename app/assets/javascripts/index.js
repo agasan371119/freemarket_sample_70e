@@ -41,11 +41,12 @@
 
 
 
-  // function () {
-  //   $(".category__parent").addClass("none");    
-  // }
+//   // function () {
+//   //   $(".category__parent").addClass("none");    
+//   // }
 
   
+
 
   // $(document).on("mouseover", ".children_link", function () {
   //   console.log("ok")
@@ -62,4 +63,5 @@
   //     })
   //   });
   // })
+
 // });
