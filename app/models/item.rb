@@ -3,6 +3,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :prefecture
   belongs_to_active_hash :postage
   belongs_to_active_hash :day
+  belongs_to_active_hash :status
   belongs_to :user
   belongs_to :category
   has_many :likes
@@ -11,7 +12,7 @@ class Item < ApplicationRecord
   validates :item_images, presence: true
   validates :name, presence: true, length: { maximum: 40}
   validates :description, presence: true, length: { maximum: 1000}
-  validates :category_id, :status, :postage_id, :prefecture_id, :day_id, presence: true
+  validates :category_id, :status_id, :postage_id, :prefecture_id, :day_id, presence: true
   validates :price,presence: true,numericality: {only_integer: true,greater_than: 299, less_than: 10000000}
 end
 
