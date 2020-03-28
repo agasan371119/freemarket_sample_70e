@@ -28,9 +28,9 @@
             =f.label :"item_images_attributes_#{@item.item_images.length}_image", class: "label-box", id: "label-box--#{@item.item_images.length}" do
               %pre.label-box__text-visible 画像を選択してファイルをアップロード         
           .hidden-content
-            = f.fields_for :item_images do |i|
-              = i.file_field :image, class: "hidden-field" 
-              = i.check_box:_destroy, class: "hidden-checkbox"
+            =f.fields_for :item_images do |i|
+              =i.file_field :image, class: "hidden-field" 
+              =i.check_box:_destroy, class: "hidden-checkbox"
             - @item.item_images.length.upto(4) do |i|
               %input{name: "item[item_images_attributes][#{i}][image]", id: "item_images_attributes_#{i}_image", class:"hidden-field", type:"file"}
       .item__post__container__second

@@ -1,7 +1,5 @@
 $(document).on('turbolinks:load', function(){
-  console.log("aaa")
   $(function(){
-console.log("bb")
     //プレビューのhtmlを定義
     function buildHTML(count) {
       var html = `<div class="preview-box" id="preview-box__${count}">
