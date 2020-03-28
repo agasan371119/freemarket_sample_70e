@@ -31,8 +31,8 @@
             =f.fields_for :item_images do |i|
               =i.file_field :image, class: "hidden-field" 
               =i.check_box:_destroy, class: "hidden-checkbox"
-            - @item.item_images.length.upto(4) do |i|
-              %input{name: "item[item_images_attributes][#{i}][image]", id: "item_images_attributes_#{i}_image", class:"hidden-field", type:"file"}
+            - @item.item_images.length.upto(5) do |i|
+              %input{name: "item[item_images_attributes][#{i}][image]", id: "item_item_images_attributes_#{i}_image", class:"hidden-field", type:"file"}
       .item__post__container__second
         %h2.item__post__container__second__h
           商品名
