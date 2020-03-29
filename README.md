@@ -59,53 +59,14 @@ Things you may want to cover:
 ### Association		
 - belongs_to :user	
 
-# reviewsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|item_id|integer|null: false, foreign_key: true|
-|user_id|integer|null: false, foreign_key: true|
-|comment|text|null: false|
-|evaluation|string|null: false|
-### Association
-- belongs_to :user
-- belongs_to :item	
-
-# pointsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|user_id|integer|null: false, foreign_key: true|
-|point|integer|
-### Association	
-- belongs_to :user
-
-# profitsテーブル
-|Column|Type|Options|
-|------|----|-------|		
-|user_id|integer|null: false, foreign_key: true|
-|amount|integer|
-### Association	
-- belongs_to :user		
-
-# credit_cardsテーブル		
+# cardsテーブル		
 |Column|Type|Options|
 |------|----|-------|	
 |user_id|integer|null: false, foreign_key: true|
-|card_number|integer|null: false,unique: true|
-|effective_month|integer|null: false,unique: true|
-|effective_year|integer	null: false,unique: true|
-|security_code|integer	null: false,unique: true|
+|customer_id|string|null: false, foreign_key: true|
+|card_id|string|null: false foreign_key: true|
 ### Association	
 - belongs_to :user
-
-# commentsテーブル		
-|Column|Type|Options|
-|------|----|-------|	
-|user_id|integer|null: false, foreign_key: true|
-|item_id|integer|null: false, foreign_key: true|
-|text|text|null: false|
-### Association		
-- belongs_to :user		
-- belongs_to :item		
 
 # item_imagesテーブル		
 |Column|Type|Options|
@@ -114,15 +75,6 @@ Things you may want to cover:
 |item_id|integer	null: false, foreign_key: true|
 ### Association		
 - belongs_to :item			
-
-# likesテーブル		
-|Column|Type|Options|
-|------|----|-------|	
-|user_id|integer|null: false, foreign_key: true|
-|item_id|integer|null: false, foreign_key: true|
-### Association		
-- belongs_to :user	
-- belongs_to :item
 
 # categorysテーブル		
 |Column|Type|Options|
