@@ -45,7 +45,7 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     @category_parent_array = ["選択してください"]
     @categories = Category.where(ancestry: nil)
-    if @item.save
+    if @item.save!
       redirect_to root_path
     else
       flash[:alert] = '出品に失敗しました。必須項目を確認してください。'
@@ -136,12 +136,12 @@ class ItemsController < ApplicationController
   
   def item_params
     params.require(:item).permit(
-    :name,:price,:description,:status,:brand,:category_id,:postage_id,:prefecture_id,:day_id, item_images_attributes: [:image]).merge(user_id: current_user.id)
+    :name,:price,:description,:status_id,:brand,:category_id,:postage_id,:prefecture_id,:day_id, item_images_attributes: [:image]).merge(user_id: current_user.id)
   end
 
   def item_update_params
     params.require(:item).permit(
-      :name,:price,:description,:status,:brand,:category_id,:postage_id,:prefecture_id,:day_id, item_images_attributes: [:image, :_destroy, :id]).merge(user_id: current_user.id)
+      :name,:price,:description,:status_id,:brand,:category_id,:postage_id,:prefecture_id,:day_id, item_images_attributes: [:image, :_destroy, :id]).merge(user_id: current_user.id)
   end
 
 
