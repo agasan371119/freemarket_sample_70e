@@ -45,7 +45,7 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     @category_parent_array = ["選択してください"]
     @categories = Category.where(ancestry: nil)
-    if @item.save!
+    if @item.save
       redirect_to root_path
     else
       flash[:alert] = '出品に失敗しました。必須項目を確認してください。'
