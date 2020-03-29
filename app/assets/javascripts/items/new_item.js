@@ -90,7 +90,7 @@ $(document).on('turbolinks:load', function(){
         setLabel();
         //ラベルのidとforの値を変更
         if(count < 5){
-          $('.label-box').attr({id: `label-box--${count}`,for: `item_item_images_attributes_${count}_image`});
+          $('.label-box').attr({id: `label-box--${count}`, for: `item_item_images_attributes_${count}_image`});
         }
       }
     });
